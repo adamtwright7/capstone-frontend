@@ -11,10 +11,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        darkPink: "rgb(242,113,161)",
-        lightPink: "rgb(255,190,221)",
-        offBlack: "rgb(19,21,27)",
-        DnDRed: "rgb(188,15,15)",
+        goldAccents: "#D6AD60",
+        backgroundColor: "#1C1C1D",
+        blueSecondary: "#222639",
       },
     },
   },
