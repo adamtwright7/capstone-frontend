@@ -1,7 +1,11 @@
-//import { configureStore } from "@reduxjs/toolkit";
 
-//export const store = configureStore({
-//reducer: {},
-//});
+// import { configureStore } from "@reduxjs/toolkit";
+// import itemReducer from "./Reducers/reducer";
 
-//export default store;
+// export const store = configureStore({
+//   reducer: {
+//     item: itemReducer,
+//   },
+// });
+
+// export default store;
