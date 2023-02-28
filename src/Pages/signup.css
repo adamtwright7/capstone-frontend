@@ -1,0 +1,88 @@
+body {
+  background-color: #d6ad60;
+  align-items: center;
+  padding: 5px;
+}
+.main {
+  width: 100%;
+  height: 100vh;
+  padding-top: 5%;
+  background-color: #1c1c1d;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  width: 70%;
+  margin-bottom: 0.5rem;
+  border: 2px solid #d6ad60;
+  -webkit-box-shadow: 19px 18px 18px -2px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 19px 18px 18px -2px rgba(0, 0, 0, 1);
+  box-shadow: 19px 18px 18px -2px rgba(0, 0, 0, 1);
+}
+.logo > img {
+  height: 100%;
+}
+.signupTitle {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 8%;
+  border-bottom: 1px solid grey;
+}
+
+.signUpFields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+  color: white;
+}
+input {
+  width: 75%;
+  margin: 10px;
+  height: 50px;
+  border: 1px solid #d6ad60;
+  background-color: #222639;
+  text-align: center;
+}
+ul {
+  text-align: center;
+}
+.middlebuttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  width: 70%;
+  gap: 15px;
+}
+.continue {
+  border: 2px solid #d6ad60;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  font-size: 25px;
+  background-color: #222639;
+}
+.continue:active {
+  color: white;
+}
+.already {
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.personalNav {
+  display: flex;
+  color: grey;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 75%;
+  border-top: 1px solid grey;
+}
+span {
+  border-bottom: 1px solid #d6ad60;
+}

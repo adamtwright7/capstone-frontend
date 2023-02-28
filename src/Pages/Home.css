@@ -1,0 +1,105 @@
+.homeMain {
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+  background-color: #1c1c1d;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+.homeNav {
+  display: flex;
+  background-color: #222639;
+  border: 1px solid #d6ad60;
+  width: 90%;
+  text-align: right;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.login,
+.signUp {
+  border: 1px solid #d6ad60;
+  width: 8rem;
+  padding: 5px;
+  text-align: center;
+  background-color: #222639;
+  color: white;
+  font-size: 0.875rem;
+  border-radius: 10px;
+}
+
+.homelogo {
+  width: 70%;
+  height: 33%;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  border: 2px solid #d6ad60;
+  -webkit-box-shadow: 19px 18px 18px -2px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 19px 18px 18px -2px rgba(0, 0, 0, 1);
+  box-shadow: 19px 18px 18px -2px rgba(0, 0, 0, 1);
+  border-radius: 10px;
+}
+
+.playFree {
+  width: 70%;
+  padding: 0.8rem;
+  font-size: 20px;
+  margin-top: 1.5rem;
+  text-align: center;
+  border: 1px solid #d6ad60;
+  color: white;
+  background-color: #222639;
+  border-radius: 10px;
+}
+.whatis {
+  border: 1px solid #d6ad60;
+  width: 90%;
+  margin-top: 1.5rem;
+  color: white;
+  background-color: #222639;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.whatis > h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 20px;
+  border-bottom: 1px solid #d6ad60;
+}
+.gamePic1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.gamePic1 > img {
+  width: 90%;
+  border: 1px solid #d6ad60;
+}
+
+.imgh2 {
+  border-bottom: 1px solid #d6ad60;
+  margin-top: 1rem;
+  font-size: 2rem;
+  color: white;
+}
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.bottomSection > img {
+  border-radius: 50%;
+  width: 12rem;
+  margin-top: 1rem;
+  border: 2px solid #d6ad60;
+}
