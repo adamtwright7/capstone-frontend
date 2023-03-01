@@ -15,15 +15,18 @@ const SignUpPage = () => {
         <h2>Sign up</h2>
       </div>
 
-      <div className="signUpFields">
-        <input type="text" placeholder="username" />
+      <form
+        className="signUpFields"
+        action="http://localhost:3050/account/signup"
+        method="post"
+      >
+        <input name="email" type="text" placeholder="email" />
 
-        <input type="text" placeholder="password" />
+        <input name="password" type="text" placeholder="password" />
 
-        <input type="text" placeholder="confirm password" />
-
-        <input type="text" placeholder="email" />
-      </div>
+        <button type="submit">Log in</button>
+      </form>
+      <input type="text" placeholder="confirm password" />
       <div className="middlebuttons">
         <Link to="/login" className="continue">
           <button>continue</button>
