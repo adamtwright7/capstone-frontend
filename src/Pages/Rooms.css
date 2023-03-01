@@ -1,0 +1,10 @@
+.mainRoom {
+  background-color: #222639;
+  width: 100%;
+  height: 100vh;
+}
+.mapArea {
+  border: 2px solid red;
+  width: 100%;
+  height: 100%;
+}

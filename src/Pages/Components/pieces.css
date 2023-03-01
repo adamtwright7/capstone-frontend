@@ -1,0 +1,28 @@
+.mainPieces {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+.topChar {
+  display: flex;
+  font-size: 30px;
+  gap: 10px;
+  border: 1px solid gold;
+  width: fit-content;
+  align-self: center;
+  background-color: #222639;
+  border-radius: 10px;
+}
+.bottomPics {
+  width: 100%;
+  display: flex;
+  border: 1px solid gold;
+  padding: 1rem;
+  overflow-x: auto;
+  gap: 10px;
+  background-color: #222639;
+  border-radius: 10px;
+}
+.bottomPics > img {
+  width: 3rem;
+}
