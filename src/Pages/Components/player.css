@@ -4,49 +4,55 @@
 .playerMain {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+  width: 250px;
 }
 
 .twoIcon {
   display: flex;
-  border: 2px solid gold;
+  border: 2px solid #d6ad60;
   border-radius: 20px;
   padding: 10px;
-  gap: 1.5rem;
+  gap: 1rem;
   width: fit-content;
   background-color: #222639;
 }
 .twoIcon > img {
-  width: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 /* bottom portion */
 .mainBottom {
-  border: 1px solid gold;
+  border: 2px solid #d6ad60;
   padding: 10px;
+  width: fit-content;
   border-radius: 10px;
   background-color: #222639;
 }
 .icons {
   display: flex;
-  border-bottom: 1px solid gold;
+  border-bottom: 1px solid #d6ad60;
   width: 15rem;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  gap: 50px;
   align-items: center;
   padding-bottom: 0.875rem;
 }
 .icons > h3 {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .twoimg {
-  width: 3rem;
+  width: 40px;
+  border-radius: 50%;
 }
 .imgIcons {
   display: flex;
   gap: 10px;
 }
 .imgIcons > img {
-  width: 3rem;
+  width: 2rem;
 }
 .bottom {
   display: flex;

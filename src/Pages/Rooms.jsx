@@ -7,10 +7,17 @@ import { Player } from "./Components/Player";
 export const Rooms = () => {
   return (
     <div className="mainRoom">
-      <div className="mapArea">
+      <div className="roomFunction">
         <FunctionButtons />
-        <Pieces />
-        <Player />
+      </div>
+      <div className="mapArea">
+        <div className="roomPlayer">
+          <Player />
+        </div>
+
+        <div className="roomPieces">
+          <Pieces />
+        </div>
       </div>
     </div>
   );
