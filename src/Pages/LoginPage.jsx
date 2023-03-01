@@ -23,12 +23,12 @@ const LoginPage = () => {
         <input name="email" type="text" placeholder="email" />
 
         <input name="password" type="text" placeholder="password" />
-        <button type="submit">continue</button>
+        <button type="submit">Log In</button>
       </form>
       <div className="middlebuttons">
         <Link to="/SignUp" className="already">
           <label htmlFor="">
-            Dont have an account? <span> login</span>
+            Don't have an account? <span> Create One</span>
           </label>
         </Link>
       </div>
