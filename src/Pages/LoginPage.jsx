@@ -1,12 +1,10 @@
 import React from "react";
 import "./signup.css";
 import { Link } from "react-router-dom";
-import { Player } from "./Components/Player";
 
 const LoginPage = () => {
   return (
     <div className="main">
-      <Player />
       <div className="logo">
         <img
           src="https://t4.ftcdn.net/jpg/03/28/56/91/360_F_328569104_sSbOz4NwgpRSqCYD7pzXk0PVUttE4Oum.jpg"

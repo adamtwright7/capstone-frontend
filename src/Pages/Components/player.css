@@ -1,11 +1,77 @@
+* {
+  color: white;
+}
+.playerMain {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .twoIcon {
   display: flex;
   border: 2px solid gold;
-  border-radius: 50%;
+  border-radius: 20px;
   padding: 10px;
-  gap: 10px;
+  gap: 1.5rem;
+  width: fit-content;
+  background-color: #222639;
 }
 .twoIcon > img {
   width: 50px;
   border-radius: 50%;
+}
+/* bottom portion */
+.mainBottom {
+  border: 1px solid gold;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #222639;
+}
+.icons {
+  display: flex;
+  border-bottom: 1px solid gold;
+  width: 15rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.875rem;
+}
+.icons > h3 {
+  font-size: 1.5rem;
+}
+.twoimg {
+  width: 3rem;
+}
+.imgIcons {
+  display: flex;
+  gap: 10px;
+}
+.imgIcons > img {
+  width: 3rem;
+}
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+.bottom > div {
+  background-color: purple;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+.dots {
+  font-size: 4rem;
+}
+.dots > div {
+  background-color: gold;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.leftBottom {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
 }
