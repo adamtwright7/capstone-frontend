@@ -7,21 +7,23 @@
   display: flex;
   font-size: 30px;
   gap: 10px;
-  border: 1px solid gold;
+  border: 2px solid #d6ad60;
   width: fit-content;
   align-self: center;
   background-color: #222639;
   border-radius: 10px;
+  padding: 5px;
+  border-radius: 40px 40px 10px 10px;
 }
 .bottomPics {
   width: 100%;
   display: flex;
-  border: 1px solid gold;
+  border: 2px solid #d6ad60;
   padding: 1rem;
   overflow-x: auto;
   gap: 10px;
   background-color: #222639;
-  border-radius: 10px;
+  border-radius: 40px 40px 40px 40px;
 }
 .bottomPics > img {
   width: 3rem;
