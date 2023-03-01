@@ -3,6 +3,38 @@ import "./ProfilePage.css";
 import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
+  const rooms = [
+    {
+      id: 1,
+      name: "Spider Queen Throne",
+      image:
+        "https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F6c047d9c82f8e05dd027cc98bcd78c32.webp&w=1080&q=75",
+      link: "/Spider_Queen_Throne",
+    },
+    {
+      id: 2,
+      name: "Blacksmith Secret Grotto",
+      image:
+        "https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F17541d8403f71231e2658fb18fc23119.webp&w=1080&q=75",
+      link: "/Blacksmith_Secret_Grotto",
+    },
+    {
+      id: 3,
+      name: "Alchemy Dungeon",
+      image:
+        "https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Faf9f2afefa27ffbfe81a0f15fd75c383.webp&w=1080&q=75",
+      link: "/Alchemy_Dungeon",
+    },
+
+    {
+      id: 4,
+      name: "Alchemy Dungeon red",
+      image:
+        "https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Faf9f2afefa27ffbfe81a0f15fd75c383.webp&w=1080&q=75",
+      link: "/Alchemy_Dungeon_red",
+    },
+  ];
+
   return (
     <div className="container">
       <div className="header">
@@ -40,6 +72,7 @@ const ProfilePage = () => {
           <button className="room-button">Select Room</button>
           <button className="create-room-button">Create Room</button>
         </div>
+
         <div className="settings">
           <h3>Settings</h3>
           <ul>
