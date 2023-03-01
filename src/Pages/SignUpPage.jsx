@@ -24,7 +24,7 @@ const SignUpPage = () => {
 
         <input name="password" type="text" placeholder="password" />
 
-        <button type="submit">Log in</button>
+        <button type="submit">Sign Up</button>
       </form>
       <input type="text" placeholder="confirm password" />
       <div className="middlebuttons">
