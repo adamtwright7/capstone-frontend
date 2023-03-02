@@ -1,5 +1,6 @@
 .functionMain {
   position: absolute;
+  z-index: 10;
   height: 40%;
   right: 10px;
   display: flex;
