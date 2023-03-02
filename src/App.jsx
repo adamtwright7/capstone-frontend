@@ -6,13 +6,14 @@ import HomePage from "./Pages/HomePage";
 import { Rooms } from "./Pages/Rooms";
 import { Scenes } from "./Pages/Components/Scenes";
 import CreateRoom from "./Pages/CreateRoom";
-
+import { CreateScene } from "./Pages/Components/CreateScene";
 
 import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <Routes>
+      <Route path="/create" element={<CreateScene />} />
       <Route path="scene" element={<Scenes />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/Room" element={<Rooms />} />
