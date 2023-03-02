@@ -1,13 +1,33 @@
-import React from 'react'
+import React from "react";
 
 const ErrorPage = () => {
   return (
     <div>
-        <p>
-        404 not found No tables here!
-        </p>
+      <body class="bg-blueSecondary">
+        <div class="container mx-auto py-16 px-4">
+          <div class="flex flex-col items-center justify-center">
+            <img
+              class="w-48 mb-8"
+              src="https://www.secureideas.com/hubfs/Imported_Blog_Media/ld_preload_random_number-1.png"
+              alt="Logo"
+            ></img>
+            <h1 class="text-5xl font-bold text-goldAccents mb-2">
+              404 Page Not Found
+            </h1>
+            <p class="text-white text-lg mb-8">
+              We're sorry, but the page you requested could not be found.
+            </p>
+            <a
+              href="/"
+              class="bg-goldAccents hover:bg-yellow-600 text-blueSecondary font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Go back to home
+            </a>
+          </div>
+        </div>
+      </body>
     </div>
-  )
-}
+  );
+};
 
-export default ErrorPage
+export default ErrorPage;
