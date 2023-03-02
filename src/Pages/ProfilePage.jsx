@@ -1,6 +1,4 @@
 import React from "react";
-import "./ProfilePage.css";
-import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
   return (

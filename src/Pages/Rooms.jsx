@@ -3,6 +3,7 @@ import "./Rooms.css";
 import { FunctionButtons } from "./Components/FunctionButtons";
 import { Pieces } from "./Components/Pieces";
 import { Player } from "./Components/Player";
+import { Scenes } from "./Components/Scenes";
 
 export const Rooms = () => {
   return (
