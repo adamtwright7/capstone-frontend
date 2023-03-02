@@ -16,7 +16,7 @@ function App() {
       <Route path="scene" element={<Scenes />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/Room" element={<Rooms />} />
-      <Route path="/Profile" element={<ProfilePage />} />
+      <Route path="/profile/:email" element={<ProfilePage />} />
       <Route path="/CreateRoom" element={<CreateRoom />} />
       <Route path="/SignUp" element={<SignUpPage />} />
       <Route path="/Login" element={<LoginPage />} />
