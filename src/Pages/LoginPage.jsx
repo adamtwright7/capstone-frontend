@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./signup.css";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
+  const [logInInfo, setLogInInfo] = useState({
+    email: "",
+    password: "",
+  });
+
+  const logInUser = async () => {
+    console.log(logInInfo)
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONlogInInfo = JSON.stringify(logInInfo);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONlogInInfo,
+      redirect: "follow",
+    };
+
+    await fetch(
+      "https://plotpointsbackend.onrender.com/account/login",
+      requestOptions
+    );
+  };
+
   return (
     <div className="main">
       <div className="logo">
@@ -15,16 +40,27 @@ const LoginPage = () => {
         <h2>Login</h2>
       </div>
 
-      <form
-        className="signUpFields"
-        action="http://localhost:3050/account/login"
-        method="post"
-      >
-        <input name="email" type="text" placeholder="email" />
-
-        <input name="password" type="text" placeholder="password" />
-        <button type="submit">Log In</button>
-      </form>
+      <div className="signUpFields">
+        <input
+          onChange={(e) => {
+            setLogInInfo((logInInfo) => ({
+              ...logInInfo,
+              "email": e.target.value,
+            }));
+          }}
+          type="text"
+          placeholder="email"
+        />
+        <input onChange={(e) => {
+            setLogInInfo((logInInfo) => ({
+              ...logInInfo,
+              "password": e.target.value,
+            }));
+          }} type="text" placeholder="password" />
+        <Link to={"http://localhost:5173/profile/" + logInInfo.email}>
+          <button onClick={() => logInUser()}>Log In</button>
+        </Link>
+      </div>
       <div className="middlebuttons">
         <Link to="/SignUp" className="already">
           <label htmlFor="">
