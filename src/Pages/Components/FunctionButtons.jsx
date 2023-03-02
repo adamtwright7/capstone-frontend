@@ -18,7 +18,7 @@ export const FunctionButtons = () => {
         </p>
       </div>
       <div className="bottomSection">
-        <button onClick={() => setshowScenePopup(true)}>
+        <button onClick={() => setshowScenePopup((showScenePopup) => {return !showScenePopup})}>
           <MdLandscape />
         </button>
         <button>

@@ -1,4 +1,3 @@
-import Maps from "./Pages/Maps";
 import ProfilePage from "./Pages/ProfilePage";
 import SignUpPage from "./Pages/SignUpPage";
 import LoginPage from "./Pages/LoginPage";
@@ -14,15 +13,14 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <Routes>
-      <Route path="/create" element={<CreateScene />} />
-      <Route path="scene" element={<Scenes />} />
       <Route path="/" element={<HomePage />} />
+      <Route path="/create" element={<CreateScene />} />
+      <Route path="/scene" element={<Scenes />} />
       <Route path="/room" element={<Rooms />} />
       <Route path="/profile/:email" element={<ProfilePage />} />
       <Route path="/createroom" element={<CreateRoom />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/maps" element={<Maps />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
