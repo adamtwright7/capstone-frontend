@@ -10,21 +10,29 @@ export const FunctionButtons = () => {
   const [showScenePopup, setshowScenePopup] = useState(false);
 
   return (
-    <div className="functionMain">
-      {showScenePopup && <Scenes />}
-      <div className="arrowImage">
-        <p>
-          <BsFillArrowDownCircleFill />
-        </p>
+    <>
+      <div className="popUpMain">{showScenePopup && <Scenes />}</div>
+      <div className="functionMain">
+        <div className="arrowImage">
+          <p>
+            <BsFillArrowDownCircleFill />
+          </p>
+        </div>
+        <div className="bottomSection">
+          <button
+            onClick={() =>
+              setshowScenePopup((showScenePopup) => {
+                return !showScenePopup;
+              })
+            }
+          >
+            <MdLandscape />
+          </button>
+          <button>
+            <RiHandCoinFill />
+          </button>
+        </div>
       </div>
-      <div className="bottomSection">
-        <button onClick={() => setshowScenePopup((showScenePopup) => {return !showScenePopup})}>
-          <MdLandscape />
-        </button>
-        <button>
-          <RiHandCoinFill />
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
