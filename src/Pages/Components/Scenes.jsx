@@ -16,6 +16,7 @@ export const Scenes = () => {
               <MdDeleteForever />
             </button>
             <img
+              className="sceneImages"
               src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fb930ad28f9b925bee6d2fa461133a79a.webp&w=2048&q=75"
               alt=""
             />
@@ -31,6 +32,7 @@ export const Scenes = () => {
               <MdDeleteForever />
             </button>
             <img
+              className="sceneImages"
               src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fb930ad28f9b925bee6d2fa461133a79a.webp&w=2048&q=75"
               alt=""
             />
@@ -46,6 +48,7 @@ export const Scenes = () => {
               <MdDeleteForever />
             </button>
             <img
+              className="sceneImages"
               src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fb930ad28f9b925bee6d2fa461133a79a.webp&w=2048&q=75"
               alt=""
             />
@@ -61,6 +64,7 @@ export const Scenes = () => {
               <MdDeleteForever />
             </button>
             <img
+              className="sceneImages"
               src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fb930ad28f9b925bee6d2fa461133a79a.webp&w=2048&q=75"
               alt=""
             />
