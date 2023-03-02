@@ -47,13 +47,13 @@ const CreateRoom = () => {
         <form>
           <div class="mb-4">
             <label class="block text-gray-200 mb-2" for="room-name">Room Name</label>
-            <input class="w-full p-2 rounded-lg" type="text" id="room-name" name="room-name">
+            <input class="w-full p-2 rounded-lg" type="text" id="room-name" name="room-name"/>
           </div>
           <div class="mb-4">
             <label class="block text-gray-200 mb-2" for="room-image">Room Image</label>
-            <input class="hidden" type="file" id="room-image" name="room-image">
+            <input class="hidden" type="file" id="room-image" name="room-image"/>
             <div class="relative w-40 h-40 bg-gray-700 rounded-md overflow-hidden">
-              <img src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75" alt="Room Preview" class="w-full h-full object-cover">
+              <img src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75" alt="Room Preview" class="w-full h-full object-cover"/>
               <div class="absolute inset-0 bg-black opacity-50"></div>
               <div class="absolute inset-0 flex items-center justify-center text-white">
                 <p class="text-center">Add Image</p>

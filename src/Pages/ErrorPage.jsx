@@ -4,7 +4,7 @@ const ErrorPage = () => {
   return (
     <div>
         <p>
-        No tables here!
+        404 not found No tables here!
         </p>
     </div>
   )
