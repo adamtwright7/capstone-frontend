@@ -67,7 +67,8 @@ ul {
   background-color: #222639;
 }
 .continue:active {
-  color: white;
+  background-color: #d6ad60;
+  border: 2px solid black;
 }
 .already {
   color: white;
@@ -82,7 +83,25 @@ ul {
   margin-top: 20px;
   width: 75%;
   border-top: 1px solid grey;
+  padding-bottom: 10px;
 }
 span {
   border-bottom: 1px solid #d6ad60;
+}
+
+@media screen and (min-width: 739px) {
+  .main {
+    height: 100%;
+  }
+  .logo {
+    width: 20rem;
+  }
+  .signUpFields {
+    gap: 10px;
+    width: 50%;
+  }
+  .middlebuttons {
+    width: 40%;
+    margin-top: 5%;
+  }
 }
