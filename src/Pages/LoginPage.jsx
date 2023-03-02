@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./signup.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../Reducers/UserSlice";
+
 
 const LoginPage = () => {
   const [logInInfo, setLogInInfo] = useState({
@@ -8,8 +11,9 @@ const LoginPage = () => {
     password: "",
   });
 
+  const dispatch = useDispatch();
+
   const logInUser = async () => {
-    console.log(logInInfo)
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -22,10 +26,14 @@ const LoginPage = () => {
       redirect: "follow",
     };
 
-    await fetch(
+    
+
+    const userDataValues = await fetch(
       "https://plotpointsbackend.onrender.com/account/login",
       requestOptions
     );
+
+    dispatch(setUser(userDataValues))
   };
 
   return (
