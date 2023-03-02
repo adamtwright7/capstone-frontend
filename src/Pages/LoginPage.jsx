@@ -15,18 +15,20 @@ const LoginPage = () => {
         <h2>Login</h2>
       </div>
 
-      <div className="signUpFields">
-        <input type="text" placeholder="username" />
+      <form
+        className="signUpFields"
+        action="http://localhost:3050/account/login"
+        method="post"
+      >
+        <input name="email" type="text" placeholder="email" />
 
-        <input type="text" placeholder="password" />
-      </div>
+        <input name="password" type="text" placeholder="password" />
+        <button type="submit">Log In</button>
+      </form>
       <div className="middlebuttons">
-        <Link to="/login" className="continue">
-          <button>continue</button>
-        </Link>
         <Link to="/SignUp" className="already">
           <label htmlFor="">
-            Dont have an account? <span> login</span>
+            Don't have an account? <span> Create One</span>
           </label>
         </Link>
       </div>
