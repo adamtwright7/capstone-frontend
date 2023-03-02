@@ -2,7 +2,7 @@ import React from "react";
 
 const ProfilePage = () => {
   return (
-    <body>
+    <div className=" min-h-screen">
       <nav class="bg-blueSecondary">
         <div class="mx-auto px-4 py-2 max-w-7xl flex justify-between items-center">
           <div class="flex items-center justify-between">
@@ -162,9 +162,9 @@ const ProfilePage = () => {
             <img
               src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75"
               alt="Room 1"
-              class="w-full h-full object-cover"
+              class=" w-full h-full object-cover"
             ></img>
-            <p class="text-gray-200 mt-2">Room 1</p>
+            <p class="  relative text-gray-200 mt-2 z-10">Room 1</p>
           </div>
           <div class="w-40 h-40 bg-gray-700 rounded-md overflow-hidden">
             <img
@@ -223,7 +223,7 @@ const ProfilePage = () => {
         </div>
         <p>© 2023 An average table</p>
       </div>
-    </body>
+    </div>
   );
 };
 
