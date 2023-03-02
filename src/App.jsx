@@ -4,6 +4,7 @@ import SignUpPage from "./Pages/SignUpPage";
 import LoginPage from "./Pages/LoginPage";
 import HomePage from "./Pages/HomePage";
 import { Rooms } from "./Pages/Rooms";
+import CreateRoom from "./Pages/CreateRoom";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/Room" element={<Rooms />} />
       <Route path="/Profile" element={<ProfilePage />} />
+      <Route path="/CreateRoom" element={<CreateRoom />} />
       <Route path="/SignUp" element={<SignUpPage />} />
       <Route path="/Login" element={<LoginPage />} />
       <Route path="/Maps" element={<Maps />} />
