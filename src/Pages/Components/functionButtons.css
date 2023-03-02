@@ -30,3 +30,13 @@
   border: 2px solid #d6ad60;
   padding: 0.5rem;
 }
+
+.popUpMain {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 50%;
+  z-index: 10;
+  width: 100%;
+}
