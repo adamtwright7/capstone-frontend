@@ -45,6 +45,7 @@ input {
   border: 1px solid #d6ad60;
   background-color: #222639;
   text-align: center;
+  border-radius: 40px 40px 40px 40px;
 }
 ul {
   text-align: center;
