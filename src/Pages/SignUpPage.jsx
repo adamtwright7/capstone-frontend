@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./signup.css";
 import { Link } from "react-router-dom";
 
 const SignUpPage = () => {
+  // Local state for sign up inputs
+  const [signUpInfo, setSignUpInfo] = useState({
+    "email": "",
+    "password": "",
+  });
+
+  console.log(signUpInfo)
+
+  // Fetch function for signing up a user.
+  const signupUser = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONsignUpInfo = JSON.stringify(signUpInfo);
+
+    // Eventually the above object is going to be "signUpInfo"
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONsignUpInfo,
+      redirect: "follow",
+    };
+
+    await fetch(
+      "https://plotpointsbackend.onrender.com/account/signup",
+      requestOptions
+    );
+  };
+
   return (
     <div className="main">
       <div className="logo">
@@ -15,22 +45,38 @@ const SignUpPage = () => {
         <h2>Sign up</h2>
       </div>
 
-      <form
-        className="signUpFields"
-        action="http://localhost:3050/account/signup"
-        method="post"
-      >
-        <input name="email" type="text" placeholder="email" />
+      <div className="signUpFields">
+        <input
+          onChange={(e) => {
+            setSignUpInfo((signUpInfo) => ({
+              ...signUpInfo,
+              "email": e.target.value,
+            }));
+          }}
+          type="text"
+          placeholder="email"
+        />
 
-        <input name="password" type="text" placeholder="password" />
+        <input
+          onChange={(e) => {
+            setSignUpInfo((signUpInfo) => ({
+              ...signUpInfo,
+              "password": e.target.value,
+            }));
+          }}
+          type="text"
+          placeholder="password"
+        />
 
         <button type="submit">Sign Up</button>
-      </form>
+      </div>
+
+      {/* Should change from a form to a fetch request */}
+
       <input type="text" placeholder="confirm password" />
       <div className="middlebuttons">
-        <Link to="/login" className="continue">
-          <button>continue</button>
-        </Link>
+        <button onClick={() => signupUser()}>continue</button>
+        <Link to="/login" className="continue"></Link>
         <Link to="/login" className="already">
           <label htmlFor="">
             Already have an account?<span> click here!</span>
