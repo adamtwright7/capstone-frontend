@@ -89,7 +89,7 @@ const ProfilePage = () => {
                 {/* <img class="h-16 w-16 rounded-full" src="https://i.pravatar.cc/300" alt="Profile Picture"> */}
                 <div class="ml-4">
                   <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
-                    John Doe
+                    John Doe {email}
                   </h2>
                   <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                     <div class="mt-2 flex items-center text-sm text-gray-300">
