@@ -1,8 +1,17 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ProfilePage = () => {
   const { email } = useParams();
+  const user = useSelector((state) => state.user);
+
+  const logOut = async () => {
+    const logOutResponse = await fetch(
+      "https://plotpointsbackend.onrender.com/account/logout"
+    );
+  };
+
   return (
     <div className=" min-h-screen">
       <nav class="bg-blueSecondary">
@@ -24,34 +33,33 @@ const ProfilePage = () => {
             </button>
           </div>
           <div class="hidden lg:flex lg:items-center">
-            <a
-              href="#"
+            <Link
+              to="/"
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/profile"
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Profile
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Settings
-            </a>
-            <a
-              href="#"
+            </Link>
+            <button
+              onClick={logOut}
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Logout
-            </a>
+            </button>
           </div>
         </div>
-        {/*   
-    <!-- Mobile menu --> */}
+        {/* <!-- Mobile menu --> */}
         <div class="hidden bg-blueSecondary lg:hidden">
           <div class="px-2 pt-2 pb-3">
             <a
