@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./signup.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../Reducers/UserSlice";
 
 const SignUpPage = () => {
   // Local state for sign up inputs
@@ -9,7 +11,7 @@ const SignUpPage = () => {
     "password": "",
   });
 
-  console.log(signUpInfo)
+  const dispatch = useDispatch();
 
   // Fetch function for signing up a user.
   const signupUser = async () => {
@@ -27,10 +29,13 @@ const SignUpPage = () => {
       redirect: "follow",
     };
 
-    await fetch(
+    const userDataValues = await fetch(
       "https://plotpointsbackend.onrender.com/account/signup",
       requestOptions
     );
+    console.log("userDataValues is:", userDataValues.dataValues)
+
+    dispatch(setUser(userDataValues))
   };
 
   return (
