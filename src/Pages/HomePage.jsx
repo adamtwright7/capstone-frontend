@@ -29,15 +29,9 @@ const HomePage = () => {
         <button>Play free now!</button>
       </Link>
       <div className="whatis">
-        <h3>what is plot points</h3>
+        <h3> About Us </h3>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error illum
-          unde id eum maxime beatae accusamus repellendus animi magni atque quis
-          perspiciatis facilis expedita aperiam, ut illo necessitatibus eligendi
-          veniam Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-          perferendis asperiores saepe quis, assumenda fugit. Possimus quos
-          maiores fuga. Ea ex praesentium amet officiis vel assumenda vitae
-          tenetur impedit quia?
+        Welcome to Plot Points, a minimalistic web-based virtual tabletop (VTT). We’re the first VTT to be built mobile-first, allowing you to play your favorite tabletop roleplaying games anywhere, anytime. Without permissions separating players from a Game Master (GM), Plot Points is the perfect platform for games with high player participation or without a permanent Game Master – such as Fiasco, Wanderhome, or D&D using the optional Plot Points rule (the origin of our namesake). 
         </p>
       </div>
       <h2 className="imgh2">Expansive maps!</h2>
@@ -57,23 +51,18 @@ const HomePage = () => {
         <a href="#top" className="playFree">
           <button>Back to top</button>
         </a>
-        <Link to="/signup" className="playFree">
-          <button>Play free now!</button>
-        </Link>
       </div>
-      <div className="personalNav">
+      <p className="pt-4"> Made by: </p>
+      <div className="personalNav flex flex-row justify-around">
         <a href="https://github.com/VinnyVecchio" target="_blank">
           Vinny
         </a>
-
         <a href="https://github.com/adamtwright7" target="_blank">
           Adam
         </a>
-
         <a href="https://github.com/jessbecoding" target="_blank">
           Jess
         </a>
-
         <a href="https://github.com/stoicgit" target="_blank">
           Mauro
         </a>
