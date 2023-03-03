@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="homeMain">
       <div className="homeNav" id="#top">
-        <Link to="/SignUp" className="signUp">
+        <Link to="/signup" className="signUp">
           <button>Sign Up</button>
         </Link>
         <Link to="/login" className="login">
@@ -19,7 +19,7 @@ const HomePage = () => {
           alt=""
         />
       </div>
-      <Link to="/SignUp" className="playFree">
+      <Link to="/signup" className="playFree">
         <button>Play free now!</button>
       </Link>
       <div className="whatis">
@@ -51,7 +51,7 @@ const HomePage = () => {
         <a href="#top" className="playFree">
           <button>Back to top</button>
         </a>
-        <Link to="/SignUp" className="playFree">
+        <Link to="/signup" className="playFree">
           <button>Play free now!</button>
         </Link>
       </div>

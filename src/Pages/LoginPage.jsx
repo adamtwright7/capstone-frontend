@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Reducers/UserSlice";
 
-
 const LoginPage = () => {
   const [logInInfo, setLogInInfo] = useState({
-    email: "",
-    password: "",
+    "email": "",
+    "password": "",
   });
 
   const dispatch = useDispatch();
@@ -17,23 +16,22 @@ const LoginPage = () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const JSONlogInInfo = JSON.stringify(logInInfo);
+    const JSONsignUpInfo = JSON.stringify(logInInfo);
 
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
-      body: JSONlogInInfo,
+      body: JSONsignUpInfo,
       redirect: "follow",
     };
 
-    
-
-    const userDataValues = await fetch(
+    const userDataValuesRaw = await fetch(
       "https://plotpointsbackend.onrender.com/account/login",
       requestOptions
     );
+    const userDataValues = await userDataValuesRaw.json(); // parse the promise response into a JSON object
 
-    dispatch(setUser(userDataValues))
+    dispatch(setUser(userDataValues));
   };
 
   return (
@@ -59,12 +57,16 @@ const LoginPage = () => {
           type="text"
           placeholder="email"
         />
-        <input onChange={(e) => {
+        <input
+          onChange={(e) => {
             setLogInInfo((logInInfo) => ({
               ...logInInfo,
               "password": e.target.value,
             }));
-          }} type="text" placeholder="password" />
+          }}
+          type="text"
+          placeholder="password"
+        />
         <Link to={"http://localhost:5173/profile/" + logInInfo.email}>
           <button onClick={() => logInUser()}>Log In</button>
         </Link>

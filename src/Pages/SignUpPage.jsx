@@ -20,8 +20,6 @@ const SignUpPage = () => {
 
     const JSONsignUpInfo = JSON.stringify(signUpInfo);
 
-    // Eventually the above object is going to be "signUpInfo"
-
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -29,13 +27,13 @@ const SignUpPage = () => {
       redirect: "follow",
     };
 
-    const userDataValues = await fetch(
+    const userDataValuesRaw = await fetch(
       "https://plotpointsbackend.onrender.com/account/signup",
       requestOptions
     );
-    console.log("userDataValues is:", userDataValues.dataValues)
+    const userDataValues = await userDataValuesRaw.json(); // parse the promise response into a JSON object
 
-    dispatch(setUser(userDataValues))
+    dispatch(setUser(userDataValues));
   };
 
   return (
@@ -72,8 +70,6 @@ const SignUpPage = () => {
           type="text"
           placeholder="password"
         />
-
-        <button type="submit">Sign Up</button>
       </div>
 
       {/* Should change from a form to a fetch request */}
