@@ -3,14 +3,15 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
 import CreateRoom from "./CreateRoom";
+import { setProfilePopup } from "../Reducers/ProfilePopupSlice";
 
 const ProfilePage = () => {
   const { email } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const ProfilePopup = useSelector((state) => state.ProfilePopup)
 
   // local state for pop-ups
-  const [showEditPopup, setShowEditPopup] = useState(false);
   const [showRoomPopup, setShowRoomPopup] = useState(false);
 
   const logOut = async () => {
@@ -149,9 +150,7 @@ const ProfilePage = () => {
             <div class="mt-5 flex lg:mt-0 lg:ml-4">
               <span class="hidden sm:block ml-3">
                 <button onClick={() =>
-              setShowEditPopup((showEditPopup) => {
-                return !showEditPopup;
-              })}
+              dispatch(setProfilePopup())}
                   class="text-sm font-medium text-goldAccents hover:text-white"
                 >
                   Edit Profile
@@ -163,7 +162,7 @@ const ProfilePage = () => {
       </div>
 
     <div className="z-10 shadow-2xl w-3/4 absolute" >
-      {showEditPopup && <EditProfile/>}
+      {ProfilePopup && <EditProfile/>}
     </div>
 
       <div class="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">

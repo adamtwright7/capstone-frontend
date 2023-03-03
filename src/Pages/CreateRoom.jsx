@@ -8,7 +8,7 @@ const CreateRoom = () => {
         <div class="relative bg-blueSecondary rounded-lg max-w-lg mx-auto">
           <div class="p-8">
             <h2 class="text-2xl font-bold mb-4 text-white">Create Room</h2>
-            <form>
+            <div>
               <div class="mb-4">
                 <label class="block text-gray-200 mb-2" for="room-name">
                   Room Name
@@ -46,7 +46,7 @@ const CreateRoom = () => {
                   Cancel
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
