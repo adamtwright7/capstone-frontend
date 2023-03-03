@@ -8,13 +8,17 @@ import CreateRoom from "./Pages/CreateRoom";
 import { CreateScene } from "./Pages/Components/CreateScene";
 import ErrorPage from "./Pages/ErrorPage";
 import { EditProfile } from "./Pages/Components/EditProfile";
-
 import { Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector((state) => state.user);
   return (
     <Routes>
-      <Route path="/EditProfile" element={<EditProfile />} />
+      {/* Protecting routes that you needed to be logged in to see */}
+      {/* (user &&  )*/}
+
+      <Route path="/editprofile" element={<EditProfile />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/create" element={<CreateScene />} />
       <Route path="/scene" element={<Scenes />} />
