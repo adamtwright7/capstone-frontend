@@ -22,6 +22,8 @@ const ProfilePage = () => {
       "https://plotpointsbackend.onrender.com/account/logout"
     );
     dispatch(setUser(""));
+
+    // use useNavigate here instead of a Link tag. Navigate to home page. 
   };
 
   return (

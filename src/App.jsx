@@ -4,7 +4,6 @@ import LoginPage from "./Pages/LoginPage";
 import HomePage from "./Pages/HomePage";
 import { Rooms } from "./Pages/Rooms";
 import { Scenes } from "./Pages/Components/Scenes";
-import { CreateScene } from "./Pages/Components/CreateScene";
 import ErrorPage from "./Pages/ErrorPage";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -14,11 +13,14 @@ function App() {
   const user = useSelector((state) => state.user);
   return (
     <Routes>
+
+      {user.email && 
+      <Route path="/profile/:email" element={<ProfilePage />} />
+      }
+
       <Route path="/" element={<HomePage />} />
-      <Route path="/create" element={<CreateScene />} />
       <Route path="/scene" element={<Scenes />} />
       <Route path="/room" element={<Rooms />} />
-      <Route path="/profile/:email" element={<ProfilePage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="*" element={<ErrorPage />} />
