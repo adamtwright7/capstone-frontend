@@ -20,18 +20,6 @@ const ProfilePage = () => {
     dispatch(setUser(""));
   }; 
 
-    // const openButton = document.getElementById("openButton");
-    // const closeButton = document.getElementById("closeButton");
-    // const popupContainer = document.getElementById("popupContainer");
-
-    // openButton.addEventListener("click", () => {
-    //   popupContainer.classList.remove("hidden");
-    // });
-
-    // closeButton.addEventListener("click", () => {
-    //   popupContainer.classList.add("hidden");
-    // });
-
   return (
     <div className=" min-h-screen">
       <nav class="bg-blueSecondary">
