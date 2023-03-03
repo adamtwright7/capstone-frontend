@@ -31,13 +31,7 @@ const CreateRoom = () => {
                   name="room-image-url"
                   placeholder="Enter image URL"
                 />
-                <div class="relative w-40 h-40 bg-gray-700 rounded-md overflow-hidden">
-                  <div class="absolute inset-0 bg-black opacity-50"></div>
-                  <div class="absolute inset-0 flex items-center justify-center text-white">
-                    <span class="text-lg font-bold">Image Preview</span>
-                  </div>
                 </div>
-              </div>
               <div class="flex justify-end">
                 <button
                   class="px-4 py-2 bg-goldAccents text-black rounded-lg font-semibold  hover:bg-gray-200"

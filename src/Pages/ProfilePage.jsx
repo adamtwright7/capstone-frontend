@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
+import CreateRoom from "./CreateRoom";
 
 const ProfilePage = () => {
   const { email } = useParams();
@@ -10,6 +11,7 @@ const ProfilePage = () => {
 
   // local state for pop-ups
   const [showEditPopup, setShowEditPopup] = useState(false);
+  const [showRoomPopup, setShowRoomPopup] = useState(false);
 
   const logOut = async () => {
     const logOutResponse = await fetch(
@@ -238,25 +240,18 @@ const ProfilePage = () => {
         <button
           class="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
           id="openButton"
+          onClick={() =>
+            setShowRoomPopup((showRoomPopup) => {
+              return !showRoomPopup;
+            })}
         >
           Create Room
         </button>
       </div>
+      <div className="z-10 shadow-2xl w-3/4 absolute" >
+      {showRoomPopup && <CreateRoom />}
+    </div>
       <div class="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
-        <div class="footer-links flex justify-center my-2">
-          <a href="https://github.com/username" class="mx-2">
-            GitHub
-          </a>
-          <a href="https://github.com/username" class="mx-2">
-            GitHub
-          </a>
-          <a href="https://github.com/username" class="mx-2">
-            GitHub
-          </a>
-          <a href="https://github.com/username" class="mx-2">
-            GitHub
-          </a>
-        </div>
         <p>© 2023 An average table</p>
       </div>
     </div>
