@@ -14,7 +14,7 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <Routes>
-      <Route path="/EditProfile" element={<EditProfile />} />
+      <Route path="/editprofile" element={<EditProfile />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/create" element={<CreateScene />} />
       <Route path="/scene" element={<Scenes />} />
