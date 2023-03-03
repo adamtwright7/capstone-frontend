@@ -3,7 +3,7 @@ import "./EditProfile.css";
 
 export const EditProfile = () => {
   return (
-    <div className="mainEdit">
+    <div className="mainEdit rounded-xl p-6">
       <div className="editHeader">
         <h2>Edit Profile</h2>
       </div>
