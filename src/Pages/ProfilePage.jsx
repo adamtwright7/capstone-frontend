@@ -1,34 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { EditProfile } from "./Components/EditProfile";
 
 const ProfilePage = () => {
   const { email } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
+  // local state for pop-ups
+  const [showEditPopup, setShowEditPopup] = useState(false);
+
   const logOut = async () => {
     const logOutResponse = await fetch(
       "https://plotpointsbackend.onrender.com/account/logout"
     );
-
-
-    const openButton = document.getElementById("openButton");
-    const closeButton = document.getElementById("closeButton");
-    const popupContainer = document.getElementById("popupContainer");
-
-    openButton.addEventListener("click", () => {
-      popupContainer.classList.remove("hidden");
-    });
-
-    closeButton.addEventListener("click", () => {
-      popupContainer.classList.add("hidden");
-    });
-  };
-
     dispatch(setUser(""));
   }; 
 
+    // const openButton = document.getElementById("openButton");
+    // const closeButton = document.getElementById("closeButton");
+    // const popupContainer = document.getElementById("popupContainer");
+
+    // openButton.addEventListener("click", () => {
+    //   popupContainer.classList.remove("hidden");
+    // });
+
+    // closeButton.addEventListener("click", () => {
+    //   popupContainer.classList.add("hidden");
+    // });
 
   return (
     <div className=" min-h-screen">
@@ -158,17 +158,24 @@ const ProfilePage = () => {
             </div>
             <div class="mt-5 flex lg:mt-0 lg:ml-4">
               <span class="hidden sm:block ml-3">
-                <a
-                  href="#"
+                <button onClick={() =>
+              setShowEditPopup((showEditPopup) => {
+                return !showEditPopup;
+              })}
                   class="text-sm font-medium text-goldAccents hover:text-white"
                 >
                   Edit Profile
-                </a>
+                </button>
               </span>
             </div>
           </div>
         </div>
       </div>
+
+    <div className="z-10 shadow-2xl w-3/4 absolute" >
+      {showEditPopup && <EditProfile/>}
+    </div>
+
       <div class="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">
         <h2 class="text-2xl font-bold text-white">About Me</h2>
         <p class="text-white mt-4">
