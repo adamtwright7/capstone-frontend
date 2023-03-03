@@ -1,16 +1,18 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const ProfilePage = () => {
   const { email } = useParams();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
   const logOut = async () => {
     const logOutResponse = await fetch(
       "https://plotpointsbackend.onrender.com/account/logout"
     );
-  };
+    dispatch(setUser(""));
+  }; 
 
   return (
     <div className=" min-h-screen">
@@ -40,7 +42,7 @@ const ProfilePage = () => {
               Home
             </Link>
             <Link
-              to="/profile"
+              to={"/profile/" + email}
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Profile
@@ -62,30 +64,30 @@ const ProfilePage = () => {
         {/* <!-- Mobile menu --> */}
         <div class="hidden bg-blueSecondary lg:hidden">
           <div class="px-2 pt-2 pb-3">
-            <a
-              href="#"
+            <Link
+              to="#"
               class="text-white hover:text-goldAccents block px-3 py-2 rounded-md text-base font-medium"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               class="text-white hover:text-goldAccents block px-3 py-2 rounded-md text-base font-medium"
             >
               Profile
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               class="text-white hover:text-goldAccents block px-3 py-2 rounded-md text-base font-medium"
             >
               Settings
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               class="text-white hover:text-goldAccents block px-3 py-2 rounded-md text-base font-medium"
             >
               Logout
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
@@ -97,7 +99,7 @@ const ProfilePage = () => {
                 {/* <img class="h-16 w-16 rounded-full" src="https://i.pravatar.cc/300" alt="Profile Picture"> */}
                 <div class="ml-4">
                   <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
-                    John Doe {email}
+                    Welcome back.
                   </h2>
                   <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                     <div class="mt-2 flex items-center text-sm text-gray-300">
@@ -132,7 +134,7 @@ const ProfilePage = () => {
                           clip-rule="evenodd"
                         />
                       </svg>
-                      <span>JohnDoe@gmail.com</span>
+                      <span>{email}</span>
                     </div>
                   </div>
                 </div>
@@ -154,15 +156,7 @@ const ProfilePage = () => {
       <div class="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">
         <h2 class="text-2xl font-bold text-white">About Me</h2>
         <p class="text-white mt-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod
-          sapien vel consequat faucibus. Nam rutrum orci eu tortor euismod, eget
-          convallis metus facilisis. Ut at enim sit amet nisi lobortis
-          convallis. In hac habitasse platea dictumst. Nullam non vestibulum
-          quam, eget tincidunt dolor. Praesent nec dictum dolor. Nam ultricies
-          elementum tortor, quis pretium sapien tincidunt a. Vivamus blandit,
-          augue sed pellentesque feugiat, sapien massa eleifend sem, in
-          malesuada ipsum tortor nec enim. Donec mollis augue risus, vel
-          bibendum sem malesuada nec.
+          {user.bio}
         </p>
       </div>
       <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
