@@ -9,14 +9,13 @@ import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 const ProfilePage = () => {
   const { email } = useParams();
   const dispatch = useDispatch();
-  // Getting and setting the user info into state 
+
+  // Getting and setting the user info into state
   const user = useSelector((state) => state.user);
 
-
-  // Redux state for pop-ups 
-  const ProfilePopup = useSelector((state) => state.ProfilePopup)
-  const RoomPopup = useSelector((state) => state.RoomPopup)
-
+  // Redux state for pop-ups
+  const ProfilePopup = useSelector((state) => state.ProfilePopup);
+  const RoomPopup = useSelector((state) => state.RoomPopup);
 
   const logOut = async () => {
     const logOutResponse = await fetch(
@@ -24,7 +23,6 @@ const ProfilePage = () => {
     );
     dispatch(setUser(""));
   };
-
 
   return (
     <div className=" min-h-screen">
@@ -34,63 +32,6 @@ const ProfilePage = () => {
             <a class="text-white font-bold text-xl" href="#">
               Plot Points
             </a>
-            <div class="relative">
-              <button
-                onClick={() =>
-                  setShowMobileMenu((showMobileMenu) => {
-                    return !showMobileMenu;
-                  })
-                }
-                class="block lg:hidden focus:outline-none"
-                id="dropdown-toggle"
-              >
-                <svg
-                  class="w-6 h-6 fill-current text-white"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M4 6h16M4 12h16M4 18h16"
-                    stroke="#D6AD60"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                {showMobileMenu}
-              </button>
-
-              <div
-                class="absolute right-0 mt-2 w-48 bg-blueSecondary rounded-lg shadow-lg hidden"
-                id="dropdown-menu"
-              >
-                <div class="py-2">
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-white hover:bg-goldAccents hover:text-gray-900"
-                  >
-                    Home
-                  </a>
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-white hover:bg-goldAccents hover:text-gray-900"
-                  >
-                    Profile
-                  </a>
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-white hover:bg-goldAccents hover:text-gray-900"
-                  >
-                    Settings
-                  </a>
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-white hover:bg-goldAccents hover:text-gray-900"
-                  >
-                    Logout
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="hidden lg:flex lg:items-center">
             <Link
@@ -120,7 +61,7 @@ const ProfilePage = () => {
           </div>
         </div>
         {/* <!-- Mobile menu --> */}
-        <div class="hidden bg-blueSecondary lg:hidden">
+        <div class="flex bg-blueSecondary lg:hidden">
           <div class="px-2 pt-2 pb-3">
             <Link
               to="#"
@@ -154,7 +95,6 @@ const ProfilePage = () => {
           <div class="lg:flex lg:items-center lg:justify-between">
             <div class="flex-1 min-w-0">
               <div class="flex items-center">
-                {/* <img class="h-16 w-16 rounded-full" src="https://i.pravatar.cc/300" alt="Profile Picture"> */}
                 <div class="ml-4">
                   <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
                     Welcome back.
@@ -200,9 +140,8 @@ const ProfilePage = () => {
             </div>
             <div class="mt-5 flex lg:mt-0 lg:ml-4">
               <span class="hidden sm:block ml-3">
-
-                <button onClick={() => dispatch(setProfilePopup())}
-
+                <button
+                  onClick={() => dispatch(setProfilePopup())}
                   class="text-sm font-medium text-goldAccents hover:text-white"
                 >
                   Edit Profile
@@ -213,10 +152,9 @@ const ProfilePage = () => {
         </div>
       </div>
 
-
-    <div className="z-10 shadow-2xl w-3/4 absolute" >
-      {ProfilePopup && <EditProfile/>}
-    </div>
+      <div className="z-10 shadow-2xl w-3/4 absolute">
+        {ProfilePopup && <EditProfile />}
+      </div>
 
       <div class="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">
         <h2 class="text-2xl font-bold text-white">About Me</h2>
@@ -277,17 +215,15 @@ const ProfilePage = () => {
         <button
           class="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
           id="openButton"
-
           onClick={() => dispatch(setRoomPopup())}
-
         >
           Create Room
         </button>
       </div>
 
-      <div className="z-10 shadow-2xl w-3/4 absolute" >
-      {RoomPopup && <CreateRoom />}
-    </div>
+      <div className="z-10 shadow-2xl w-3/4 absolute">
+        {RoomPopup && <CreateRoom />}
+      </div>
 
       <div class="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
         <p>© 2023 An average table</p>
