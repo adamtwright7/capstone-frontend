@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 
 const CreateRoom = () => {
+  // Redux state to manage this pop-up showing 
+  const dispatch = useDispatch()
+
+  // local state to prepare to send info to the database. 
   const [roomInfo, setRoomInfo] = useState({
-    name: "",
-    image: "",
+    "name": "",
+    "image": "",
   });
+
   const createRoom = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -27,6 +33,7 @@ const CreateRoom = () => {
 
     setRoomInfo(roomDataValues);
   };
+
   return (
     <div class="fixed z-10 inset-0 overflow-y-auto">
       <div class="flex items-center justify-center min-h-screen">
@@ -39,6 +46,12 @@ const CreateRoom = () => {
                   Room Name
                 </label>
                 <input
+                onChange={(e) => {
+                  setRoomInfo((roomInfo) => ({
+                    ...roomInfo,
+                    name: e.target.value,
+                  }))
+                }}
                   class="w-full p-2 rounded-lg"
                   type="text"
                   id="room-name"
@@ -50,6 +63,12 @@ const CreateRoom = () => {
                   Image URL
                 </label>
                 <input
+                onChange={(e) => {
+                  setRoomInfo((roomInfo) => ({
+                    ...roomInfo,
+                    image: e.target.value,
+                  }))
+                }}
                   class="w-full p-2 rounded-lg"
                   type="text"
                   id="room-image-url"
@@ -61,13 +80,17 @@ const CreateRoom = () => {
                 <button
                   class="px-4 py-2 bg-goldAccents text-black rounded-lg font-semibold  hover:bg-gray-200"
                   id="popupContainer"
-                  onClick={() => createRoom()}
+                  onClick={() => 
+                    {createRoom()
+                    dispatch(setRoomPopup())}
+                  }
                 >
                   Create
                 </button>
                 <button
                   class="ml-2 px-4 py-2  bg-goldAccents text-black rounded-lg border border-gray-200 hover:bg-gray-200 hover:text-black"
                   id="closeButton"
+                  onClick={() => dispatch(setRoomPopup())}
                 >
                   Cancel
                 </button>

@@ -4,15 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
 import CreateRoom from "./CreateRoom";
 import { setProfilePopup } from "../Reducers/ProfilePopupSlice";
+import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 
 const ProfilePage = () => {
   const { email } = useParams();
   const dispatch = useDispatch();
+  // Getting and setting the user info into state 
   const user = useSelector((state) => state.user);
+  // Redux state for pop-ups 
   const ProfilePopup = useSelector((state) => state.ProfilePopup)
-
-  // local state for pop-ups
-  const [showRoomPopup, setShowRoomPopup] = useState(false);
+  const RoomPopup = useSelector((state) => state.RoomPopup)
 
   const logOut = async () => {
     const logOutResponse = await fetch(
@@ -149,8 +150,7 @@ const ProfilePage = () => {
             </div>
             <div class="mt-5 flex lg:mt-0 lg:ml-4">
               <span class="hidden sm:block ml-3">
-                <button onClick={() =>
-              dispatch(setProfilePopup())}
+                <button onClick={() => dispatch(setProfilePopup())}
                   class="text-sm font-medium text-goldAccents hover:text-white"
                 >
                   Edit Profile
@@ -227,16 +227,13 @@ const ProfilePage = () => {
         <button
           class="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
           id="openButton"
-          onClick={() =>
-            setShowRoomPopup((showRoomPopup) => {
-              return !showRoomPopup;
-            })}
+          onClick={() => dispatch(setRoomPopup())}
         >
           Create Room
         </button>
       </div>
       <div className="z-10 shadow-2xl w-3/4 absolute" >
-      {showRoomPopup && <CreateRoom />}
+      {RoomPopup && <CreateRoom />}
     </div>
       <div class="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
         <p>© 2023 An average table</p>
