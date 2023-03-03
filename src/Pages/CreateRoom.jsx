@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const CreateRoom = () => {
+  const [roomInfo, setRoomInfo] = useState({
+    name: "",
+    image: "",
+  });
+  const createRoom = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONroomInfo = JSON.stringify(roomInfo);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONroomInfo,
+      redirect: "follow",
+    };
+
+    const roomInfoRaw = await fetch(
+      "https://plotpointsbackend.onrender.com/rooms/create",
+      requestOptions
+    );
+    const roomDataValues = await roomInfoRaw.json();
+
+    setRoomInfo(roomDataValues);
+  };
   return (
     <div class="fixed z-10 inset-0 overflow-y-auto">
       <div class="flex items-center justify-center min-h-screen">
@@ -31,11 +56,12 @@ const CreateRoom = () => {
                   name="room-image-url"
                   placeholder="Enter image URL"
                 />
-                </div>
+              </div>
               <div class="flex justify-end">
                 <button
                   class="px-4 py-2 bg-goldAccents text-black rounded-lg font-semibold  hover:bg-gray-200"
                   id="popupContainer"
+                  onClick={() => createRoom()}
                 >
                   Create
                 </button>
