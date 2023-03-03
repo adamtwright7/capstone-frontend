@@ -1,13 +1,19 @@
 import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const HomePage = () => {
+  const user = useSelector((state) => state.user);
   return (
     <div className="homeMain">
       <div className="homeNav" id="#top">
         <Link to="/signup" className="signUp">
           <button>Sign Up</button>
+        </Link>
+        <Link to={"/profile/" + user.email} className="login">
+          <button>Profile</button>
         </Link>
         <Link to="/login" className="login">
           <button>Log In</button>
