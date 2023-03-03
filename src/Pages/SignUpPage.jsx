@@ -7,8 +7,8 @@ import { setUser } from "../Reducers/UserSlice";
 const SignUpPage = () => {
   // Local state for sign up inputs
   const [signUpInfo, setSignUpInfo] = useState({
-    "email": "",
-    "password": "",
+    email: "",
+    password: "",
   });
 
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const SignUpPage = () => {
           onChange={(e) => {
             setSignUpInfo((signUpInfo) => ({
               ...signUpInfo,
-              "email": e.target.value,
+              email: e.target.value,
             }));
           }}
           type="text"
@@ -64,20 +64,21 @@ const SignUpPage = () => {
           onChange={(e) => {
             setSignUpInfo((signUpInfo) => ({
               ...signUpInfo,
-              "password": e.target.value,
+              password: e.target.value,
             }));
           }}
           type="text"
           placeholder="password"
         />
+        <input type="text" placeholder="confirm password" />
       </div>
 
       {/* Should change from a form to a fetch request */}
 
-      <input type="text" placeholder="confirm password" />
       <div className="middlebuttons">
-        <button onClick={() => signupUser()}>continue</button>
-        <Link to="/login" className="continue"></Link>
+        <button className="continue" onClick={() => signupUser()}>
+          Continue
+        </button>
         <Link to="/login" className="already">
           <label htmlFor="">
             Already have an account?<span> click here!</span>
@@ -85,13 +86,21 @@ const SignUpPage = () => {
         </Link>
       </div>
       <div className="personalNav">
-        <a href="github.com">vinny</a>
+        <a href="https://github.com/VinnyVecchio" target="_blank">
+          Vinny
+        </a>
 
-        <a href="github.com">adam</a>
+        <a href="https://github.com/adamtwright7" target="_blank">
+          Adam
+        </a>
 
-        <a href="github.com">jess</a>
+        <a href="https://github.com/jessbecoding" target="_blank">
+          Jess
+        </a>
 
-        <a href="github.com">mauro</a>
+        <a href="https://github.com/stoicgit" target="_blank">
+          Mauro
+        </a>
       </div>
     </div>
   );

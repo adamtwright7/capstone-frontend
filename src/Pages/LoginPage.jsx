@@ -6,8 +6,8 @@ import { setUser } from "../Reducers/UserSlice";
 
 const LoginPage = () => {
   const [logInInfo, setLogInInfo] = useState({
-    "email": "",
-    "password": "",
+    email: "",
+    password: "",
   });
 
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const LoginPage = () => {
           onChange={(e) => {
             setLogInInfo((logInInfo) => ({
               ...logInInfo,
-              "email": e.target.value,
+              email: e.target.value,
             }));
           }}
           type="text"
@@ -61,31 +61,41 @@ const LoginPage = () => {
           onChange={(e) => {
             setLogInInfo((logInInfo) => ({
               ...logInInfo,
-              "password": e.target.value,
+              password: e.target.value,
             }));
           }}
           type="text"
           placeholder="password"
         />
-        <Link to={"http://localhost:5173/profile/" + logInInfo.email}>
-          <button onClick={() => logInUser()}>Log In</button>
-        </Link>
       </div>
       <div className="middlebuttons">
-        <Link to="/SignUp" className="already">
+        <Link to={"http://localhost:5173/profile/" + logInInfo.email}>
+          <button className="continue" onClick={() => logInUser()}>
+            Log In
+          </button>
+        </Link>
+        <Link to="/signup" className="already">
           <label htmlFor="">
             Don't have an account? <span> Create One</span>
           </label>
         </Link>
       </div>
       <div className="personalNav">
-        <a href="github.com">vinny</a>
+        <a href="https://github.com/VinnyVecchio" target="_blank">
+          Vinny
+        </a>
 
-        <a href="github.com">adam</a>
+        <a href="https://github.com/adamtwright7" target="_blank">
+          Adam
+        </a>
 
-        <a href="github.com">jess</a>
+        <a href="https://github.com/jessbecoding" target="_blank">
+          Jess
+        </a>
 
-        <a href="github.com">mauro</a>
+        <a href="https://github.com/stoicgit" target="_blank">
+          Mauro
+        </a>
       </div>
     </div>
   );

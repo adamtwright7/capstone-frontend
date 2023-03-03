@@ -62,13 +62,21 @@ const HomePage = () => {
         </Link>
       </div>
       <div className="personalNav">
-        <a href="github.com">vinny</a>
+        <a href="https://github.com/VinnyVecchio" target="_blank">
+          Vinny
+        </a>
 
-        <a href="github.com">adam</a>
+        <a href="https://github.com/adamtwright7" target="_blank">
+          Adam
+        </a>
 
-        <a href="github.com">jess</a>
+        <a href="https://github.com/jessbecoding" target="_blank">
+          Jess
+        </a>
 
-        <a href="github.com">mauro</a>
+        <a href="https://github.com/stoicgit" target="_blank">
+          Mauro
+        </a>
       </div>
     </div>
   );
