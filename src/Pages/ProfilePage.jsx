@@ -3,16 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
 import CreateRoom from "./CreateRoom";
+import { setProfilePopup } from "../Reducers/ProfilePopupSlice";
+import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 
 const ProfilePage = () => {
   const { email } = useParams();
   const dispatch = useDispatch();
+  // Getting and setting the user info into state 
   const user = useSelector((state) => state.user);
 
-  // local state for pop-ups
-  const [showEditPopup, setShowEditPopup] = useState(false);
-  const [showRoomPopup, setShowRoomPopup] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  // Redux state for pop-ups 
+  const ProfilePopup = useSelector((state) => state.ProfilePopup)
+  const RoomPopup = useSelector((state) => state.RoomPopup)
+
 
   const logOut = async () => {
     const logOutResponse = await fetch(
@@ -21,17 +25,6 @@ const ProfilePage = () => {
     dispatch(setUser(""));
   };
 
-  // const openButton = document.getElementById("openButton");
-  // const closeButton = document.getElementById("closeButton");
-  // const popupContainer = document.getElementById("popupContainer");
-
-  // openButton.addEventListener("click", () => {
-  //   popupContainer.classList.remove("hidden");
-  // });
-
-  // closeButton.addEventListener("click", () => {
-  //   popupContainer.classList.add("hidden");
-  // });
 
   return (
     <div className=" min-h-screen">
@@ -207,12 +200,9 @@ const ProfilePage = () => {
             </div>
             <div class="mt-5 flex lg:mt-0 lg:ml-4">
               <span class="hidden sm:block ml-3">
-                <button
-                  onClick={() =>
-                    setShowEditPopup((showEditPopup) => {
-                      return !showEditPopup;
-                    })
-                  }
+
+                <button onClick={() => dispatch(setProfilePopup())}
+
                   class="text-sm font-medium text-goldAccents hover:text-white"
                 >
                   Edit Profile
@@ -223,9 +213,10 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      <div className="z-10 shadow-2xl w-3/4 absolute">
-        {showEditPopup && <EditProfile />}
-      </div>
+
+    <div className="z-10 shadow-2xl w-3/4 absolute" >
+      {ProfilePopup && <EditProfile/>}
+    </div>
 
       <div class="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">
         <h2 class="text-2xl font-bold text-white">About Me</h2>
@@ -286,18 +277,18 @@ const ProfilePage = () => {
         <button
           class="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
           id="openButton"
-          onClick={() =>
-            setShowRoomPopup((showRoomPopup) => {
-              return !showRoomPopup;
-            })
-          }
+
+          onClick={() => dispatch(setRoomPopup())}
+
         >
           Create Room
         </button>
       </div>
-      <div className="z-10 shadow-2xl w-3/4 absolute">
-        {showRoomPopup && <CreateRoom />}
-      </div>
+
+      <div className="z-10 shadow-2xl w-3/4 absolute" >
+      {RoomPopup && <CreateRoom />}
+    </div>
+
       <div class="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
         <p>© 2023 An average table</p>
       </div>
