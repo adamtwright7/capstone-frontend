@@ -5,18 +5,44 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../Reducers/UserSlice";
 import { GrGithub } from "react-icons/gr";
 import { FaSquarespace } from "react-icons/fa";
+// Toastify stuff
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUpPage = () => {
   // Local state for sign up inputs
   const [signUpInfo, setSignUpInfo] = useState({
-    email: "",
-    password: "",
+    "email": "",
+    "password": "",
   });
 
   const dispatch = useDispatch();
 
   // Fetch function for signing up a user.
   const signupUser = async () => {
+    /// checking the input values (in the local state `signUpInfo`)
+
+    // Should return true for valid emails
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signUpInfo.email);
+
+    console.log("past the regex");
+
+    // pop up a toastify and end the function
+    if (!validEmail) {
+      toast("Please enter a valid email.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    // preparing the post
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -29,12 +55,14 @@ const SignUpPage = () => {
       redirect: "follow",
     };
 
+    // posts to the database
     const userDataValuesRaw = await fetch(
       "https://plotpointsbackend.onrender.com/account/signup",
       requestOptions
     );
     const userDataValues = await userDataValuesRaw.json(); // parse the promise response into a JSON object
 
+    // sets the values in Redux state.
     dispatch(setUser(userDataValues));
   };
 
@@ -106,10 +134,12 @@ const SignUpPage = () => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Adam:</p>
           <div className="webIcons">
-            <button className="ghButton">
-              <GrGithub />
-            </button>
-            <a href="vincents-portfolio.com">
+            <a href="https://github.com/adamtwright7">
+              <button className="ghButton">
+                <GrGithub />
+              </button>
+            </a>
+            <a href="https://adamtwright7.github.io/">
               <button className="ghButton">
                 <FaSquarespace />
               </button>

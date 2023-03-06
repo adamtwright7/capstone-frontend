@@ -5,11 +5,12 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../Reducers/UserSlice";
 import { GrGithub } from "react-icons/gr";
 import { FaSquarespace } from "react-icons/fa";
+import { redirect } from "react-router-dom";
 
 const LoginPage = () => {
   const [logInInfo, setLogInInfo] = useState({
-    email: "",
-    password: "",
+    "email": "",
+    "password": "",
   });
 
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ const LoginPage = () => {
     const userDataValues = await userDataValuesRaw.json(); // parse the promise response into a JSON object
 
     dispatch(setUser(userDataValues));
+
+    // Redirect the user to the profile page.
+    return redirect("/login")
   };
 
   return (
@@ -71,11 +75,9 @@ const LoginPage = () => {
         />
       </div>
       <div className="middlebuttons">
-        <Link to={"http://localhost:5173/profile/" + logInInfo.email}>
-          <button className="continue" onClick={() => logInUser()}>
-            Log In
-          </button>
-        </Link>
+        <button className="continue" onClick={() => logInUser()}>
+          Log In
+        </button>
         <Link to="/signup" className="already">
           <label htmlFor="">
             Don't have an account? <span> Create One</span>
@@ -101,10 +103,12 @@ const LoginPage = () => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Adam:</p>
           <div className="webIcons">
-            <button className="ghButton">
-              <GrGithub />
-            </button>
-            <a href="vincents-portfolio.com">
+            <a href="https://github.com/adamtwright7">
+              <button className="ghButton">
+                <GrGithub />
+              </button>
+            </a>
+            <a href="https://adamtwright7.github.io/">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
