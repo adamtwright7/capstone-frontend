@@ -4,6 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { BsFillPencilFill } from "react-icons/bs";
 import { CreateScene } from "./CreateScene";
 import { useState } from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 export const Scenes = () => {
   const [showCreatePopup, setShowCreatePopup] = useState(false);
@@ -13,6 +14,9 @@ export const Scenes = () => {
       <div className="mainScene">
         <div className="sceneHeader">
           <h2>Scenes</h2>
+          <div className="closeTag">
+            <AiFillCloseCircle />
+          </div>
         </div>
         <div className="bottomCreate">
           <div className="bottomCreateImg">

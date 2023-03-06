@@ -81,3 +81,8 @@
   gap: 1.2rem;
   align-items: center;
 }
+.popUpPlayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

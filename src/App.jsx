@@ -7,11 +7,13 @@ import { Scenes } from "./Pages/Components/Scenes";
 import ErrorPage from "./Pages/ErrorPage";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { AddPeices } from "./Pages/Components/AddPeices";
 
 function App() {
   const user = useSelector((state) => state.user);
   return (
     <Routes>
+      <Route path="/addpeices" element={<AddPeices />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/scene" element={<Scenes />} />
