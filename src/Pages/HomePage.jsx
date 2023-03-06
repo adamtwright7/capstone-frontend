@@ -2,7 +2,9 @@ import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+// Toastify stuff
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = () => {
   const user = useSelector((state) => state.user);
@@ -12,6 +14,9 @@ const HomePage = () => {
         <Link to="/signup" className="signUp">
           <button>Sign Up</button>
         </Link>
+
+        {/* Ternary to see if a user is logged in. If they are, go to the profile page. If not, go back to the home page with a toastify. */}
+
         <Link to={"/profile/" + user.email} className="login">
           <button>Profile</button>
         </Link>
@@ -31,7 +36,14 @@ const HomePage = () => {
       <div className="whatis">
         <h3> About Us </h3>
         <p>
-        Welcome to Plot Points, a minimalistic web-based virtual tabletop (VTT). We’re the first VTT to be built mobile-first, allowing you to play your favorite tabletop roleplaying games anywhere, anytime. Without permissions separating players from a Game Master (GM), Plot Points is the perfect platform for games with high player participation or without a permanent Game Master – such as Fiasco, Wanderhome, or D&D using the optional Plot Points rule (the origin of our namesake). 
+          Welcome to Plot Points, a minimalistic web-based virtual tabletop
+          (VTT). We’re the first VTT to be built mobile-first, allowing you to
+          play your favorite tabletop roleplaying games anywhere, anytime.
+          Without permissions separating players from a Game Master (GM), Plot
+          Points is the perfect platform for games with high player
+          participation or without a permanent Game Master – such as Fiasco,
+          Wanderhome, or D&D using the optional Plot Points rule (the origin of
+          our namesake).
         </p>
       </div>
       <h2 className="imgh2">Expansive maps!</h2>

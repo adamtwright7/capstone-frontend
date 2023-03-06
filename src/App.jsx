@@ -8,16 +8,11 @@ import ErrorPage from "./Pages/ErrorPage";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-
 function App() {
   const user = useSelector((state) => state.user);
   return (
     <Routes>
-
-      {user.email && 
       <Route path="/profile/:email" element={<ProfilePage />} />
-      }
-
       <Route path="/" element={<HomePage />} />
       <Route path="/scene" element={<Scenes />} />
       <Route path="/room" element={<Rooms />} />
