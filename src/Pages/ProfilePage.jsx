@@ -22,7 +22,7 @@ const ProfilePage = () => {
     );
     dispatch(setUser(""));
 
-    // use useNavigate here instead of a Link tag. Navigate to home page. 
+    // use useNavigate here instead of a Link tag. Navigate to home page.
   };
 
   return (
@@ -213,52 +213,64 @@ const ProfilePage = () => {
         <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
         <div class="flex flex-wrap gap-4">
           <div class="w-40 h-40 rounded-md overflow-hidden text-center">
-            <p class="text-gray-200 mt-4 z-10 relative">Room 1</p>
-            <img
-              src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75"
-              alt="Room 1"
-              class="w-full h-full object-cover"
-            />
+            <Link to="/room">
+              <p class="text-gray-200 mt-4 z-10 relative">Room 1</p>
+              <img
+                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75"
+                alt="Room 1"
+                class="w-full h-full object-cover"
+              />
+            </Link>
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
-            <p class="text-gray-200 mt-4 z-10 relative left-10">Room 2</p>
-            <img
-              src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fae9d302be8df123e90e7ec8bce177a81.webp&w=1920&q=75"
-              alt="Room 2"
-              class="w-full h-full object-cover"
-            ></img>
+            <Link to="/room">
+              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 2</p>
+              <img
+                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fae9d302be8df123e90e7ec8bce177a81.webp&w=1920&q=75"
+                alt="Room 2"
+                class="w-full h-full object-cover"
+              ></img>
+            </Link>
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
-            <p class="text-gray-200 mt-4 z-10 relative left-10">Room 3</p>
-            <img
-              src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F71cac47b944ae4144dbc6b11950d443a.webp&w=1920&q=75"
-              alt="Room 3"
-              class="w-full h-full object-cover"
-            ></img>
+            <Link to="/room">
+              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 3</p>
+              <img
+                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F71cac47b944ae4144dbc6b11950d443a.webp&w=1920&q=75"
+                alt="Room 3"
+                class="w-full h-full object-cover"
+              ></img>
+            </Link>
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
-            <p class="text-gray-200 mt-4 z-10 relative left-10">Room 4</p>
-            <img
-              src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F40c821a154b90cba3ea64f82d4e4f60d.webp&w=1920&q=75"
-              alt="Room 4"
-              class="w-full h-full object-cover"
-            ></img>
+            <Link to="/room">
+              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 4</p>
+              <img
+                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F40c821a154b90cba3ea64f82d4e4f60d.webp&w=1920&q=75"
+                alt="Room 4"
+                class="w-full h-full object-cover"
+              ></img>
+            </Link>
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
-            <p class="text-gray-200 mt-4 z-10 relative left-10">Room 5</p>
-            <img
-              src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fd0175d014e6a93f1e2947be1449f0083.webp&w=1920&q=75"
-              alt="Room 5"
-              class="w-full h-full object-cover"
-            ></img>
+            <Link to="/room">
+              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 5</p>
+              <img
+                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fd0175d014e6a93f1e2947be1449f0083.webp&w=1920&q=75"
+                alt="Room 5"
+                class="w-full h-full object-cover"
+              ></img>
+            </Link>
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
-            <p class="text-gray-200 mt-4 z-10 relative left-10">Room 6</p>
-            <img
-              src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F7157801838e538c96cefc4d1a62cbbe0.webp&w=1920&q=75"
-              alt="Room 6"
-              class="w-full h-full object-cover"
-            ></img>
+            <Link to="/room">
+              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 6</p>
+              <img
+                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F7157801838e538c96cefc4d1a62cbbe0.webp&w=1920&q=75"
+                alt="Room 6"
+                class="w-full h-full object-cover"
+              ></img>
+            </Link>
           </div>
         </div>
         <button

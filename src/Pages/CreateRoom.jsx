@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 
 const CreateRoom = () => {
-  // Redux state to manage this pop-up showing 
-  const dispatch = useDispatch()
+  // Redux state to manage this pop-up showing
+  const dispatch = useDispatch();
 
-  // local state to prepare to send info to the database. 
+  // local state to prepare to send info to the database.
   const [roomInfo, setRoomInfo] = useState({
-    "name": "",
-    "image": "",
+    name: "",
+    image: "",
   });
 
   const createRoom = async () => {
@@ -38,7 +38,7 @@ const CreateRoom = () => {
     <div class="fixed z-10 inset-0 overflow-y-auto">
       <div class="flex items-center justify-center min-h-screen">
         <div class="relative bg-blueSecondary rounded-lg max-w-lg mx-auto">
-          <div class="p-8">
+          <div class="p-8 border-2 border-goldAccents shadow-lg">
             <h2 class="text-2xl font-bold mb-4 text-white">Create Room</h2>
             <div>
               <div class="mb-4">
@@ -46,12 +46,12 @@ const CreateRoom = () => {
                   Room Name
                 </label>
                 <input
-                onChange={(e) => {
-                  setRoomInfo((roomInfo) => ({
-                    ...roomInfo,
-                    name: e.target.value,
-                  }))
-                }}
+                  onChange={(e) => {
+                    setRoomInfo((roomInfo) => ({
+                      ...roomInfo,
+                      name: e.target.value,
+                    }));
+                  }}
                   class="w-full p-2 rounded-lg"
                   type="text"
                   id="room-name"
@@ -63,12 +63,12 @@ const CreateRoom = () => {
                   Image URL
                 </label>
                 <input
-                onChange={(e) => {
-                  setRoomInfo((roomInfo) => ({
-                    ...roomInfo,
-                    image: e.target.value,
-                  }))
-                }}
+                  onChange={(e) => {
+                    setRoomInfo((roomInfo) => ({
+                      ...roomInfo,
+                      image: e.target.value,
+                    }));
+                  }}
                   class="w-full p-2 rounded-lg"
                   type="text"
                   id="room-image-url"
@@ -80,10 +80,10 @@ const CreateRoom = () => {
                 <button
                   class="px-4 py-2 bg-goldAccents text-black rounded-lg font-semibold  hover:bg-gray-200"
                   id="popupContainer"
-                  onClick={() => 
-                    {createRoom()
-                    dispatch(setRoomPopup())}
-                  }
+                  onClick={() => {
+                    createRoom();
+                    dispatch(setRoomPopup());
+                  }}
                 >
                   Create
                 </button>
