@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -9,8 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 const HomePage = ({ toastMessage }) => {
   const user = useSelector((state) => state.user);
 
-  // Toast emitter for if there's an error message. This loads twice in React strict mode, but shouldn't in production
-  
+  // Toast emitter for if there's an error message. This loads twice in React strict mode, but shouldn't in production. 
+  // This isn't in a useEffect because I want errors to keep popping up if a user continues to try to go to a page without logging in. 
   toast(toastMessage, {
     position: "top-right",
     autoClose: 5000,
