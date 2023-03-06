@@ -30,9 +30,7 @@ const HomePage = ({ toastMessage }) => {
           <button>Sign Up</button>
         </Link>
 
-        {/* Ternary to see if a user is logged in. If they are, go to the profile page. If not, go back to the home page with a toastify. */}
-
-        <Link to={"/profile/" + user.email} className="login">
+        <Link to="/profile" className="login">
           <button>Profile</button>
         </Link>
         <Link to="/login" className="login">

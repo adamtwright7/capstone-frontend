@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
 import CreateRoom from "./CreateRoom";
 import { setProfilePopup } from "../Reducers/ProfilePopupSlice";
 import { setRoomPopup } from "../Reducers/RoomPopupSlice";
+import { setUser } from "../Reducers/UserSlice";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Getting and setting the user info into state
   const user = useSelector((state) => state.user);
@@ -22,7 +24,8 @@ const ProfilePage = () => {
     );
     dispatch(setUser(""));
 
-    // use useNavigate here instead of a Link tag. Navigate to home page.
+    //Navigate to home page.
+    navigate("/");
   };
 
   return (
@@ -194,7 +197,6 @@ const ProfilePage = () => {
       <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
         <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
         <div class="flex flex-wrap gap-4">
-
           <div className="flex flex-col">
             <div class="w-40 h-40 rounded-md overflow-hidden text-center">
               <Link to="/room">
@@ -214,7 +216,6 @@ const ProfilePage = () => {
                 Delete
               </button>
             </div>
-
           </div>
 
           <div class="w-40 h-40 rounded-md overflow-hidden">
