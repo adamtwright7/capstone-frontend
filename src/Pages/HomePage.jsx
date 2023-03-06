@@ -6,10 +6,25 @@ import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const HomePage = () => {
+const HomePage = ({ toastMessage }) => {
   const user = useSelector((state) => state.user);
+
+  // Toast emitter for if there's an error message. This loads twice in React strict mode, but shouldn't in production. 
+  // This isn't in a useEffect because I want errors to keep popping up if a user continues to try to go to a page without logging in. 
+  toast(toastMessage, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
   return (
     <div className="homeMain">
+      <ToastContainer />
       <div className="homeNav" id="#top">
         <Link to="/signup" className="signUp">
           <button>Sign Up</button>
