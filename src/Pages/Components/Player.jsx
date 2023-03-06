@@ -8,10 +8,13 @@ export const Player = () => {
   return (
     <div className="playerMain">
       <div className="twoIcon">
-        <img
-          src="https://t4.ftcdn.net/jpg/03/28/56/91/360_F_328569104_sSbOz4NwgpRSqCYD7pzXk0PVUttE4Oum.jpg"
-          alt=""
-        />
+        <Link to="/">
+          <img
+            className="twoimg"
+            src="https://t4.ftcdn.net/jpg/03/28/56/91/360_F_328569104_sSbOz4NwgpRSqCYD7pzXk0PVUttE4Oum.jpg"
+            alt=""
+          />
+        </Link>
         <Link to="/">
           <img
             className="twoimg"
