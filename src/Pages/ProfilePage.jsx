@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
 import CreateRoom from "./CreateRoom";
@@ -7,7 +7,6 @@ import { setProfilePopup } from "../Reducers/ProfilePopupSlice";
 import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 
 const ProfilePage = () => {
-  const { email } = useParams();
   const dispatch = useDispatch();
 
   // Getting and setting the user info into state
@@ -43,7 +42,7 @@ const ProfilePage = () => {
               Home
             </Link>
             <Link
-              to={"/profile/" + email}
+              to={"/profile"}
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Profile
@@ -67,7 +66,7 @@ const ProfilePage = () => {
           <div class="mx-auto px-0 py-2 max-w-7xl flex justify-between items-center ml-0">
             <Link
               to="#"
-              class="text-white hover:text-goldAccents block px-1 py-2 rounded-md text-base font-medium flex items-center"
+              class="text-white hover:text-goldAccents px-1 py-2 rounded-md text-base font-medium flex items-center"
             >
               <svg
                 class="w-5 h-5 mr-1"
@@ -89,7 +88,7 @@ const ProfilePage = () => {
             </Link>
             <Link
               to="#"
-              class="text-white hover:text-goldAccents block px-3 py-2 rounded-md text-base font-medium flex items-center"
+              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-base font-medium flex items-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +106,7 @@ const ProfilePage = () => {
             </Link>
             <Link
               to="#"
-              class="text-white hover:text-goldAccents block px-3 py-2 rounded-md text-base font-medium flex items-center"
+              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-base font-medium flex items-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +181,7 @@ const ProfilePage = () => {
                           clip-rule="evenodd"
                         />
                       </svg>
-                      <span>{email}</span>
+                      <span>{user.email}</span>
                     </div>
                   </div>
                 </div>

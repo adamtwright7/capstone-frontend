@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./signup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Reducers/UserSlice";
 import { GrGithub } from "react-icons/gr";
@@ -14,9 +14,11 @@ const SignUpPage = () => {
   const [signUpInfo, setSignUpInfo] = useState({
     "email": "",
     "password": "",
+    "confirmPass" : "",
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   // Fetch function for signing up a user.
   const signupUser = async () => {
@@ -25,11 +27,9 @@ const SignUpPage = () => {
     // Should return true for valid emails
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signUpInfo.email);
 
-    console.log("past the regex");
-
     // pop up a toastify and end the function
     if (!validEmail) {
-      toast("Please enter a valid email.", {
+      return toast("Please enter a valid email.", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -39,7 +39,19 @@ const SignUpPage = () => {
         progress: undefined,
         theme: "dark",
       });
-      return;
+    }
+
+    if (signUpInfo.password !== signUpInfo.confirmPass) {
+      return toast("Passwords don't match.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
 
     // preparing the post
@@ -57,17 +69,35 @@ const SignUpPage = () => {
 
     // posts to the database
     const userDataValuesRaw = await fetch(
-      "https://plotpointsbackend.onrender.com/account/signup",
+      // "https://plotpointsbackend.onrender.com/account/signup",
+      "http://localhost:3050/account/signup",
       requestOptions
     );
     const userDataValues = await userDataValuesRaw.json(); // parse the promise response into a JSON object
 
+    if (userDataValues.error) {
+      return toast("Email already in use. Use another email or log in.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+
     // sets the values in Redux state.
     dispatch(setUser(userDataValues));
+
+    // Navigate the user to the profile page.
+    navigate("/profile")
   };
 
   return (
     <div className="main">
+      <ToastContainer />
       <div className="logo">
         <img
           src="https://t4.ftcdn.net/jpg/03/28/56/91/360_F_328569104_sSbOz4NwgpRSqCYD7pzXk0PVUttE4Oum.jpg"
@@ -100,7 +130,13 @@ const SignUpPage = () => {
           type="text"
           placeholder="Password"
         />
-        <input type="text" placeholder="Confirm password" />
+        <input onChange={(e) => {
+            setSignUpInfo((signUpInfo) => ({
+              ...signUpInfo,
+              confirmPass: e.target.value,
+            }));
+          }} 
+          type="text" placeholder="Confirm password" />
       </div>
 
       {/* Should change from a form to a fetch request */}
