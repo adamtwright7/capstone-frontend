@@ -7,7 +7,6 @@ import { Scenes } from "./Pages/Components/Scenes";
 import ErrorPage from "./Pages/ErrorPage";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { AddPeices } from "./Pages/Components/AddPeices";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -17,7 +16,6 @@ function App() {
       {/* If you're logged in, the site sends you to the profile page. It also allows the rooms and scenes page. */}
       {user.email && (
       <>
-
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/scene" element={<Scenes />} />
       <Route path="/room" element={<Rooms />} />
