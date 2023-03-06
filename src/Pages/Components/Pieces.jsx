@@ -10,10 +10,18 @@ export const Pieces = () => {
   return (
     <div className="mainPieces">
       <div className="topChar">
-        <FaMountain />
-        <FaTree />
-        <FaHorseHead />
-        <GiCrocSword />
+        <button className="envButtons">
+          <FaMountain value={{ color: "gold" }} />
+        </button>
+        <button className="envButtons">
+          <FaTree />
+        </button>
+        <button className="envButtons">
+          <FaHorseHead />
+        </button>
+        <button className="envButtons">
+          <GiCrocSword />
+        </button>
       </div>
       <div className="bottomPics">
         <img

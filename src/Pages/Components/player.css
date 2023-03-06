@@ -3,6 +3,7 @@
 }
 .playerMain {
   display: flex;
+  position: absolute;
   flex-direction: column;
   gap: 10px;
   width: 250px;
