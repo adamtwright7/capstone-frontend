@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./signup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Reducers/UserSlice";
 import { GrGithub } from "react-icons/gr";
 import { FaSquarespace } from "react-icons/fa";
-import { redirect } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const [logInInfo, setLogInInfo] = useState({
@@ -14,8 +15,12 @@ const LoginPage = () => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
+  // Everything that happens when the user clicks the log in button 
   const logInUser = async () => {
+
+    // Then send the information to the database 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -34,14 +39,30 @@ const LoginPage = () => {
     );
     const userDataValues = await userDataValuesRaw.json(); // parse the promise response into a JSON object
 
+    // use the userDataValues to either do the below stuff on a successful login or pop up a toastify on an unsuccessful login. 
+    if (userDataValues.error) {
+      return toast('Incorrect login credentials.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }
+
+    // Set the database info in Redux state 
     dispatch(setUser(userDataValues));
 
-    // Redirect the user to the profile page.
-    return redirect("/login")
+    // Navigate the user to the profile page.
+    navigate("/profile")
   };
 
   return (
     <div className="main">
+      <ToastContainer/>
       <div className="logo">
         <img
           src="https://t4.ftcdn.net/jpg/03/28/56/91/360_F_328569104_sSbOz4NwgpRSqCYD7pzXk0PVUttE4Oum.jpg"

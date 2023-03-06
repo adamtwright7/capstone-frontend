@@ -12,7 +12,7 @@ function App() {
   const user = useSelector((state) => state.user);
   return (
     <Routes>
-      <Route path="/profile/:email" element={<ProfilePage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/scene" element={<Scenes />} />
       <Route path="/room" element={<Rooms />} />
