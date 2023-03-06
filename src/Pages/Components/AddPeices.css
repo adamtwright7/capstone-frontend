@@ -1,0 +1,54 @@
+.mainAddPeices {
+  display: flex;
+  z-index: 15;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #d6ad60;
+  width: 50%;
+  max-width: 464px;
+  min-width: 277px;
+  bottom: 15rem;
+  background-color: #1c1c1d;
+  padding: 20px;
+  border-radius: 10px;
+}
+.addHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.addHeader > h2 {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 1.5em;
+
+  width: 100%;
+}
+.closeTag {
+  font-size: 1.5rem;
+}
+.contentUrl > input {
+  text-align: center;
+  max-width: 50%;
+}
+.contentUrl {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.addButton {
+  margin-top: 1rem;
+  background-color: #222639;
+  border-radius: 40px 40px 40px 40px;
+  border: 1px solid #d6ad60;
+  width: 50%;
+  padding: 10px;
+}

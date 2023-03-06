@@ -1,0 +1,26 @@
+.mainAddPlayer {
+  position: relative;
+  display: flex;
+  z-index: 15;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #d6ad60;
+  width: 100%;
+  max-width: 464px;
+  min-width: 277px;
+  top: 12rem;
+  background-color: #1c1c1d;
+  padding: 20px;
+  border-radius: 10px;
+}
+.addHeader2 {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px
+}
+.addHeader2 > h2 {
+  width: 200px;
+}
