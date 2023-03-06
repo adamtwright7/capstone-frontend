@@ -1,6 +1,6 @@
 import React from "react";
 import "./CreateScene.css";
-import { MdTransitEnterexit } from "react-icons/md";
+import { AiFillCloseCircle } from "react-icons/ai";
 import { useState } from "react";
 
 export const CreateScene = () => {
@@ -9,7 +9,7 @@ export const CreateScene = () => {
       <div className="mainCreate">
         <div className="exitButton">
           <button>
-            <MdTransitEnterexit />
+            <AiFillCloseCircle />
           </button>
         </div>
         <div className="createHeader">

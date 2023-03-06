@@ -31,3 +31,9 @@
 .envButtons {
   color: gold;
 }
+.popUpAdd {
+  position: inherit;
+  z-index: 15;
+  align-items: center;
+  width: 100%;
+}
