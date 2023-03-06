@@ -212,16 +212,27 @@ const ProfilePage = () => {
       <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
         <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
         <div class="flex flex-wrap gap-4">
-          <div class="w-40 h-40 rounded-md overflow-hidden text-center">
-            <Link to="/room">
-              <p class="text-gray-200 mt-4 z-10 relative">Room 1</p>
-              <img
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75"
-                alt="Room 1"
-                class="w-full h-full object-cover"
-              />
-            </Link>
+          <div className="flex flex-col">
+            <div class="w-40 h-40 rounded-md overflow-hidden text-center">
+              <Link to="/room">
+                <p class="text-gray-200 mt-4 z-10 relative">Room 1</p>
+                <img
+                  src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75"
+                  alt="Room 1"
+                  class="w-full h-full object-cover"
+                />
+              </Link>
+            </div>
+            <div className="flex flex-row w-full justify-between">
+              <button class="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2">
+                Edit
+              </button>
+              <button class="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
+                Delete
+              </button>
+            </div>
           </div>
+
           <div class="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
               <p class="text-gray-200 mt-4 z-10 relative left-10">Room 2</p>
