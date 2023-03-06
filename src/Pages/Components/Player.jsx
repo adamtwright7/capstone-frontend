@@ -1,6 +1,8 @@
 import React from "react";
 import "./player.css";
 import { Link } from "react-router-dom";
+import { AiFillPlusSquare } from "react-icons/ai";
+import { BsFillPersonFill } from "react-icons/bs";
 
 export const Player = () => {
   return (
@@ -24,14 +26,12 @@ export const Player = () => {
           <div className="icons">
             <h3>Players</h3>
             <div className="imgIcons">
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/crime-security-military-law/shield-line-icon.png"
-                alt=""
-              />
-              <img
-                src="https://www.freeiconspng.com/thumbs/profile-icon-png/am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
-                alt=""
-              />
+              <button>
+                <AiFillPlusSquare />
+              </button>
+              <button>
+                <BsFillPersonFill />
+              </button>
             </div>
           </div>
         </div>
