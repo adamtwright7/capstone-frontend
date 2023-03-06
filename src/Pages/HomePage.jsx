@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -6,10 +6,25 @@ import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const HomePage = (toastMessage) => {
+const HomePage = ({ toastMessage }) => {
   const user = useSelector((state) => state.user);
+
+  // Toast emitter for if there's an error message. This loads twice in React strict mode, but shouldn't in production
+  
+  toast(toastMessage, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
   return (
     <div className="homeMain">
+      <ToastContainer />
       <div className="homeNav" id="#top">
         <Link to="/signup" className="signUp">
           <button>Sign Up</button>

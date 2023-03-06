@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.user);
-  const toastMessage = "You must be logged in to view that page. Please log in first!"
   return (
     <Routes>
 
@@ -25,9 +24,9 @@ function App() {
 
       {/* If you're not logged in yet, the site sends you back to the home page when you try to go to the profile/rooms/scenes page. 
       It also drops a toastify that says "log in first." */}
-      <Route path="/profile" element={<HomePage toastMessage={toastMessage} />} />
-      <Route path="/scene" element={<HomePage toastMessage={toastMessage} />} />
-      <Route path="/room" element={<HomePage toastMessage={toastMessage} />} />
+      <Route path="/profile" element={<HomePage toastMessage={"You must be logged in to view the profile page. Please log in first!"} />} />
+      <Route path="/scene" element={<HomePage toastMessage={"You must be logged in to view the scene page. Please log in first!"} />} />
+      <Route path="/room" element={<HomePage toastMessage={"You must be logged in to view the room page. Please log in first!"} />} />
 
       {/* Other static routes. */}
       <Route path="/" element={<HomePage />} />
