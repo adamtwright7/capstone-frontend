@@ -69,8 +69,7 @@ const SignUpPage = () => {
 
     // posts to the database
     const userDataValuesRaw = await fetch(
-      // "https://plotpointsbackend.onrender.com/account/signup",
-      "http://localhost:3050/account/signup",
+      "https://plotpointsbackend.onrender.com/account/signup",
       requestOptions
     );
     const userDataValues = await userDataValuesRaw.json(); // parse the promise response into a JSON object
