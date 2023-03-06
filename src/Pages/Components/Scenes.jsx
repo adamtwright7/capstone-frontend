@@ -17,6 +17,7 @@ export const Scenes = () => {
         <div className="bottomCreate">
           <div className="bottomCreateImg">
             <div className="bin">
+              <h2 className="roomNumber">Room1</h2>
               <button>
                 <MdDeleteForever />
               </button>
@@ -33,6 +34,7 @@ export const Scenes = () => {
               </button>
             </div>
             <div className="bin">
+              <h2 className="roomNumber">Room2</h2>
               <button>
                 <MdDeleteForever />
               </button>
@@ -49,6 +51,7 @@ export const Scenes = () => {
               </button>
             </div>
             <div className="bin">
+              <h2 className="roomNumber">Room3</h2>
               <button>
                 <MdDeleteForever />
               </button>
@@ -65,6 +68,7 @@ export const Scenes = () => {
               </button>
             </div>
             <div className="bin">
+              <h2 className="roomNumber">Room4</h2>
               <button>
                 <MdDeleteForever />
               </button>
@@ -82,6 +86,7 @@ export const Scenes = () => {
               </button>
             </div>
             <div className="bin">
+              <h2 className="roomNumber">Room5</h2>
               <button>
                 <MdDeleteForever />
               </button>
@@ -92,6 +97,7 @@ export const Scenes = () => {
               />
             </div>
             <div className="bin">
+              <h2 className="roomNumber">Room6</h2>
               <button>
                 <MdDeleteForever />
               </button>

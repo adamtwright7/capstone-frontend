@@ -94,6 +94,7 @@
 }
 .sceneImages {
   width: 200px;
+  max-height: 324px;
 }
 
 .popUpCreate {
@@ -103,4 +104,10 @@
   z-index: 10;
   height: fit-content;
   top: 160px;
+}
+.roomNumber {
+  position: absolute;
+  font-size: 20px;
+  border-radius: 7px;
+  background-color: #1c1c1d;
 }

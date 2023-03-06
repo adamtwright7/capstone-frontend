@@ -50,10 +50,9 @@
 .imgIcons {
   display: flex;
   gap: 10px;
+  font-size: 25px;
 }
-.imgIcons > img {
-  width: 2rem;
-}
+
 .bottom {
   display: flex;
   align-items: center;
