@@ -3,6 +3,8 @@ import "./signup.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Reducers/UserSlice";
+import { GrGithub } from "react-icons/gr";
+import { FaSquarespace } from "react-icons/fa";
 
 const SignUpPage = () => {
   // Local state for sign up inputs
@@ -57,7 +59,7 @@ const SignUpPage = () => {
             }));
           }}
           type="text"
-          placeholder="email"
+          placeholder="Email"
         />
 
         <input
@@ -68,9 +70,9 @@ const SignUpPage = () => {
             }));
           }}
           type="text"
-          placeholder="password"
+          placeholder="Password"
         />
-        <input type="text" placeholder="confirm password" />
+        <input type="text" placeholder="Confirm password" />
       </div>
 
       {/* Should change from a form to a fetch request */}
@@ -86,21 +88,64 @@ const SignUpPage = () => {
         </Link>
       </div>
       <div className="personalNav">
-        <a href="https://github.com/VinnyVecchio" target="_blank">
-          Vinny
-        </a>
+        <h2 className="devTeam">Dev Team</h2>
+        <div className="ghTeam">
+          <p className="ghTeamPeople">Vinny:</p>
+          <div className="webIcons">
+            <button type="button" className="ghButton">
+              <GrGithub />
+            </button>
+            <a href="vincents-portfolio.com">
+              <button className="ghButton">
+                <FaSquarespace />
+              </button>
+            </a>
+          </div>
+        </div>
 
-        <a href="https://github.com/adamtwright7" target="_blank">
-          Adam
-        </a>
+        <div className="ghTeam">
+          <p className="ghTeamPeople">Adam:</p>
+          <div className="webIcons">
+            <button className="ghButton">
+              <GrGithub />
+            </button>
+            <a href="vincents-portfolio.com">
+              <button className="ghButton">
+                <FaSquarespace />
+              </button>
+            </a>
+          </div>
+        </div>
 
-        <a href="https://github.com/jessbecoding" target="_blank">
-          Jess
-        </a>
+        <div className="ghTeam">
+          <p className="ghTeamPeople" id="jess">
+            Jess:
+          </p>
+          <div className="webIcons">
+            <button className="ghButton">
+              <GrGithub />
+            </button>
+            <a href="vincents-portfolio.com">
+              <button className="ghButton">
+                <FaSquarespace />
+              </button>
+            </a>
+          </div>
+        </div>
 
-        <a href="https://github.com/stoicgit" target="_blank">
-          Mauro
-        </a>
+        <div className="ghTeam">
+          <p className="ghTeamPeople">Mauro:</p>
+          <div className="webIcons">
+            <button className="ghButton">
+              <GrGithub />
+            </button>
+            <a href="vincents-portfolio.com">
+              <button className="ghButton">
+                <FaSquarespace />
+              </button>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
