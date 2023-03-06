@@ -47,12 +47,7 @@ const ProfilePage = () => {
             >
               Profile
             </Link>
-            <Link
-              to="#"
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Settings
-            </Link>
+
             <button
               onClick={logOut}
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
@@ -104,20 +99,7 @@ const ProfilePage = () => {
               </svg>
               Profile
             </Link>
-            <Link
-              to="#"
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-base font-medium flex items-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="w-6 h-6 mr-2"
-              >
-                <path d="M18.75 12.75h1.5a.75.75 0 000-1.5h-1.5a.75.75 0 000 1.5zM12 6a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 6zM12 18a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 18zM3.75 6.75h1.5a.75.75 0 100-1.5h-1.5a.75.75 0 000 1.5zM5.25 18.75h-1.5a.75.75 0 010-1.5h1.5a.75.75 0 010 1.5zM3 12a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 013 12zM9 3.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM12.75 12a2.25 2.25 0 114.5 0 2.25 2.25 0 01-4.5 0zM9 15.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
-              </svg>
-              Settings
-            </Link>
+
             <Link
               to="#"
               class="text-white hover:text-goldAccents flex items-center px-2 py-2 rounded-md text-base font-medium"
@@ -212,6 +194,7 @@ const ProfilePage = () => {
       <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
         <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
         <div class="flex flex-wrap gap-4">
+
           <div className="flex flex-col">
             <div class="w-40 h-40 rounded-md overflow-hidden text-center">
               <Link to="/room">
@@ -231,11 +214,12 @@ const ProfilePage = () => {
                 Delete
               </button>
             </div>
+
           </div>
 
           <div class="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 2</p>
+              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 2</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fae9d302be8df123e90e7ec8bce177a81.webp&w=1920&q=75"
                 alt="Room 2"
@@ -245,7 +229,7 @@ const ProfilePage = () => {
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 3</p>
+              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 3</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F71cac47b944ae4144dbc6b11950d443a.webp&w=1920&q=75"
                 alt="Room 3"
@@ -255,7 +239,7 @@ const ProfilePage = () => {
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 4</p>
+              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 4</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F40c821a154b90cba3ea64f82d4e4f60d.webp&w=1920&q=75"
                 alt="Room 4"
@@ -265,7 +249,7 @@ const ProfilePage = () => {
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 5</p>
+              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 5</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fd0175d014e6a93f1e2947be1449f0083.webp&w=1920&q=75"
                 alt="Room 5"
@@ -275,7 +259,7 @@ const ProfilePage = () => {
           </div>
           <div class="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-10 relative left-10">Room 6</p>
+              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 6</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F7157801838e538c96cefc4d1a62cbbe0.webp&w=1920&q=75"
                 alt="Room 6"
