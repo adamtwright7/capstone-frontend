@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const HomePage = () => {
+const HomePage = (toastMessage) => {
   const user = useSelector((state) => state.user);
   return (
     <div className="homeMain">
