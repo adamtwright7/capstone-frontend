@@ -44,9 +44,7 @@ const ProfilePage = () => {
             <Link
               to={"/profile"}
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Profile
-            </Link>
+            ></Link>
 
             <button
               onClick={logOut}
@@ -84,6 +82,7 @@ const ProfilePage = () => {
             <Link
               to="#"
               class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-base font-medium flex items-center"
+              onClick={() => dispatch(setProfilePopup())}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +96,7 @@ const ProfilePage = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              Profile
+              Edit Profile
             </Link>
 
             <Link
@@ -194,11 +193,10 @@ const ProfilePage = () => {
       <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
         <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
         <div class="flex flex-wrap gap-4">
-
           <div className="flex flex-col">
             <div class="w-40 h-40 rounded-md overflow-hidden text-center">
               <Link to="/room">
-                <p class="text-gray-200 mt-4 z-10 relative">Room 1</p>
+                <p class="text-gray-200 mt-4 z-5 relative">Room 1</p>
                 <img
                   src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75"
                   alt="Room 1"
@@ -214,7 +212,6 @@ const ProfilePage = () => {
                 Delete
               </button>
             </div>
-
           </div>
 
           <div class="w-40 h-40 rounded-md overflow-hidden">

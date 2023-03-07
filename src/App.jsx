@@ -8,27 +8,54 @@ import ErrorPage from "./Pages/ErrorPage";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AddPeices } from "./Pages/Components/AddPeices";
+import { EditRoom } from "./Pages/EditRoom";
 
 function App() {
   const user = useSelector((state) => state.user);
   return (
     <Routes>
-
       {/* If you're logged in, the site sends you to the profile page. It also allows the rooms and scenes page. */}
       {user.email && (
-      <>
-
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/scene" element={<Scenes />} />
-      <Route path="/room" element={<Rooms />} />
-      </>
+        <>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/scene" element={<Scenes />} />
+          <Route path="/room" element={<Rooms />} />
+          <Route path="/editroom" element={<EditRoom />} />
+        </>
       )}
 
       {/* If you're not logged in yet, the site sends you back to the home page when you try to go to the profile/rooms/scenes page. 
       It also drops a toastify that says "log in first." */}
-      <Route path="/profile" element={<HomePage toastMessage={"You must be logged in to view the profile page. Please log in first!"} />} />
-      <Route path="/scene" element={<HomePage toastMessage={"You must be logged in to view the scene page. Please log in first!"} />} />
-      <Route path="/room" element={<HomePage toastMessage={"You must be logged in to view the room page. Please log in first!"} />} />
+      <Route
+        path="/profile"
+        element={
+          <HomePage
+            toastMessage={
+              "You must be logged in to view the profile page. Please log in first!"
+            }
+          />
+        }
+      />
+      <Route
+        path="/scene"
+        element={
+          <HomePage
+            toastMessage={
+              "You must be logged in to view the scene page. Please log in first!"
+            }
+          />
+        }
+      />
+      <Route
+        path="/room"
+        element={
+          <HomePage
+            toastMessage={
+              "You must be logged in to view the room page. Please log in first!"
+            }
+          />
+        }
+      />
 
       {/* Other static routes. */}
       <Route path="/" element={<HomePage />} />
