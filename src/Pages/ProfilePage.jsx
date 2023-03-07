@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
@@ -20,6 +20,24 @@ const ProfilePage = () => {
   const ProfilePopup = useSelector((state) => state.ProfilePopup);
   const RoomPopup = useSelector((state) => state.RoomPopup);
   const showEditRoomPopup = useSelector((state) => state.showEditRoomPopup);
+
+  // To populate the user's rooms from the database, load in those rooms when the page loads.
+  const [rooms, setRooms] = useState([]);
+
+  const loadRooms = async () => {
+    const roomsRaw = await fetch(
+      "https://plotpointsbackend.onrender.com/rooms/view"
+    );
+    const roomsResult = await roomsRaw.json();
+    setRooms(roomsResult);
+    // Store these rooms in local state
+  };
+
+  useEffect(() => {
+    loadRooms();
+    console.log("Rooms is:");
+    console.log(rooms);
+  }, []);
 
   const logOut = async () => {
     const logOutResponse = await fetch(

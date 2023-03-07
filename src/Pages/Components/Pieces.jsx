@@ -7,6 +7,7 @@ import { AddPeices } from "./AddPeices";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowAddPiecePopup } from "../../Reducers/showAddPiecePopupSlice";
+import { setPieceToDrop } from "../../Reducers/PieceToDropSlice";
 
 export const Pieces = () => {
   const showAddPiecePopup = useSelector((state) => state.showAddPiecePopup);
@@ -36,11 +37,18 @@ export const Pieces = () => {
             src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
             alt=""
           />
-
-          <img
-            src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
-            alt=""
-          />
+          <button
+            className="w-[3rem]"
+            onClick={() =>
+              dispatch(
+                setPieceToDrop(
+                  "https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
+                )
+              )
+            }
+          >
+            <img src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png" />
+          </button>
           <img
             src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
             alt=""
