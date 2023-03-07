@@ -3,19 +3,30 @@ import "./Scenes.css";
 import { MdDeleteForever } from "react-icons/md";
 import { BsFillPencilFill } from "react-icons/bs";
 import { CreateScene } from "./CreateScene";
-import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+// pop-up stuff
+import { setShowScenePopup } from "../../Reducers/showScenePopupSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowCreateScenePopup } from "../../Reducers/showCreateScenePopupSlice";
 
 export const Scenes = () => {
-  const [showCreatePopup, setShowCreatePopup] = useState(false);
+  const showCreateScenePopup = useSelector(
+    (state) => state.showCreateScenePopup
+  );
+  const dispatch = useDispatch();
+
   return (
     <>
-      <div className="popUpCreate">{showCreatePopup && <CreateScene />}</div>
+      <div className="popUpCreate">
+        {showCreateScenePopup && <CreateScene />}
+      </div>
       <div className="mainScene">
         <div className="sceneHeader">
           <h2>Scenes</h2>
           <div className="closeTag">
-            <AiFillCloseCircle />
+            <button onClick={() => dispatch(setShowScenePopup())}>
+              <AiFillCloseCircle />
+            </button>
           </div>
         </div>
         <div className="bottomCreate">
@@ -116,13 +127,7 @@ export const Scenes = () => {
 
         {/* this is outside of the main element */}
         <div className="createButton">
-          <button
-            onClick={() =>
-              setShowCreatePopup((showCreatePopup) => {
-                return !showCreatePopup;
-              })
-            }
-          >
+          <button onClick={() => dispatch(setShowCreateScenePopup())}>
             create scene
           </button>
         </div>
