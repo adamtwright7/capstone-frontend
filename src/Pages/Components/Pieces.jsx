@@ -5,6 +5,7 @@ import { FaHorseHead } from "react-icons/fa";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import { AddPeices } from "./AddPeices";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export const Pieces = () => {
   const [showPiece, setshowPiece] = useState(false);
@@ -28,6 +29,15 @@ export const Pieces = () => {
           </button>
         </div>
         <div className="bottomPics">
+          <motion.img
+            drag
+            whileDrag={{ scale: 1.1, rotate: 60 }}
+            whileHover={{ scale: 1.1 }}
+            dragMomentum={false}
+            src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
+            alt=""
+          />
+
           <img
             src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
             alt=""
@@ -48,11 +58,11 @@ export const Pieces = () => {
             src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
             alt=""
           />
-          <img
-            src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
-            alt=""
-          />
-          <img
+          <motion.img
+            drag
+            whileDrag={{ scale: 1.1, rotate: 60 }}
+            whileHover={{ scale: 1.1 }}
+            dragMomentum={false}
             src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
             alt=""
           />
