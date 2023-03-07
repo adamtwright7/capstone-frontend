@@ -6,6 +6,8 @@ import CreateRoom from "./CreateRoom";
 import { setProfilePopup } from "../Reducers/ProfilePopupSlice";
 import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 import { setUser } from "../Reducers/UserSlice";
+import { EditRoom } from "./EditRoom";
+import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const ProfilePage = () => {
   // Redux state for pop-ups
   const ProfilePopup = useSelector((state) => state.ProfilePopup);
   const RoomPopup = useSelector((state) => state.RoomPopup);
+  const showEditRoomPopup = useSelector((state) => state.showEditRoomPopup);
 
   const logOut = async () => {
     const logOutResponse = await fetch(
@@ -208,7 +211,10 @@ const ProfilePage = () => {
               </Link>
             </div>
             <div className="flex flex-row w-full justify-between">
-              <button class="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2">
+              <button
+                class="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2"
+                onClick={() => dispatch(setShowEditRoomPopup())}
+              >
                 Edit
               </button>
               <button class="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
@@ -279,6 +285,7 @@ const ProfilePage = () => {
 
       <div className="z-10 shadow-2xl w-3/4 absolute">
         {RoomPopup && <CreateRoom />}
+        {showEditRoomPopup && <EditRoom />}
       </div>
 
       <div class="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
