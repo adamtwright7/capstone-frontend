@@ -3,15 +3,21 @@ import "./functionButtons.css";
 import { BsFillArrowDownCircleFill } from "react-icons/bs";
 import { MdLandscape } from "react-icons/md";
 import { RiHandCoinFill } from "react-icons/ri";
-import { useState } from "react";
 import { Scenes } from "./Scenes";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowScenePopup } from "../../Reducers/showScenePopupSlice";
 
 export const FunctionButtons = () => {
-  const [showScenePopup, setshowScenePopup] = useState(false);
+  const showScenePopup = useSelector((state) => state.showScenePopup);
+  const dispatch = useDispatch();
 
   return (
     <>
-      <div className="popUpMain">{showScenePopup && <Scenes />}</div>
+      {showScenePopup && (
+        <div className="popUpMain">
+          <Scenes />
+        </div>
+      )}
       <div className="functionMain">
         <div className="arrowImage">
           <p>
@@ -19,13 +25,7 @@ export const FunctionButtons = () => {
           </p>
         </div>
         <div className="bottomSection">
-          <button
-            onClick={() =>
-              setshowScenePopup((showScenePopup) => {
-                return !showScenePopup;
-              })
-            }
-          >
+          <button onClick={() => dispatch(setShowScenePopup())}>
             <MdLandscape />
           </button>
           <button>

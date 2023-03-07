@@ -1,14 +1,17 @@
 import React from "react";
 import "./CreateScene.css";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setShowCreateScenePopup } from "../../Reducers/showCreateScenePopupSlice";
 
 export const CreateScene = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="mainCreate">
         <div className="exitButton">
-          <button>
+          <button onClick={() => dispatch(setShowCreateScenePopup())}>
             <AiFillCloseCircle />
           </button>
         </div>
