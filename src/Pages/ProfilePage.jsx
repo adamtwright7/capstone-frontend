@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
 import CreateRoom from "./CreateRoom";
 import { setProfilePopup } from "../Reducers/ProfilePopupSlice";
 import { setRoomPopup } from "../Reducers/RoomPopupSlice";
+import { setUser } from "../Reducers/UserSlice";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Getting and setting the user info into state
   const user = useSelector((state) => state.user);
@@ -22,7 +24,8 @@ const ProfilePage = () => {
     );
     dispatch(setUser(""));
 
-    // use useNavigate here instead of a Link tag. Navigate to home page.
+    //Navigate to home page.
+    navigate("/");
   };
 
   return (

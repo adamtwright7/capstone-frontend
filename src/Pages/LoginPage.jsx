@@ -10,17 +10,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const [logInInfo, setLogInInfo] = useState({
-    "email": "",
-    "password": "",
+    email: "",
+    password: "",
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  // Everything that happens when the user clicks the log in button 
+  // Everything that happens when the user clicks the log in button
   const logInUser = async () => {
-
-    // Then send the information to the database 
+    // Then send the information to the database
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -39,9 +38,9 @@ const LoginPage = () => {
     );
     const userDataValues = await userDataValuesRaw.json(); // parse the promise response into a JSON object
 
-    // use the userDataValues to either do the below stuff on a successful login or pop up a toastify on an unsuccessful login. 
+    // use the userDataValues to either do the below stuff on a successful login or pop up a toastify on an unsuccessful login.
     if (userDataValues.error) {
-      return toast('Incorrect login credentials.', {
+      return toast("Incorrect login credentials.", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -50,19 +49,19 @@ const LoginPage = () => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
+      });
     }
 
-    // Set the database info in Redux state 
+    // Set the database info in Redux state
     dispatch(setUser(userDataValues));
 
     // Navigate the user to the profile page.
-    navigate("/profile")
+    navigate("/profile");
   };
 
   return (
     <div className="main">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="logo">
         <img
           src="https://t4.ftcdn.net/jpg/03/28/56/91/360_F_328569104_sSbOz4NwgpRSqCYD7pzXk0PVUttE4Oum.jpg"
@@ -75,6 +74,7 @@ const LoginPage = () => {
 
       <div className="signUpFields">
         <input
+          // setting the value of the input fields in local state so that they can be pushed to the backend later.
           onChange={(e) => {
             setLogInInfo((logInInfo) => ({
               ...logInInfo,
@@ -90,6 +90,12 @@ const LoginPage = () => {
               ...logInInfo,
               password: e.target.value,
             }));
+          }}
+          // logs the user in on an enter key press in addition to clicking the "log in" button
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              logInUser();
+            }
           }}
           type="text"
           placeholder="Password"

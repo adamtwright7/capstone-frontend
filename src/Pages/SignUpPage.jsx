@@ -12,13 +12,13 @@ import "react-toastify/dist/ReactToastify.css";
 const SignUpPage = () => {
   // Local state for sign up inputs
   const [signUpInfo, setSignUpInfo] = useState({
-    "email": "",
-    "password": "",
-    "confirmPass" : "",
+    email: "",
+    password: "",
+    confirmPass: "",
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Fetch function for signing up a user.
   const signupUser = async () => {
@@ -91,7 +91,7 @@ const SignUpPage = () => {
     dispatch(setUser(userDataValues));
 
     // Navigate the user to the profile page.
-    navigate("/profile")
+    navigate("/profile");
   };
 
   return (
@@ -129,13 +129,21 @@ const SignUpPage = () => {
           type="text"
           placeholder="Password"
         />
-        <input onChange={(e) => {
+        <input
+          onChange={(e) => {
             setSignUpInfo((signUpInfo) => ({
               ...signUpInfo,
               confirmPass: e.target.value,
             }));
-          }} 
-          type="text" placeholder="Confirm password" />
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              signupUser();
+            }
+          }}
+          type="text"
+          placeholder="Confirm password"
+        />
       </div>
 
       {/* Should change from a form to a fetch request */}

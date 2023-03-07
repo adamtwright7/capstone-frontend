@@ -3,11 +3,14 @@ import "./player.css";
 import { Link } from "react-router-dom";
 import { AiFillPlusSquare } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
-import { useState } from "react";
 import { AddPlayer } from "./AddPlayer";
+import { useDispatch, useSelector } from "react-redux";
+import { setAddPlayerPopup } from "../../Reducers/AddPlayerPopupSlice";
 
 export const Player = () => {
-  const [showPlayer, setshowPlayer] = useState(false);
+  const AddPlayerPopup = useSelector((state) => state.AddPlayerPopup);
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="playerMain">
@@ -33,13 +36,7 @@ export const Player = () => {
             <div className="icons">
               <h3>Players</h3>
               <div className="imgIcons">
-                <button
-                  onClick={() =>
-                    setshowPlayer((showPlayer) => {
-                      return !showPlayer;
-                    })
-                  }
-                >
+                <button onClick={() => dispatch(setAddPlayerPopup())}>
                   <AiFillPlusSquare />
                 </button>
                 <button>
@@ -63,7 +60,7 @@ export const Player = () => {
           </div>
         </div>
       </div>
-      <div className="popUpPlayer">{showPlayer && <AddPlayer />}</div>
+      <div className="popUpPlayer">{AddPlayerPopup && <AddPlayer />}</div>
     </>
   );
 };
