@@ -21,6 +21,7 @@
   border: 2px solid #d6ad60;
   padding: 1rem;
   overflow-x: auto;
+  overflow-y: visible;
   gap: 10px;
   background-color: #222639;
   border-radius: 40px 40px 40px 40px;
@@ -36,4 +37,16 @@
   z-index: 15;
   align-items: center;
   width: 100%;
+}
+
+.motionDiv1 {
+  width: 75px;
+}
+.motionDiv2 {
+  z-index: 10;
+  position: relative;
+  width: 50px;
+  border-radius: 50%;
+  background-image: url("https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png");
+  background-size: contain;
 }
