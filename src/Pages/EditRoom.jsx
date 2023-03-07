@@ -1,13 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
 
 export const EditRoom = () => {
+  const dispatch = useDispatch();
   return (
     <div
       id="modal"
       class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center"
     >
       <div class="modal-content bg-backgroundColor rounded p-8">
-        <h3 class="text-lg font-semibold mb-4">Add/Edit Room</h3>
+        <h3 class="text-lg font-semibold mb-4">Edit Room</h3>
 
         <div class="mb-4">
           <label class="block text-gray-700 font-bold mb-2" for="room-name">
@@ -41,10 +44,11 @@ export const EditRoom = () => {
             Save
           </button>
           <button
-            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            onclick="deleteRoom()"
+            class="ml-2 px-4 py-2  bg-goldAccents text-black rounded-lg border border-gray-200 hover:bg-gray-200 hover:text-black"
+            id="closeButton"
+            onClick={() => dispatch(setShowEditRoomPopup())}
           >
-            Delete
+            Cancel
           </button>
         </div>
       </div>
