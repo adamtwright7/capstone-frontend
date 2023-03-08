@@ -1,4 +1,4 @@
-import React, { createElement, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Rooms.css";
 import { FunctionButtons } from "./Components/FunctionButtons";
 import { Pieces } from "./Components/Pieces";
@@ -9,11 +9,16 @@ import { motion } from "framer-motion";
 export const Rooms = () => {
   const parentRef = useRef();
   const PieceToDrop = useSelector((state) => state.PieceToDrop);
+  const [imagesOnBoard, setImagesOnBoard] = useState([
+    "https://s3.amazonaws.com/files.d20.io/images/261680036/gRe4L6D9SOMN2NG5DU8WFQ/original.png?16404840575",
+  ]);
 
   useEffect(() => {
-    // Create a image element on the board that is an image component with src = PieceToDrop
-    // const element = createElement(img, img= src "PieceToDrop", "piece-to-drop");
-    const element = createElement("h2", { className: "greeting" }, "hello");
+    // Each time we get a new piece to drop, add it to the array that displays pieces on the board.
+    console.log(PieceToDrop);
+    setImagesOnBoard((imagesOnBoard) => imagesOnBoard.concat(PieceToDrop));
+    console.log("imagesOnBoard is");
+    console.log(imagesOnBoard);
   }, [PieceToDrop]);
 
   return (
@@ -28,6 +33,11 @@ export const Rooms = () => {
         <FunctionButtons />
       </div>
       <div className="mapArea">
+        {/* Display all the images on the board */}
+        {imagesOnBoard.map((image) => (
+          <img src={image} className="w-8 z-15" />
+        ))}
+
         <motion.img
           drag
           whileDrag={{ scale: 1.1, rotate: 60 }}
