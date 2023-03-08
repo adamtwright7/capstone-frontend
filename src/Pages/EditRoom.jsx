@@ -1,9 +1,44 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
 
 export const EditRoom = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
+  // local state to prepare to send info to the database.
+  const [roomInfo, setRoomInfo] = useState({
+    name: "",
+    image: "",
+  });
+
+  const editRoom = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const createRoomInfo = {
+      ...roomInfo,
+      userID: user.id,
+    };
+
+    const JSONroomInfo = JSON.stringify(createRoomInfo);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONroomInfo,
+      redirect: "follow",
+    };
+
+    await fetch(
+      "https://plotpointsbackend.onrender.com/rooms/update",
+      requestOptions
+    );
+
+    // refreshes the page to see the new room created
+    window.location.reload(false);
+  };
+
   return (
     <div
       id="modal"
@@ -17,6 +52,12 @@ export const EditRoom = () => {
             Room Name
           </label>
           <input
+            onChange={(e) => {
+              setRoomInfo((roomInfo) => ({
+                ...roomInfo,
+                name: e.target.value,
+              }));
+            }}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="room-name"
             type="text"
@@ -29,6 +70,12 @@ export const EditRoom = () => {
             Image URL
           </label>
           <input
+            onChange={(e) => {
+              setRoomInfo((roomInfo) => ({
+                ...roomInfo,
+                name: e.target.value,
+              }));
+            }}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="img-url"
             type="text"
@@ -39,7 +86,7 @@ export const EditRoom = () => {
         <div className="flex justify-end">
           <button
             className="bg-goldAccents hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mr-2"
-            onclick="saveRoom()"
+            onClick={editRoom}
           >
             Save
           </button>

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 
 const CreateRoom = () => {
   // Redux state to manage this pop-up showing
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   // local state to prepare to send info to the database.
   const [roomInfo, setRoomInfo] = useState({
@@ -16,7 +17,12 @@ const CreateRoom = () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const JSONroomInfo = JSON.stringify(roomInfo);
+    const createRoomInfo = {
+      ...roomInfo,
+      userID: user.id,
+    };
+
+    const JSONroomInfo = JSON.stringify(createRoomInfo);
 
     const requestOptions = {
       method: "POST",
@@ -25,13 +31,13 @@ const CreateRoom = () => {
       redirect: "follow",
     };
 
-    const roomInfoRaw = await fetch(
+    await fetch(
       "https://plotpointsbackend.onrender.com/rooms/create",
       requestOptions
     );
-    const roomDataValues = await roomInfoRaw.json();
 
-    setRoomInfo(roomDataValues);
+    // refreshes the page to see the new room created
+    window.location.reload(false);
   };
 
   return (
