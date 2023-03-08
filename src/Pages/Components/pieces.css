@@ -33,20 +33,12 @@
   color: gold;
 }
 .popUpAdd {
-  position: inherit;
+  position: absolute;
+  bottom: 2.5rem;
   z-index: 15;
   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   width: 100%;
-}
-
-.motionDiv1 {
-  width: 75px;
-}
-.motionDiv2 {
-  z-index: 10;
-  position: relative;
-  width: 50px;
-  border-radius: 50%;
-  background-image: url("https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png");
-  background-size: contain;
 }

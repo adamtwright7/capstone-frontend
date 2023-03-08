@@ -28,6 +28,7 @@
 .middlePiece {
   position: relative;
   width: 25px;
+  border-radius: 50%;
 }
 .mainMap {
   position: absolute;
