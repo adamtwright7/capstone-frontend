@@ -40,6 +40,7 @@ export const Pieces = () => {
               dispatch(
                 setPieceToDrop(
                   "https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
+                  // Should be the same as the image source above
                 )
               )
             }
