@@ -15,7 +15,11 @@ export const Pieces = () => {
 
   return (
     <>
-      <div className="popUpAdd">{showAddPiecePopup && <AddPeices />}</div>
+      {showAddPiecePopup && (
+        <div className="popUpAdd">
+          <AddPeices />
+        </div>
+      )}
       <div className="mainPieces">
         <div className="topChar">
           <button className="envButtons">
@@ -29,14 +33,7 @@ export const Pieces = () => {
           </button>
         </div>
         <div className="bottomPics">
-          <motion.img
-            drag
-            whileDrag={{ scale: 1.1, rotate: 60 }}
-            whileHover={{ scale: 1.1 }}
-            dragMomentum={false}
-            src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
-            alt=""
-          />
+          <img src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png" />
           <button
             className="w-[3rem]"
             onClick={() =>
@@ -49,10 +46,18 @@ export const Pieces = () => {
           >
             <img src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png" />
           </button>
-          <img
-            src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
-            alt=""
-          />
+          <button
+            className="w-[3rem]"
+            onClick={() =>
+              dispatch(
+                setPieceToDrop(
+                  "https://cdnb.artstation.com/p/assets/images/images/041/117/609/large/jack-wood-lewis-token.jpg?1630816201"
+                )
+              )
+            }
+          >
+            <img src="https://cdnb.artstation.com/p/assets/images/images/041/117/609/large/jack-wood-lewis-token.jpg?1630816201" />
+          </button>
           <img
             src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
             alt=""
