@@ -6,7 +6,7 @@ import "./EditProfile.css";
 export const EditProfile = () => {
   const dispatch = useDispatch();
   return (
-    <div class="mainEdit rounded-xl p-6 relative mx-auto max-w-md bg-backgroundColor">
+    <div class="mainEdit rounded-xl p-6 relative mx-max max-w-md bg-backgroundColor">
       <div class="editHeader flex justify-between items-center mb-4">
         <h2 class="text-2xl font-bold text-white">Edit Profile</h2>
         <button
