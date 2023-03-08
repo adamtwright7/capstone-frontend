@@ -1,10 +1,54 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setProfilePopup } from "../../Reducers/ProfilePopupSlice";
+import { setUser } from "../../Reducers/UserSlice";
 import "./EditProfile.css";
 
 export const EditProfile = () => {
   const dispatch = useDispatch();
+
+  // A function to edit your profile. Works off the Redux states `user` and `editProfileInfo`
+  const [editProfileInfo, setEditProfileInfo] = useState({
+    email: "",
+    password: "",
+    bio: "",
+  });
+  const user = useSelector((state) => state.user);
+
+  const editProfile = async () => {
+    const newProfileInfo = {
+      id: user.id,
+      oldEmail: user.email,
+      email: editProfileInfo.email,
+      password: editProfileInfo.password,
+      bio: editProfileInfo.bio,
+    };
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONprofileInfo = JSON.stringify(newProfileInfo);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONprofileInfo,
+      redirect: "follow",
+    };
+
+    // modifying an account doesn't return any useful data from the backend, so there's nothing to return here.
+    await fetch(
+      "https://plotpointsbackend.onrender.com/account/modify",
+      requestOptions
+    );
+
+    // Also logs you out, in case you changed your password.
+    dispatch(setUser(""));
+
+    //Navigate to home page.
+    navigate("/");
+  };
+
   return (
     <div class="mainEdit rounded-xl p-6 relative mx-max max-w-md bg-backgroundColor">
       <div class="editHeader flex justify-between items-center mb-4">
@@ -22,6 +66,12 @@ export const EditProfile = () => {
             Email
           </label>
           <input
+            onChange={(e) => {
+              setEditProfileInfo((editProfileInfo) => ({
+                ...editProfileInfo,
+                email: e.target.value,
+              }));
+            }}
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="text"
@@ -33,6 +83,12 @@ export const EditProfile = () => {
             Password
           </label>
           <input
+            onChange={(e) => {
+              setEditProfileInfo((editProfileInfo) => ({
+                ...editProfileInfo,
+                password: e.target.value,
+              }));
+            }}
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
@@ -44,6 +100,12 @@ export const EditProfile = () => {
             Bio
           </label>
           <textarea
+            onChange={(e) => {
+              setEditProfileInfo((editProfileInfo) => ({
+                ...editProfileInfo,
+                bio: e.target.value,
+              }));
+            }}
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
             id="bio"
             placeholder="Enter a short bio about yourself"
@@ -51,7 +113,10 @@ export const EditProfile = () => {
         </div>
       </div>
       <div class="updateButton">
-        <button class=" hover:bg-yellow-600 text-white font-bold ">
+        <button
+          onClick={editProfile}
+          class=" hover:bg-yellow-600 text-white font-bold "
+        >
           Update Profile
         </button>
       </div>
