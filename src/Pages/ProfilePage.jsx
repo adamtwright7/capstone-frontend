@@ -13,7 +13,7 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Getting and setting the user info into state
+  // Getting the user info from state
   const user = useSelector((state) => state.user);
 
   // Redux state for pop-ups
@@ -48,11 +48,10 @@ const ProfilePage = () => {
 
   useEffect(() => {
     loadRooms();
-    console.log("Rooms is:");
-    console.log(rooms);
   }, []);
 
-  const logOut = async () => {
+  // Logs you out.
+  const logOut = () => {
     dispatch(setUser(""));
 
     //Navigate to home page.
@@ -251,6 +250,13 @@ const ProfilePage = () => {
               </div>
             );
           })}
+
+          {/* If there aren't any rooms, give the user a message */}
+          {rooms.length === 0 && (
+            <p>
+              No rooms yet! Create a room or have a friend add you to a room.
+            </p>
+          )}
         </div>
         <button
           className="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
