@@ -124,7 +124,7 @@ const ProfilePage = () => {
                 className="w-5 h-5 mr-1"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
                   clipRule="evenodd"
                 />
@@ -143,9 +143,9 @@ const ProfilePage = () => {
                 className="w-6 h-6 mr-1"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
               Logout
@@ -170,7 +170,7 @@ const ProfilePage = () => {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M16 9a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a1 1 0 011-1h12zm-1-6a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h12zM2 14a1 1 0 011-1h14a1 1 0 110 2H3a1 1 0 01-1-1z"
                           clipRule="evenodd"
                         />
@@ -185,12 +185,12 @@ const ProfilePage = () => {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M10 12a2 2 0 100-4 2 2 0 000 4z"
                           clipRule="evenodd"
                         />
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M3 4a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm1 2v2h10V6H4zm0 3v2h10V9H4z"
                           clipRule="evenodd"
                         />
@@ -224,26 +224,31 @@ const ProfilePage = () => {
         <p className="text-white mt-4">{user.bio}</p>
       </div>
 
-      <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
-        <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
-        <div class="flex flex-wrap gap-4 justify-center">
+      <div className="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
+        <h2 className="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
+        <div className="flex flex-wrap gap-4 justify-center">
           {rooms.map((room) => {
             return (
               <div key={room.id} className="flex flex-col">
-                <div class="w-40 h-40 rounded-md overflow-hidden text-center">
+                <div className="w-40 h-40 rounded-md overflow-hidden text-center">
                   <Link to="/room">
-                    <p class="text-gray-200 mt-4 z-5 relative">{room.name}</p>
-                    <img src={room.image} class="w-full h-full object-cover" />
+                    <p className="text-gray-200 mt-4 z-5 relative">
+                      {room.name}
+                    </p>
+                    <img
+                      src={room.image}
+                      className="w-full h-full object-cover"
+                    />
                   </Link>
                 </div>
                 <div className="flex flex-row w-full justify-between">
                   <button
-                    class="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2"
+                    className="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2"
                     onClick={() => dispatch(setShowEditRoomPopup())}
                   >
                     Edit
                   </button>
-                  <button class="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
+                  <button className="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
                     Delete
                   </button>
                 </div>
