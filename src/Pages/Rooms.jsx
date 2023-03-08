@@ -23,15 +23,15 @@ export const Rooms = () => {
       </div>
       <div className="mapArea">
         {/* Display all the images on the board */}
-        {PiecesToDrop.map((image) => (
+        {PiecesToDrop.map((piece) => (
           <motion.img
             drag
             whileDrag={{ scale: 1.1, rotate: 60 }}
             whileHover={{ scale: 1.1 }}
             dragMomentum={false}
             dragConstraints={parentRef}
-            src={image}
-            key={image}
+            src={piece.image}
+            key={piece.id}
             className="w-8 z-15 absolute bottom-1/2 left-1/2"
           />
         ))}
