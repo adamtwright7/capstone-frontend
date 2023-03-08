@@ -15,7 +15,39 @@ export const Scenes = () => {
     (state) => state.showCreateScenePopup
   );
   const dispatch = useDispatch();
-
+  const scenes = [
+    {
+      id: 8,
+      name: "Candlekeep Mysteries",
+      image:
+        "https://s3.amazonaws.com/files.d20.io/images/223692485/-1pqPLJchsE9slw_S9p6ng/original.jpg?16216193895",
+      createdAt: "2023-03-06T17:27:17.102Z",
+      updatedAt: "2023-03-08T16:00:34.930Z",
+    },
+    {
+      id: 10,
+      name: "Jess's Test Room",
+      image: "linkhere.jpg",
+      createdAt: "2023-03-06T18:56:37.065Z",
+      updatedAt: "2023-03-06T18:56:37.068Z",
+    },
+    {
+      id: 12,
+      name: "Streets",
+      image:
+        "https://s3.amazonaws.com/files.d20.io/images/263157879/-oDfLu8qFpTVD0ad95LLdA/original.jpg?16413488505",
+      createdAt: "2023-03-06T20:24:01.846Z",
+      updatedAt: "2023-03-06T20:24:01.848Z",
+    },
+    {
+      id: 13,
+      name: "WBtW",
+      image:
+        "https://s3.amazonaws.com/files.d20.io/images/257890047/j1FlqPaFRo4BA95l0E9PMA/original.jpg?16381534625",
+      createdAt: "2023-03-06T20:25:01.680Z",
+      updatedAt: "2023-03-06T20:25:01.682Z",
+    },
+  ];
   return (
     <>
       <div className="popUpCreate">
@@ -38,97 +70,17 @@ export const Scenes = () => {
         </div>
         <div className="bottomCreate">
           <div className="bottomCreateImg">
-            <div className="bin">
-              <h2 className="roomNumber">Room1</h2>
-              <button>
-                <MdDeleteForever />
-              </button>
-              <img
-                className="sceneImages"
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Faf9f2afefa27ffbfe81a0f15fd75c383.webp&w=3840&q=75"
-                alt=""
-              />
-            </div>
-            <div className="editScene">
-              <p>Scene Name</p>
-              <button>
-                <BsFillPencilFill />
-              </button>
-            </div>
-            <div className="bin">
-              <h2 className="roomNumber">Room2</h2>
-              <button>
-                <MdDeleteForever />
-              </button>
-              <img
-                className="sceneImages"
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fd0175d014e6a93f1e2947be1449f0083.webp&w=3840&q=75"
-                alt=""
-              />
-            </div>
-            <div className="editScene">
-              <p>Scene Name</p>
-              <button>
-                <BsFillPencilFill />
-              </button>
-            </div>
-            <div className="bin">
-              <h2 className="roomNumber">Room3</h2>
-              <button>
-                <MdDeleteForever />
-              </button>
-              <img
-                className="sceneImages"
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F7157801838e538c96cefc4d1a62cbbe0.webp&w=3840&q=75"
-                alt=""
-              />
-            </div>
-            <div className="editScene">
-              <p>Scene Name</p>
-              <button>
-                <BsFillPencilFill />
-              </button>
-            </div>
-            <div className="bin">
-              <h2 className="roomNumber">Room4</h2>
-              <button>
-                <MdDeleteForever />
-              </button>
-              <img
-                className="sceneImages"
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5e2e40e65f0665a36fabf55d5b5aeed.webp&w=3840&q=75"
-                alt=""
-              />
-            </div>
-
-            <div className="editScene">
-              <p>Scene Name</p>
-              <button>
-                <BsFillPencilFill />
-              </button>
-            </div>
-            <div className="bin">
-              <h2 className="roomNumber">Room5</h2>
-              <button>
-                <MdDeleteForever />
-              </button>
-              <img
-                className="sceneImages"
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fb930ad28f9b925bee6d2fa461133a79a.webp&w=2048&q=75"
-                alt=""
-              />
-            </div>
-            <div className="bin">
-              <h2 className="roomNumber">Room6</h2>
-              <button>
-                <MdDeleteForever />
-              </button>
-              <img
-                className="sceneImages"
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fb930ad28f9b925bee6d2fa461133a79a.webp&w=2048&q=75"
-                alt=""
-              />
-            </div>
+            {scenes.map((scene) => {
+              return (
+                <div key={scenes.id} className="bin">
+                  <h2 className="roomNumber">{scene.name}</h2>
+                  <button>
+                    <MdDeleteForever />
+                  </button>
+                  <img className="sceneImages" src={scene.image} />
+                </div>
+              );
+            })}
           </div>
         </div>
 
