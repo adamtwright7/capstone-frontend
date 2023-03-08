@@ -22,27 +22,57 @@ const ProfilePage = () => {
   const showEditRoomPopup = useSelector((state) => state.showEditRoomPopup);
 
   // To populate the user's rooms from the database, load in those rooms when the page loads.
-  const [rooms, setRooms] = useState([]);
+  // const [rooms, setRooms] = useState([]);
 
-  const loadRooms = async () => {
-    const roomsRaw = await fetch(
-      "https://plotpointsbackend.onrender.com/rooms/view"
-    );
-    const roomsResult = await roomsRaw.json();
-    setRooms(roomsResult);
-    // Store these rooms in local state
-  };
+  // const loadRooms = async () => {
+  //   const roomsRaw = await fetch(
+  //     "https://plotpointsbackend.onrender.com/rooms/view"
+  //   );
+  //   const roomsResult = await roomsRaw.json();
+  //   setRooms(roomsResult);
+  //   // Store these rooms in local state
+  // };
 
-  useEffect(() => {
-    loadRooms();
-    console.log("Rooms is:");
-    console.log(rooms);
-  }, []);
+  // useEffect(() => {
+  //   loadRooms();
+  //   console.log("Rooms is:");
+  //   console.log(rooms);
+  // }, []);
+  const rooms = [
+    {
+      id: 8,
+      name: "Candlekeep Mysteries",
+      image:
+        "https://s3.amazonaws.com/files.d20.io/images/223692485/-1pqPLJchsE9slw_S9p6ng/original.jpg?16216193895",
+      createdAt: "2023-03-06T17:27:17.102Z",
+      updatedAt: "2023-03-08T16:00:34.930Z",
+    },
+    {
+      id: 10,
+      name: "Jess's Test Room",
+      image: "linkhere.jpg",
+      createdAt: "2023-03-06T18:56:37.065Z",
+      updatedAt: "2023-03-06T18:56:37.068Z",
+    },
+    {
+      id: 12,
+      name: "Streets",
+      image:
+        "https://s3.amazonaws.com/files.d20.io/images/263157879/-oDfLu8qFpTVD0ad95LLdA/original.jpg?16413488505",
+      createdAt: "2023-03-06T20:24:01.846Z",
+      updatedAt: "2023-03-06T20:24:01.848Z",
+    },
+    {
+      id: 13,
+      name: "WBtW",
+      image:
+        "https://s3.amazonaws.com/files.d20.io/images/257890047/j1FlqPaFRo4BA95l0E9PMA/original.jpg?16381534625",
+      createdAt: "2023-03-06T20:25:01.680Z",
+      updatedAt: "2023-03-06T20:25:01.682Z",
+    },
+  ];
 
   const logOut = async () => {
-    const logOutResponse = await fetch(
-      "https://plotpointsbackend.onrender.com/account/logout"
-    );
     dispatch(setUser(""));
 
     //Navigate to home page.
@@ -214,83 +244,33 @@ const ProfilePage = () => {
         <h2 className="text-2xl font-bold text-white">About Me</h2>
         <p className="text-white mt-4">{user.bio}</p>
       </div>
-      <div className="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
-        <h2 className="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <div className="flex flex-col">
-            <div className="w-40 h-40 rounded-md overflow-hidden text-center">
-              <Link to="/room">
-                <p className="text-gray-200 mt-4 z-5 relative">Room 1</p>
-                <img
-                  src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75"
-                  alt="Room 1"
-                  className="w-full h-full object-cover"
-                />
-              </Link>
-            </div>
-            <div className="flex flex-row w-full justify-between">
-              <button
-                className="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2"
-                onClick={() => dispatch(setShowEditRoomPopup())}
-              >
-                Edit
-              </button>
-              <button className="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
-                Delete
-              </button>
-            </div>
-          </div>
 
-          <div className="w-40 h-40 rounded-md overflow-hidden">
-            <Link to="/room">
-              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 2</p>
-              <img
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fae9d302be8df123e90e7ec8bce177a81.webp&w=1920&q=75"
-                alt="Room 2"
-                className="w-full h-full object-cover"
-              ></img>
-            </Link>
-          </div>
-          <div className="w-40 h-40 rounded-md overflow-hidden">
-            <Link to="/room">
-              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 3</p>
-              <img
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F71cac47b944ae4144dbc6b11950d443a.webp&w=1920&q=75"
-                alt="Room 3"
-                className="w-full h-full object-cover"
-              ></img>
-            </Link>
-          </div>
-          <div className="w-40 h-40 rounded-md overflow-hidden">
-            <Link to="/room">
-              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 4</p>
-              <img
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F40c821a154b90cba3ea64f82d4e4f60d.webp&w=1920&q=75"
-                alt="Room 4"
-                className="w-full h-full object-cover"
-              ></img>
-            </Link>
-          </div>
-          <div className="w-40 h-40 rounded-md overflow-hidden">
-            <Link to="/room">
-              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 5</p>
-              <img
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fd0175d014e6a93f1e2947be1449f0083.webp&w=1920&q=75"
-                alt="Room 5"
-                className="w-full h-full object-cover"
-              ></img>
-            </Link>
-          </div>
-          <div className="w-40 h-40 rounded-md overflow-hidden">
-            <Link to="/room">
-              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 6</p>
-              <img
-                src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F7157801838e538c96cefc4d1a62cbbe0.webp&w=1920&q=75"
-                alt="Room 6"
-                className="w-full h-full object-cover"
-              ></img>
-            </Link>
-          </div>
+      <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
+        <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
+        <div class="flex flex-wrap gap-4 justify-center">
+          {rooms.map((room) => {
+            return (
+              <div key={room.id} className="flex flex-col">
+                <div class="w-40 h-40 rounded-md overflow-hidden text-center">
+                  <Link to="/room">
+                    <p class="text-gray-200 mt-4 z-5 relative">{room.name}</p>
+                    <img src={room.image} class="w-full h-full object-cover" />
+                  </Link>
+                </div>
+                <div className="flex flex-row w-full justify-between">
+                  <button
+                    class="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2"
+                    onClick={() => dispatch(setShowEditRoomPopup())}
+                  >
+                    Edit
+                  </button>
+                  <button class="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
         <button
           className="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
