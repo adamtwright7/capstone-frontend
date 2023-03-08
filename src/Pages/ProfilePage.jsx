@@ -50,7 +50,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className=" min-h-screen">
+    <div className=" max-h-screen">
       <nav class="bg-blueSecondary">
         <div class="mx-auto px-4 py-2 max-w-7xl flex justify-between items-center">
           <div class="flex items-center justify-between">
@@ -216,7 +216,7 @@ const ProfilePage = () => {
       </div>
       <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
         <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 justify-center">
           <div className="flex flex-col">
             <div class="w-40 h-40 rounded-md overflow-hidden text-center">
               <Link to="/room">

@@ -3,13 +3,20 @@ import "./CreateScene.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { setShowCreateScenePopup } from "../../Reducers/showCreateScenePopupSlice";
+import { motion } from "framer-motion";
 
 export const CreateScene = () => {
   const dispatch = useDispatch();
 
   return (
     <>
-      <div className="mainCreate">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mainCreate"
+      >
         <div className="exitButton">
           <button onClick={() => dispatch(setShowCreateScenePopup())}>
             <AiFillCloseCircle />
@@ -23,7 +30,7 @@ export const CreateScene = () => {
           <input type="text" placeholder="Scene Link Here!" />
           <button>Add Scene</button>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

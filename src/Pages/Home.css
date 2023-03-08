@@ -51,12 +51,15 @@ img {
   width: 70%;
   padding: 0.8rem;
   font-size: 20px;
-  margin-top: 1.5rem;
+  margin: 10px;
   text-align: center;
   border: 1px solid #d6ad60;
   color: white;
   background-color: #222639;
   border-radius: 10px;
+}
+.playFree:hover {
+  background-color: #2d2d2d;
 }
 .whatis {
   border: 1px solid #d6ad60;
@@ -79,6 +82,7 @@ img {
   align-items: center;
   margin-top: 1rem;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 .gamePic1 > img {
   width: 90%;
@@ -102,4 +106,33 @@ img {
   width: 12rem;
   margin-top: 1rem;
   border: 2px solid #d6ad60;
+}
+@media screen and (min-width: 739px) {
+  .homeMain {
+    padding: 50px;
+  }
+  .homelogo {
+    width: 300px;
+  }
+  .homeNav {
+    max-width: 806px;
+  }
+  .playFree {
+    max-width: 600px;
+  }
+  .whatis {
+    max-width: 600px;
+  }
+  .gamePic1 > img {
+    max-width: 400px;
+  }
+  .gamePic1 {
+    flex-direction: row;
+    max-width: 600px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .bottomSection {
+    max-width: 900px;
+  }
 }

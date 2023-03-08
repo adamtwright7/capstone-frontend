@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 // Toastify stuff
 import { ToastContainer, toast } from "react-toastify";
+import { FaSquarespace } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
+import { GrGithub } from "react-icons/gr";
 
 const HomePage = ({ toastMessage }) => {
   const user = useSelector((state) => state.user);
 
-  // Toast emitter for if there's an error message. This loads twice in React strict mode, but shouldn't in production. 
-  // This isn't in a useEffect because I want errors to keep popping up if a user continues to try to go to a page without logging in. 
+  // Toast emitter for if there's an error message. This loads twice in React strict mode, but shouldn't in production.
+  // This isn't in a useEffect because I want errors to keep popping up if a user continues to try to go to a page without logging in.
   toast(toastMessage, {
     position: "top-right",
     autoClose: 5000,
@@ -44,7 +46,7 @@ const HomePage = ({ toastMessage }) => {
         />
       </div>
       <Link to="/signup" className="playFree">
-        <button>Play free now!</button>
+        <button>Play free now! click here!</button>
       </Link>
       <div className="whatis">
         <h3> About Us </h3>
@@ -77,20 +79,67 @@ const HomePage = ({ toastMessage }) => {
           <button>Back to top</button>
         </a>
       </div>
-      <p className="pt-4"> Made by: </p>
-      <div className="personalNav flex flex-row justify-around">
-        <a href="https://github.com/VinnyVecchio" target="_blank">
-          Vinny
-        </a>
-        <a href="https://github.com/adamtwright7" target="_blank">
-          Adam
-        </a>
-        <a href="https://github.com/jessbecoding" target="_blank">
-          Jess
-        </a>
-        <a href="https://github.com/stoicgit" target="_blank">
-          Mauro
-        </a>
+      <div className="personalNav">
+        <h2 className="devTeam">Dev Team</h2>
+        <div className="ghTeam">
+          <p className="ghTeamPeople">Vinny:</p>
+          <div className="webIcons">
+            <button className="ghButton">
+              <GrGithub />
+            </button>
+            <a href="vincents-portfolio.com">
+              <button className="ghButton">
+                <FaSquarespace />
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <div className="ghTeam">
+          <p className="ghTeamPeople">Adam:</p>
+          <div className="webIcons">
+            <a href="https://github.com/adamtwright7">
+              <button className="ghButton">
+                <GrGithub />
+              </button>
+            </a>
+            <a href="https://adamtwright7.github.io/">
+              <button className="ghButton">
+                <FaSquarespace />
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <div className="ghTeam">
+          <p className="ghTeamPeople" id="jess">
+            Jess:
+          </p>
+          <div className="webIcons">
+            <button className="ghButton">
+              <GrGithub />
+            </button>
+            <a href="vincents-portfolio.com">
+              <button className="ghButton">
+                <FaSquarespace />
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <div className="ghTeam">
+          <p className="ghTeamPeople">Mauro:</p>
+          <div className="webIcons">
+            <button className="ghButton">
+              <GrGithub />
+            </button>
+            <a href="vincents-portfolio.com">
+              <button className="ghButton">
+                <FaSquarespace />
+              </button>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
