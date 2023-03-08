@@ -3,13 +3,20 @@ import "./Rooms.css";
 import { FunctionButtons } from "./Components/FunctionButtons";
 import { Pieces } from "./Components/Pieces";
 import { Player } from "./Components/Player";
-import { useSelector } from "react-redux";
-import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { motion, useInView } from "framer-motion";
+import { GiHastyGrave } from "react-icons/gi";
+import { removePieceToDrop } from "../Reducers/PieceToDropSlice";
 
 export const Rooms = () => {
   const parentRef = useRef();
+  const ref = useRef(null);
+  const isInView = useInView(ref);
   const PiecesToDrop = useSelector((state) => state.PiecesToDrop);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(removePieceToDrop(PiecesToDrop.id));
+  }, [isInView]);
   return (
     <div className="mainRoom">
       <img
@@ -35,7 +42,9 @@ export const Rooms = () => {
             className="w-8 z-15 absolute bottom-1/2 left-1/2"
           />
         ))}
-
+        <motion.div className="trashCan" ref={ref}>
+          <GiHastyGrave />
+        </motion.div>
         <div className="roomPlayer">
           <Player />
         </div>

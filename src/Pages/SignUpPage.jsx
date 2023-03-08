@@ -126,7 +126,7 @@ const SignUpPage = () => {
               password: e.target.value,
             }));
           }}
-          type="text"
+          type="password"
           placeholder="Password"
         />
         <input
@@ -141,7 +141,7 @@ const SignUpPage = () => {
               signupUser();
             }
           }}
-          type="text"
+          type="password"
           placeholder="Confirm password"
         />
       </div>
