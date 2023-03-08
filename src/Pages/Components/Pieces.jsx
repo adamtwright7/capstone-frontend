@@ -4,7 +4,7 @@ import "./pieces.css";
 import { FaHorseHead } from "react-icons/fa";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import { AddPeices } from "./AddPeices";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowAddPiecePopup } from "../../Reducers/showAddPiecePopupSlice";
 import { setPieceToDrop } from "../../Reducers/PieceToDropSlice";

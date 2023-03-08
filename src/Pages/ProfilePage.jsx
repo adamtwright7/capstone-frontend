@@ -127,7 +127,7 @@ const ProfilePage = () => {
                 <path
                   fill-rule="evenodd"
                   d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
               Edit Profile
@@ -173,7 +173,7 @@ const ProfilePage = () => {
                         <path
                           fill-rule="evenodd"
                           d="M16 9a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a1 1 0 011-1h12zm-1-6a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h12zM2 14a1 1 0 011-1h14a1 1 0 110 2H3a1 1 0 01-1-1z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                       <span>Level 5 Wizard</span>
@@ -188,12 +188,12 @@ const ProfilePage = () => {
                         <path
                           fill-rule="evenodd"
                           d="M10 12a2 2 0 100-4 2 2 0 000 4z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                         <path
                           fill-rule="evenodd"
                           d="M3 4a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm1 2v2h10V6H4zm0 3v2h10V9H4z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                       <span>{user.email}</span>

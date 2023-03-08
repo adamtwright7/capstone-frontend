@@ -97,7 +97,7 @@ const LoginPage = () => {
               logInUser();
             }
           }}
-          type="text"
+          type="password"
           placeholder="Password"
         />
       </div>
