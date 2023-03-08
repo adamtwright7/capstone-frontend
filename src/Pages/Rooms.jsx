@@ -11,6 +11,7 @@ export const Rooms = () => {
   const PieceToDrop = useSelector((state) => state.PieceToDrop);
   const [imagesOnBoard, setImagesOnBoard] = useState([
     "https://s3.amazonaws.com/files.d20.io/images/261680036/gRe4L6D9SOMN2NG5DU8WFQ/original.png?16404840575",
+    "https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa2c782a49e24c2dd2c89c87124e3ea86.webp&w=2048&q=75",
   ]);
 
   useEffect(() => {
@@ -35,19 +36,18 @@ export const Rooms = () => {
       <div className="mapArea">
         {/* Display all the images on the board */}
         {imagesOnBoard.map((image) => (
-          <img src={image} className="w-8 z-15" />
+          <motion.img
+            drag
+            whileDrag={{ scale: 1.1, rotate: 60 }}
+            whileHover={{ scale: 1.1 }}
+            dragMomentum={false}
+            dragConstraints={parentRef}
+            src={image}
+            key={image}
+            className="w-8 z-15"
+          />
         ))}
 
-        <motion.img
-          drag
-          whileDrag={{ scale: 1.1, rotate: 60 }}
-          whileHover={{ scale: 1.1 }}
-          dragMomentum={false}
-          dragConstraints={parentRef}
-          className="middlePiece"
-          src={PieceToDrop}
-          alt=""
-        />
         <div className="roomPlayer">
           <Player />
         </div>
