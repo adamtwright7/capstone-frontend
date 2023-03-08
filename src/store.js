@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./Reducers/UserSlice";
 import profileReducer from "./Reducers/ProfilePopupSlice";
-import roomReducer from "./Reducers/RoomPopupSlice";
+import roomPopupReducer from "./Reducers/RoomPopupSlice";
 import addPlayerReducer from "./Reducers/AddPlayerPopupSlice";
 import showScenePopupReducer from "./Reducers/showScenePopupSlice";
 import showResourcePopupReducer from "./Reducers/showResourcePopupSlice";
@@ -9,6 +9,7 @@ import showCreateScenePopupReducer from "./Reducers/showCreateScenePopupSlice";
 import showAddPiecePopupReducer from "./Reducers/showAddPiecePopupSlice";
 import showEditRoomPopupReducer from "./Reducers/showEditRoomPopupSlice";
 import PieceToDropReducer from "./Reducers/PieceToDropSlice";
+import roomReducer from "./Reducers/RoomSlice";
 
 // persist imports
 import { persistStore, persistReducer } from "redux-persist";
@@ -23,14 +24,15 @@ const persistConfig = {
 };
 
 // makes the userReducer persist
-const persistedReducer = persistReducer(persistConfig, userReducer);
+const persistedUserReducer = persistReducer(persistConfig, userReducer);
+const persistedRoomReducer = persistReducer(persistConfig, roomReducer);
 
 // Standard store setup
 export const store = configureStore({
   reducer: {
-    user: persistedReducer,
+    user: persistedUserReducer,
     ProfilePopup: profileReducer,
-    RoomPopup: roomReducer,
+    RoomPopup: roomPopupReducer,
     AddPlayerPopup: addPlayerReducer,
     showScenePopup: showScenePopupReducer,
     showResourcePopup: showResourcePopupReducer,
@@ -38,6 +40,7 @@ export const store = configureStore({
     showAddPiecePopup: showAddPiecePopupReducer,
     showEditRoomPopup: showEditRoomPopupReducer,
     PiecesToDrop: PieceToDropReducer,
+    room: persistedRoomReducer,
   },
   // middleware: [thunk] // Again, thunk in case we want it.
 });

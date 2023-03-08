@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
 
 export const EditRoom = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const room = useSelector((state) => state.room);
 
   // local state to prepare to send info to the database.
   const [roomInfo, setRoomInfo] = useState({
@@ -18,7 +18,7 @@ export const EditRoom = () => {
 
     const createRoomInfo = {
       ...roomInfo,
-      userID: user.id,
+      roomID: room.id,
     };
 
     const JSONroomInfo = JSON.stringify(createRoomInfo);
@@ -35,8 +35,8 @@ export const EditRoom = () => {
       requestOptions
     );
 
-    // refreshes the page to see the new room created
-    window.location.reload(false);
+    // // refreshes the page to see the new room editted. Commented out until the reducer refresh issue is solved.
+    // window.location.reload(false);
   };
 
   return (
@@ -73,7 +73,7 @@ export const EditRoom = () => {
             onChange={(e) => {
               setRoomInfo((roomInfo) => ({
                 ...roomInfo,
-                name: e.target.value,
+                image: e.target.value,
               }));
             }}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
