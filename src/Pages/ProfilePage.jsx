@@ -8,6 +8,7 @@ import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 import { setUser } from "../Reducers/UserSlice";
 import { EditRoom } from "./EditRoom";
 import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
+import { setRoom } from "../Reducers/RoomSlice";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const ProfilePage = () => {
 
   // Getting the user info from state
   const user = useSelector((state) => state.user);
+  const room = useSelector((state) => state.room);
 
   // Redux state for pop-ups
   const ProfilePopup = useSelector((state) => state.ProfilePopup);
@@ -56,6 +58,29 @@ const ProfilePage = () => {
 
     //Navigate to home page.
     navigate("/");
+  };
+
+  // Deletes a room
+  const deleteRoom = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONroomInfo = JSON.stringify({ roomID: room.id });
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: JSONroomInfo,
+      redirect: "follow",
+    };
+
+    await fetch(
+      "https://plotpointsbackend.onrender.com/rooms/delete",
+      requestOptions
+    );
+
+    // // refreshes the page to see the new room editted
+    // window.location.reload(false);
   };
 
   return (
@@ -244,11 +269,20 @@ const ProfilePage = () => {
                 <div className="flex flex-row w-full justify-between">
                   <button
                     className="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2"
-                    onClick={() => dispatch(setShowEditRoomPopup())}
+                    onClick={() => {
+                      dispatch(setShowEditRoomPopup());
+                      dispatch(setRoom(room));
+                    }}
                   >
                     Edit
                   </button>
-                  <button className="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
+                  <button
+                    className="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2"
+                    onClick={() => {
+                      dispatch(setRoom(room));
+                      deleteRoom();
+                    }}
+                  >
                     Delete
                   </button>
                 </div>
