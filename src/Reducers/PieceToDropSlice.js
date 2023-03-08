@@ -9,9 +9,12 @@ export const PieceToDropSlice = createSlice({
     setPieceToDrop: (state, action) => {
       state.push(action.payload);
     },
+    removePieceToDrop: (state, action) => {
+      return state.filter((item) => item.id !== action.payload.id);
+    },
   },
 });
 
-export const { setPieceToDrop } = PieceToDropSlice.actions;
+export const { setPieceToDrop, removePieceToDrop } = PieceToDropSlice.actions;
 
 export default PieceToDropSlice.reducer;
