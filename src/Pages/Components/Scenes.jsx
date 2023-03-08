@@ -8,6 +8,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { setShowScenePopup } from "../../Reducers/showScenePopupSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowCreateScenePopup } from "../../Reducers/showCreateScenePopupSlice";
+import { motion } from "framer-motion";
 
 export const Scenes = () => {
   const showCreateScenePopup = useSelector(
@@ -20,7 +21,13 @@ export const Scenes = () => {
       <div className="popUpCreate">
         {showCreateScenePopup && <CreateScene />}
       </div>
-      <div className="mainScene">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mainScene"
+      >
         <div className="sceneHeader">
           <h2>Scenes</h2>
           <div className="closeTag">
@@ -131,7 +138,7 @@ export const Scenes = () => {
             create scene
           </button>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
