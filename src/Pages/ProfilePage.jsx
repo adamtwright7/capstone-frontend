@@ -22,55 +22,35 @@ const ProfilePage = () => {
   const showEditRoomPopup = useSelector((state) => state.showEditRoomPopup);
 
   // To populate the user's rooms from the database, load in those rooms when the page loads.
-  // const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState([]);
 
-  // const loadRooms = async () => {
-  //   const roomsRaw = await fetch(
-  //     "https://plotpointsbackend.onrender.com/rooms/view"
-  //   );
-  //   const roomsResult = await roomsRaw.json();
-  //   setRooms(roomsResult);
-  //   // Store these rooms in local state
-  // };
+  const loadRooms = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-  // useEffect(() => {
-  //   loadRooms();
-  //   console.log("Rooms is:");
-  //   console.log(rooms);
-  // }, []);
-  const rooms = [
-    {
-      id: 8,
-      name: "Candlekeep Mysteries",
-      image:
-        "https://s3.amazonaws.com/files.d20.io/images/223692485/-1pqPLJchsE9slw_S9p6ng/original.jpg?16216193895",
-      createdAt: "2023-03-06T17:27:17.102Z",
-      updatedAt: "2023-03-08T16:00:34.930Z",
-    },
-    {
-      id: 10,
-      name: "Jess's Test Room",
-      image: "linkhere.jpg",
-      createdAt: "2023-03-06T18:56:37.065Z",
-      updatedAt: "2023-03-06T18:56:37.068Z",
-    },
-    {
-      id: 12,
-      name: "Streets",
-      image:
-        "https://s3.amazonaws.com/files.d20.io/images/263157879/-oDfLu8qFpTVD0ad95LLdA/original.jpg?16413488505",
-      createdAt: "2023-03-06T20:24:01.846Z",
-      updatedAt: "2023-03-06T20:24:01.848Z",
-    },
-    {
-      id: 13,
-      name: "WBtW",
-      image:
-        "https://s3.amazonaws.com/files.d20.io/images/257890047/j1FlqPaFRo4BA95l0E9PMA/original.jpg?16381534625",
-      createdAt: "2023-03-06T20:25:01.680Z",
-      updatedAt: "2023-03-06T20:25:01.682Z",
-    },
-  ];
+    const JSONuserID = JSON.stringify({ userID: user.id });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONuserID,
+      redirect: "follow",
+    };
+
+    const roomsRaw = await fetch(
+      "https://plotpointsbackend.onrender.com/rooms/view",
+      requestOptions
+    );
+
+    const roomsResult = await roomsRaw.json();
+    setRooms(roomsResult); // Store these rooms in local state
+  };
+
+  useEffect(() => {
+    loadRooms();
+    console.log("Rooms is:");
+    console.log(rooms);
+  }, []);
 
   const logOut = async () => {
     dispatch(setUser(""));

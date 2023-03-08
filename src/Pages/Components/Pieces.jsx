@@ -13,6 +13,15 @@ export const Pieces = () => {
   const showAddPiecePopup = useSelector((state) => state.showAddPiecePopup);
   const dispatch = useDispatch();
 
+  const resources = [
+    {
+      id: "5",
+      name: "Goblin",
+      image:
+        "https://i.pinimg.com/564x/50/78/38/507838fe552e176b67e0be6f876e4c47.jpg",
+    },
+  ];
+
   return (
     <>
       {showAddPiecePopup && (
@@ -33,19 +42,11 @@ export const Pieces = () => {
           </button>
         </div>
         <div className="bottomPics">
-          <img src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png" />
           <button
             className="w-[3rem]"
-            onClick={() =>
-              dispatch(
-                setPieceToDrop(
-                  "https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png"
-                  // Should be the same as the image source above
-                )
-              )
-            }
+            onClick={() => dispatch(setPieceToDrop(resources[0]))}
           >
-            <img src="https://tacticaltokens.com/wp-content/uploads/2020/04/tactical-tokens-custom-token.png" />
+            <img src={resources[0].image} />
           </button>
           <button
             className="w-[3rem]"
