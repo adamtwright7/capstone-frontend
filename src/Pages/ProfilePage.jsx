@@ -51,42 +51,42 @@ const ProfilePage = () => {
 
   return (
     <div className=" max-h-screen">
-      <nav class="bg-blueSecondary">
-        <div class="mx-auto px-4 py-2 max-w-7xl flex justify-between items-center">
-          <div class="flex items-center justify-between">
-            <a class="text-white font-bold text-xl" href="#">
+      <nav className="bg-blueSecondary">
+        <div className="mx-auto px-4 py-2 max-w-7xl flex justify-between items-center">
+          <div className="flex items-center justify-between">
+            <a className="text-white font-bold text-xl" href="#">
               Plot Points
             </a>
           </div>
-          <div class="hidden lg:flex lg:items-center">
+          <div className="hidden lg:flex lg:items-center">
             <Link
               to="/"
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
+              className="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Home
             </Link>
             <Link
               to={"/profile"}
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
+              className="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             ></Link>
 
             <button
               onClick={logOut}
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
+              className="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Logout
             </button>
           </div>
         </div>
         {/* <!-- Mobile menu --> */}
-        <div class="flex bg-blueSecondary lg:hidden">
-          <div class="mx-auto px-0 py-2 max-w-7xl flex justify-between items-center ml-0">
+        <div className="flex bg-blueSecondary lg:hidden">
+          <div className="mx-auto px-0 py-2 max-w-7xl flex justify-between items-center ml-0">
             <Link
               to="#"
-              class="text-white hover:text-goldAccents px-1 py-2 rounded-md text-base font-medium flex items-center"
+              className="text-white hover:text-goldAccents px-1 py-2 rounded-md text-base font-medium flex items-center"
             >
               <svg
-                class="w-5 h-5 mr-1"
+                className="w-5 h-5 mr-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -105,14 +105,14 @@ const ProfilePage = () => {
             </Link>
             <Link
               to="#"
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-base font-medium flex items-center"
+              className="text-white hover:text-goldAccents px-3 py-2 rounded-md text-base font-medium flex items-center"
               onClick={() => dispatch(setProfilePopup())}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-5 h-5 mr-1"
+                className="w-5 h-5 mr-1"
               >
                 <path
                   fill-rule="evenodd"
@@ -125,13 +125,13 @@ const ProfilePage = () => {
 
             <Link
               to="#"
-              class="text-white hover:text-goldAccents flex items-center px-2 py-2 rounded-md text-base font-medium"
+              className="text-white hover:text-goldAccents flex items-center px-2 py-2 rounded-md text-base font-medium"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-6 h-6 mr-1"
+                className="w-6 h-6 mr-1"
               >
                 <path
                   fill-rule="evenodd"
@@ -144,19 +144,19 @@ const ProfilePage = () => {
           </div>
         </div>
       </nav>
-      <div class="bg-blueSecondary py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="lg:flex lg:items-center lg:justify-between">
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center">
-                <div class="ml-4">
-                  <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
+      <div className="bg-blueSecondary py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:flex lg:items-center lg:justify-between">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center">
+                <div className="ml-4">
+                  <h2 className="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
                     Welcome back.
                   </h2>
-                  <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
-                    <div class="mt-2 flex items-center text-sm text-gray-300">
+                  <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+                    <div className="mt-2 flex items-center text-sm text-gray-300">
                       <svg
-                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-goldAccents"
+                        className="flex-shrink-0 mr-1.5 h-5 w-5 text-goldAccents"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -169,9 +169,9 @@ const ProfilePage = () => {
                       <span>Level 5 Wizard</span>
                     </div>
 
-                    <div class="mt-2 flex items-center text-sm text-gray-300">
+                    <div className="mt-2 flex items-center text-sm text-gray-300">
                       <svg
-                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-goldAccents"
+                        className="flex-shrink-0 mr-1.5 h-5 w-5 text-goldAccents"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -192,11 +192,11 @@ const ProfilePage = () => {
                 </div>
               </div>
             </div>
-            <div class="mt-5 flex lg:mt-0 lg:ml-4">
-              <span class="hidden sm:block ml-3">
+            <div className="mt-5 flex lg:mt-0 lg:ml-4">
+              <span className="hidden sm:block ml-3">
                 <button
                   onClick={() => dispatch(setProfilePopup())}
-                  class="text-sm font-medium text-goldAccents hover:text-white"
+                  className="text-sm font-medium text-goldAccents hover:text-white"
                 >
                   Edit Profile
                 </button>
@@ -210,90 +210,90 @@ const ProfilePage = () => {
         {ProfilePopup && <EditProfile />}
       </div>
 
-      <div class="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">
-        <h2 class="text-2xl font-bold text-white">About Me</h2>
-        <p class="text-white mt-4">{user.bio}</p>
+      <div className="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">
+        <h2 className="text-2xl font-bold text-white">About Me</h2>
+        <p className="text-white mt-4">{user.bio}</p>
       </div>
-      <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
-        <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
-        <div class="flex flex-wrap gap-4 justify-center">
+      <div className="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
+        <h2 className="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
+        <div className="flex flex-wrap gap-4 justify-center">
           <div className="flex flex-col">
-            <div class="w-40 h-40 rounded-md overflow-hidden text-center">
+            <div className="w-40 h-40 rounded-md overflow-hidden text-center">
               <Link to="/room">
-                <p class="text-gray-200 mt-4 z-5 relative">Room 1</p>
+                <p className="text-gray-200 mt-4 z-5 relative">Room 1</p>
                 <img
                   src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa5a699b2ae1327c185b53f3fb9c4eb5d.webp&w=1920&q=75"
                   alt="Room 1"
-                  class="w-full h-full object-cover"
+                  className="w-full h-full object-cover"
                 />
               </Link>
             </div>
             <div className="flex flex-row w-full justify-between">
               <button
-                class="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2"
+                className="bg-goldAccents hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded w-1/2"
                 onClick={() => dispatch(setShowEditRoomPopup())}
               >
                 Edit
               </button>
-              <button class="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
+              <button className="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2">
                 Delete
               </button>
             </div>
           </div>
 
-          <div class="w-40 h-40 rounded-md overflow-hidden">
+          <div className="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 2</p>
+              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 2</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fae9d302be8df123e90e7ec8bce177a81.webp&w=1920&q=75"
                 alt="Room 2"
-                class="w-full h-full object-cover"
+                className="w-full h-full object-cover"
               ></img>
             </Link>
           </div>
-          <div class="w-40 h-40 rounded-md overflow-hidden">
+          <div className="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 3</p>
+              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 3</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F71cac47b944ae4144dbc6b11950d443a.webp&w=1920&q=75"
                 alt="Room 3"
-                class="w-full h-full object-cover"
+                className="w-full h-full object-cover"
               ></img>
             </Link>
           </div>
-          <div class="w-40 h-40 rounded-md overflow-hidden">
+          <div className="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 4</p>
+              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 4</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F40c821a154b90cba3ea64f82d4e4f60d.webp&w=1920&q=75"
                 alt="Room 4"
-                class="w-full h-full object-cover"
+                className="w-full h-full object-cover"
               ></img>
             </Link>
           </div>
-          <div class="w-40 h-40 rounded-md overflow-hidden">
+          <div className="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 5</p>
+              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 5</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fd0175d014e6a93f1e2947be1449f0083.webp&w=1920&q=75"
                 alt="Room 5"
-                class="w-full h-full object-cover"
+                className="w-full h-full object-cover"
               ></img>
             </Link>
           </div>
-          <div class="w-40 h-40 rounded-md overflow-hidden">
+          <div className="w-40 h-40 rounded-md overflow-hidden">
             <Link to="/room">
-              <p class="text-gray-200 mt-4 z-5 relative left-10">Room 6</p>
+              <p className="text-gray-200 mt-4 z-5 relative left-10">Room 6</p>
               <img
                 src="https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2F7157801838e538c96cefc4d1a62cbbe0.webp&w=1920&q=75"
                 alt="Room 6"
-                class="w-full h-full object-cover"
+                className="w-full h-full object-cover"
               ></img>
             </Link>
           </div>
         </div>
         <button
-          class="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
+          className="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
           id="openButton"
           onClick={() => dispatch(setRoomPopup())}
         >
@@ -306,7 +306,7 @@ const ProfilePage = () => {
         {showEditRoomPopup && <EditRoom />}
       </div>
 
-      <div class="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
+      <div className="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
         <p>© 2023 An average table</p>
       </div>
     </div>
