@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = "";
+const initialState = [];
 
 export const PieceToDropSlice = createSlice({
-  name: "PieceToDrop",
+  name: "PiecesToDrop",
   initialState,
   reducers: {
     setPieceToDrop: (state, action) => {
-      return action.payload;
+      state.push(action.payload);
     },
   },
 });

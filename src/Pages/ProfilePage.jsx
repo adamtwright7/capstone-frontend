@@ -40,9 +40,6 @@ const ProfilePage = () => {
   }, []);
 
   const logOut = async () => {
-    const logOutResponse = await fetch(
-      "https://plotpointsbackend.onrender.com/account/logout"
-    );
     dispatch(setUser(""));
 
     //Navigate to home page.
