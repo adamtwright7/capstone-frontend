@@ -37,7 +37,7 @@ export const store = configureStore({
     showCreateScenePopup: showCreateScenePopupReducer,
     showAddPiecePopup: showAddPiecePopupReducer,
     showEditRoomPopup: showEditRoomPopupReducer,
-    PieceToDrop: PieceToDropReducer,
+    PiecesToDrop: PieceToDropReducer,
   },
   // middleware: [thunk] // Again, thunk in case we want it.
 });
