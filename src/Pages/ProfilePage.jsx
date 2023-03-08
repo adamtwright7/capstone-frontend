@@ -81,42 +81,42 @@ const ProfilePage = () => {
 
   return (
     <div className=" max-h-screen">
-      <nav class="bg-blueSecondary">
-        <div class="mx-auto px-4 py-2 max-w-7xl flex justify-between items-center">
-          <div class="flex items-center justify-between">
-            <a class="text-white font-bold text-xl" href="#">
+      <nav className="bg-blueSecondary">
+        <div className="mx-auto px-4 py-2 max-w-7xl flex justify-between items-center">
+          <div className="flex items-center justify-between">
+            <a className="text-white font-bold text-xl" href="#">
               Plot Points
             </a>
           </div>
-          <div class="hidden lg:flex lg:items-center">
+          <div className="hidden lg:flex lg:items-center">
             <Link
               to="/"
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
+              className="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Home
             </Link>
             <Link
               to={"/profile"}
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
+              className="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             ></Link>
 
             <button
               onClick={logOut}
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
+              className="text-white hover:text-goldAccents px-3 py-2 rounded-md text-sm font-medium"
             >
               Logout
             </button>
           </div>
         </div>
         {/* <!-- Mobile menu --> */}
-        <div class="flex bg-blueSecondary lg:hidden">
-          <div class="mx-auto px-0 py-2 max-w-7xl flex justify-between items-center ml-0">
+        <div className="flex bg-blueSecondary lg:hidden">
+          <div className="mx-auto px-0 py-2 max-w-7xl flex justify-between items-center ml-0">
             <Link
               to="#"
-              class="text-white hover:text-goldAccents px-1 py-2 rounded-md text-base font-medium flex items-center"
+              className="text-white hover:text-goldAccents px-1 py-2 rounded-md text-base font-medium flex items-center"
             >
               <svg
-                class="w-5 h-5 mr-1"
+                className="w-5 h-5 mr-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -135,14 +135,14 @@ const ProfilePage = () => {
             </Link>
             <Link
               to="#"
-              class="text-white hover:text-goldAccents px-3 py-2 rounded-md text-base font-medium flex items-center"
+              className="text-white hover:text-goldAccents px-3 py-2 rounded-md text-base font-medium flex items-center"
               onClick={() => dispatch(setProfilePopup())}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-5 h-5 mr-1"
+                className="w-5 h-5 mr-1"
               >
                 <path
                   fill-rule="evenodd"
@@ -155,13 +155,13 @@ const ProfilePage = () => {
 
             <Link
               to="#"
-              class="text-white hover:text-goldAccents flex items-center px-2 py-2 rounded-md text-base font-medium"
+              className="text-white hover:text-goldAccents flex items-center px-2 py-2 rounded-md text-base font-medium"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-6 h-6 mr-1"
+                className="w-6 h-6 mr-1"
               >
                 <path
                   fill-rule="evenodd"
@@ -174,19 +174,19 @@ const ProfilePage = () => {
           </div>
         </div>
       </nav>
-      <div class="bg-blueSecondary py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="lg:flex lg:items-center lg:justify-between">
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center">
-                <div class="ml-4">
-                  <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
+      <div className="bg-blueSecondary py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:flex lg:items-center lg:justify-between">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center">
+                <div className="ml-4">
+                  <h2 className="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
                     Welcome back.
                   </h2>
-                  <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
-                    <div class="mt-2 flex items-center text-sm text-gray-300">
+                  <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+                    <div className="mt-2 flex items-center text-sm text-gray-300">
                       <svg
-                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-goldAccents"
+                        className="flex-shrink-0 mr-1.5 h-5 w-5 text-goldAccents"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -199,9 +199,9 @@ const ProfilePage = () => {
                       <span>Level 5 Wizard</span>
                     </div>
 
-                    <div class="mt-2 flex items-center text-sm text-gray-300">
+                    <div className="mt-2 flex items-center text-sm text-gray-300">
                       <svg
-                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-goldAccents"
+                        className="flex-shrink-0 mr-1.5 h-5 w-5 text-goldAccents"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -222,11 +222,11 @@ const ProfilePage = () => {
                 </div>
               </div>
             </div>
-            <div class="mt-5 flex lg:mt-0 lg:ml-4">
-              <span class="hidden sm:block ml-3">
+            <div className="mt-5 flex lg:mt-0 lg:ml-4">
+              <span className="hidden sm:block ml-3">
                 <button
                   onClick={() => dispatch(setProfilePopup())}
-                  class="text-sm font-medium text-goldAccents hover:text-white"
+                  className="text-sm font-medium text-goldAccents hover:text-white"
                 >
                   Edit Profile
                 </button>
@@ -240,10 +240,11 @@ const ProfilePage = () => {
         {ProfilePopup && <EditProfile />}
       </div>
 
-      <div class="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">
-        <h2 class="text-2xl font-bold text-white">About Me</h2>
-        <p class="text-white mt-4">{user.bio}</p>
+      <div className="border-2 border-goldAccents bg-blueSecondary p-6 rounded-lg">
+        <h2 className="text-2xl font-bold text-white">About Me</h2>
+        <p className="text-white mt-4">{user.bio}</p>
       </div>
+
       <div class="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
         <h2 class="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
         <div class="flex flex-wrap gap-4 justify-center">
@@ -272,7 +273,7 @@ const ProfilePage = () => {
           })}
         </div>
         <button
-          class="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
+          className="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
           id="openButton"
           onClick={() => dispatch(setRoomPopup())}
         >
@@ -285,7 +286,7 @@ const ProfilePage = () => {
         {showEditRoomPopup && <EditRoom />}
       </div>
 
-      <div class="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
+      <div className="footer border-t-2 border-goldAccents p-4 bg-blueSecondary text-white">
         <p>© 2023 An average table</p>
       </div>
     </div>
