@@ -76,19 +76,21 @@ export const Player = () => {
               </div>
             </div>
           </div>
-          {/* {users.map((user) => {
-            <div className="bottom">
-              <div className="leftBottom">
-                <div></div>
-                <p>{user.name}</p>
+          {users.map((user) => {
+            return (
+              <div className="bottom">
+                <div className="leftBottom">
+                  <div></div>
+                  <p>{user.email}</p>
+                </div>
+                <ul className="dots">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </ul>
               </div>
-              <ul className="dots">
-                <div></div>
-                <div></div>
-                <div></div>
-              </ul>
-            </div>;
-          })} */}
+            );
+          })}
         </div>
       </div>
       <div className="popUpPlayer">{AddPlayerPopup && <AddPlayer />}</div>
