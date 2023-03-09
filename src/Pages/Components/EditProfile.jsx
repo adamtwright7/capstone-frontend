@@ -13,7 +13,7 @@ export const EditProfile = () => {
     password: "",
     bio: "",
   });
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.persistedReducer.user);
 
   const editProfile = async () => {
     const newProfileInfo = {

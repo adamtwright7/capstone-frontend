@@ -5,7 +5,7 @@ import { setRoomPopup } from "../Reducers/RoomPopupSlice";
 const CreateRoom = () => {
   // Redux state to manage this pop-up showing
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.persistedReducer.user);
 
   // local state to prepare to send info to the database.
   const [roomInfo, setRoomInfo] = useState({
@@ -52,11 +52,19 @@ const CreateRoom = () => {
                   Room Name
                 </label>
                 <input
+                  // keeps track of user input
                   onChange={(e) => {
                     setRoomInfo((roomInfo) => ({
                       ...roomInfo,
                       name: e.target.value,
                     }));
+                  }}
+                  // triggers the action on enter
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      createRoom();
+                      dispatch(setRoomPopup());
+                    }
                   }}
                   class="w-full p-2 rounded-lg"
                   type="text"
@@ -74,6 +82,12 @@ const CreateRoom = () => {
                       ...roomInfo,
                       image: e.target.value,
                     }));
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      createRoom();
+                      dispatch(setRoomPopup());
+                    }
                   }}
                   class="w-full p-2 rounded-lg"
                   type="text"

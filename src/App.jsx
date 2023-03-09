@@ -8,20 +8,17 @@ import ErrorPage from "./Pages/ErrorPage";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-
 function App() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.persistedReducer.user);
   return (
     <Routes>
       {/* If you're logged in, the site sends you to the profile page. It also allows the rooms and scenes page. */}
       {user.email && (
-
-      <>
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/scene" element={<Scenes />} />
-      <Route path="/room" element={<Rooms />} />
-      </>
-
+        <>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/scene" element={<Scenes />} />
+          <Route path="/room" element={<Rooms />} />
+        </>
       )}
 
       {/* If you're not logged in yet, the site sends you back to the home page when you try to go to the profile/rooms/scenes page. 
