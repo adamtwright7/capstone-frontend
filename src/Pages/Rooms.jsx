@@ -32,14 +32,14 @@ export const Rooms = () => {
         {/* Display all the images on the board */}
         {PiecesToDrop.map((piece) => (
           <motion.img
+            key={piece.id}
             drag
             whileDrag={{ scale: 1.1, rotate: 60 }}
             whileHover={{ scale: 1.1 }}
             dragMomentum={false}
             dragConstraints={parentRef}
             src={piece.image}
-            key={piece.id}
-            className="w-8 z-15 absolute bottom-1/2 left-1/2"
+            className="w-8 z-20 absolute bottom-1/2 left-1/2 rounded-full"
           />
         ))}
         <motion.div className="trashCan" ref={ref}>

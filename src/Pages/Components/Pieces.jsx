@@ -88,11 +88,11 @@ export const Pieces = () => {
             return (
               <button
                 key={resource.id}
-                className="w-[3rem] rounded-full"
-                onClick={() => dispatch(setPieceToDrop(resource.image))}
+                className="w-[3rem] rounded-full z-15"
+                onClick={() => dispatch(setPieceToDrop(resource))}
               >
                 <img
-                  className="rounded-full overflow-scroll min-w-[3rem]"
+                  className="rounded-full overflow-scroll max-w-[3rem] z-15"
                   src={resource.image}
                 />
               </button>
