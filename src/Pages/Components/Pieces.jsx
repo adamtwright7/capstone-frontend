@@ -16,6 +16,7 @@ export const Pieces = () => {
   const room = useSelector((state) => state.persistedReducer.room);
 
   const [resources, setResources] = useState([]);
+  const [currentPieceCount, setCurrentPieceCount] = useState(1);
 
   const loadResources = async () => {
     const myHeaders = new Headers();
@@ -69,7 +70,13 @@ export const Pieces = () => {
                 whileHover={{ scale: 1.1 }}
                 key={resource.id}
                 className="min-w-[3rem] rounded-full z-15"
-                onClick={() => dispatch(setPieceToDrop(resource))}
+                // need to add a key for each piece we drop.
+                onClick={() => {
+                  dispatch(
+                    setPieceToDrop({ ...resource, key: currentPieceCount })
+                  );
+                  setCurrentPieceCount(currentPieceCount + 1);
+                }}
               >
                 <img
                   className="rounded-full overflow-scroll max-w-[3rem] hover: cursor-grab "
