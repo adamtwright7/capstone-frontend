@@ -72,7 +72,7 @@ export const Scenes = () => {
           <div className="bottomCreateImg">
             {scenes.map((scene) => {
               return (
-                <div key={scenes.id} className="bin">
+                <div key={scene.id} className="bin">
                   <h2 className="roomNumber">{scene.name}</h2>
                   <button>
                     <MdDeleteForever />
