@@ -256,7 +256,7 @@ const ProfilePage = () => {
             return (
               <div key={room.id} className="flex flex-col">
                 <div className="w-40 h-40 rounded-md overflow-hidden text-center">
-                  <Link to="/room">
+                  <Link onClick={() => dispatch(setRoom(room))} to="/room">
                     <p className="text-gray-200 mt-4 z-5 relative">
                       {room.name}
                     </p>

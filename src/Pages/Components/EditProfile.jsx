@@ -46,6 +46,8 @@ export const EditProfile = () => {
 
     // Also logs you out, in case you changed your password.
     dispatch(setUser(""));
+    // Closes this popup
+    dispatch(setProfilePopup());
 
     //Navigate to home page.
     navigate("/");
