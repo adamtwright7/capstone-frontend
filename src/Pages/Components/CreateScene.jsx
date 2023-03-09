@@ -4,6 +4,8 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowCreateScenePopup } from "../../Reducers/showCreateScenePopupSlice";
 import { motion } from "framer-motion";
+import { setReloadScenes } from "../../Reducers/reloadScenesSlice";
+import { toast } from "react-toastify";
 
 export const CreateScene = () => {
   const dispatch = useDispatch();
@@ -41,8 +43,23 @@ export const CreateScene = () => {
       requestOptions
     );
 
-    // refreshes the page to see the new room created
-    window.location.reload(false);
+    // This should reload the scenes
+    dispatch(setReloadScenes());
+
+    // gives the user feedback
+    toast("Scene created!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+    // Closes the create scene popup
+    dispatch(setShowCreateScenePopup());
   };
 
   return (
@@ -70,6 +87,11 @@ export const CreateScene = () => {
                 name: e.target.value,
               }));
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                createScene();
+              }
+            }}
             type="text"
             placeholder="Scene name"
           />
@@ -79,6 +101,11 @@ export const CreateScene = () => {
                 ...sceneInfo,
                 image: e.target.value,
               }));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                createScene();
+              }
             }}
             type="text"
             placeholder="Scene Link Here!"

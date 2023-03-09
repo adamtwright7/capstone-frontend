@@ -10,6 +10,7 @@ import showAddPiecePopupReducer from "./Reducers/showAddPiecePopupSlice";
 import showEditRoomPopupReducer from "./Reducers/showEditRoomPopupSlice";
 import PieceToDropReducer from "./Reducers/PieceToDropSlice";
 import roomReducer from "./Reducers/RoomSlice";
+import reloadScenesReducer from "./Reducers/reloadScenesSlice";
 
 // persist imports
 import { persistStore, persistReducer } from "redux-persist";
@@ -44,6 +45,7 @@ export const store = configureStore({
     showEditRoomPopup: showEditRoomPopupReducer,
     PiecesToDrop: PieceToDropReducer,
     persistedReducer: persistedReducer,
+    reloadScenes: reloadScenesReducer,
   },
   // middleware: [thunk] // Again, thunk in case we want it.
 });
