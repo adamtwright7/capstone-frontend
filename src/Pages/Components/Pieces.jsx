@@ -51,12 +51,7 @@ export const Pieces = () => {
         </div>
       )}
       <div className="mainPieces">
-        <motion.div
-          className="topChar"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="topChar">
           <button className="envButtons">
             <FaHorseHead />
           </button>
@@ -66,19 +61,11 @@ export const Pieces = () => {
           >
             <HiOutlinePlusCircle />
           </button>
-        </motion.div>
-        <motion.div
-          className="bottomPics"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+        </div>
+        <motion.div className="bottomPics">
           {resources.map((resource) => {
             return (
               <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 2.0 }}
                 whileHover={{ scale: 1.1 }}
                 key={resource.id}
                 className="min-w-[3rem] rounded-full z-15"
