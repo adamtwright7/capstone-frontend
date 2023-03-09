@@ -1,12 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AddPlayer.css";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAddPlayerPopup } from "../../Reducers/AddPlayerPopupSlice";
 import { motion } from "framer-motion";
 
 export const AddPlayer = () => {
   const dispatch = useDispatch();
+
+  // For backend routes.
+  const room = useSelector((state) => state.persistedReducer.room);
+
+  // local state to prepare to send info to the database.
+  const [emailToAdd, setEmailToAdd] = useState("");
+
+  const addUser = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const addUserInfo = {
+      email: emailToAdd,
+      roomID: room.id,
+    };
+
+    const JSONaddUserInfo = JSON.stringify(addUserInfo);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONaddUserInfo,
+      redirect: "follow",
+    };
+
+    await fetch(
+      "https://plotpointsbackend.onrender.com/rooms/addUser",
+      requestOptions
+    );
+
+    window.location.reload(false);
+  };
 
   return (
     <motion.div
@@ -22,8 +54,28 @@ export const AddPlayer = () => {
           </button>
         </div>
       </div>
-      <input type="text" placeholder="Input Email" />
-      <button className="addButton"> Add </button>
+      <input
+        onChange={(e) => {
+          setEmailToAdd(e.target.value);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            addUser();
+            dispatch(setAddPlayerPopup());
+          }
+        }}
+        type="text"
+        placeholder="Input Email"
+      />
+      <button
+        className="addButton"
+        onClick={() => {
+          addUser();
+          dispatch(setAddPlayerPopup());
+        }}
+      >
+        Add
+      </button>
     </motion.div>
   );
 };

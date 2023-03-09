@@ -40,7 +40,7 @@ const ProfilePage = () => {
     };
 
     const roomsRaw = await fetch(
-      "https://plotpointsbackend.onrender.com/rooms/view",
+      "https://plotpointsbackend.onrender.com/rooms/viewRooms",
       requestOptions
     );
 
