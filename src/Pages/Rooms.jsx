@@ -9,6 +9,7 @@ import { GiHastyGrave } from "react-icons/gi";
 import { removePieceToDrop } from "../Reducers/PieceToDropSlice";
 
 export const Rooms = () => {
+  // for dropping onto the map and moving around pieces
   const parentRef = useRef();
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -17,6 +18,7 @@ export const Rooms = () => {
   useEffect(() => {
     dispatch(removePieceToDrop(PiecesToDrop.id));
   }, [isInView]);
+
   return (
     <div className="mainRoom">
       <img

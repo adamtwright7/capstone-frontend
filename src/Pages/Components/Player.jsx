@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./player.css";
 import { Link } from "react-router-dom";
 import { AiFillPlusSquare } from "react-icons/ai";
@@ -10,6 +10,37 @@ import { setAddPlayerPopup } from "../../Reducers/AddPlayerPopupSlice";
 export const Player = () => {
   const AddPlayerPopup = useSelector((state) => state.AddPlayerPopup);
   const dispatch = useDispatch();
+
+  // When the page loads, we need to view all the users in this room.
+  const room = useSelector((state) => state.persistedReducer.room);
+
+  const [users, setUsers] = useState([]);
+
+  const loadUsers = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONroomID = JSON.stringify({ roomID: room.id });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONroomID,
+      redirect: "follow",
+    };
+
+    const usersRaw = await fetch(
+      "https://plotpointsbackend.onrender.com/rooms/viewUsers",
+      requestOptions
+    );
+
+    const usersResult = await usersRaw.json();
+    setUsers(usersResult); // Store these rooms in local state
+  };
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   return (
     <>
@@ -45,19 +76,19 @@ export const Player = () => {
               </div>
             </div>
           </div>
-          <div className="bottom">
-            <div className="leftBottom">
-              <div></div>
-              <p>GM</p>
-            </div>
-            <Link to="/">
+          {/* {users.map((user) => {
+            <div className="bottom">
+              <div className="leftBottom">
+                <div></div>
+                <p>{user.name}</p>
+              </div>
               <ul className="dots">
                 <div></div>
                 <div></div>
                 <div></div>
               </ul>
-            </Link>
-          </div>
+            </div>;
+          })} */}
         </div>
       </div>
       <div className="popUpPlayer">{AddPlayerPopup && <AddPlayer />}</div>

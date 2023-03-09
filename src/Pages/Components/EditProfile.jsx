@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProfilePopup } from "../../Reducers/ProfilePopupSlice";
 import { setUser } from "../../Reducers/UserSlice";
 import "./EditProfile.css";
+import { useNavigate } from "react-router-dom";
 
 export const EditProfile = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // A function to edit your profile. Works off the Redux states `user` and `editProfileInfo`
   const [editProfileInfo, setEditProfileInfo] = useState({
@@ -72,6 +74,11 @@ export const EditProfile = () => {
                 email: e.target.value,
               }));
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                editProfile();
+              }
+            }}
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="text"
@@ -88,6 +95,11 @@ export const EditProfile = () => {
                 ...editProfileInfo,
                 password: e.target.value,
               }));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                editProfile();
+              }
             }}
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
