@@ -15,8 +15,8 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
   // Getting the user info from state
-  const user = useSelector((state) => state.user);
-  const room = useSelector((state) => state.room);
+  const user = useSelector((state) => state.persistedReducer.user);
+  const room = useSelector((state) => state.persistedReducer.room);
 
   // Redux state for pop-ups
   const ProfilePopup = useSelector((state) => state.ProfilePopup);
@@ -79,8 +79,8 @@ const ProfilePage = () => {
       requestOptions
     );
 
-    // // refreshes the page to see the new room editted
-    // window.location.reload(false);
+    // refreshes the page to see the new room editted
+    window.location.reload(false);
   };
 
   return (

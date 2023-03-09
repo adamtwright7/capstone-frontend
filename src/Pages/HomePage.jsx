@@ -9,8 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { GrGithub } from "react-icons/gr";
 
 const HomePage = ({ toastMessage }) => {
-  const user = useSelector((state) => state.user);
-
   // Toast emitter for if there's an error message. This loads twice in React strict mode, but shouldn't in production.
   // This isn't in a useEffect because I want errors to keep popping up if a user continues to try to go to a page without logging in.
   toast(toastMessage, {

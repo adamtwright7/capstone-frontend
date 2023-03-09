@@ -4,7 +4,7 @@ import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
 
 export const EditRoom = () => {
   const dispatch = useDispatch();
-  const room = useSelector((state) => state.room);
+  const room = useSelector((state) => state.persistedReducer.room);
 
   // local state to prepare to send info to the database.
   const [roomInfo, setRoomInfo] = useState({
@@ -35,8 +35,8 @@ export const EditRoom = () => {
       requestOptions
     );
 
-    // // refreshes the page to see the new room editted. Commented out until the reducer refresh issue is solved.
-    // window.location.reload(false);
+    // refreshes the page to see the new room editted. Commented out until the reducer refresh issue is solved.
+    window.location.reload(false);
   };
 
   return (
@@ -52,11 +52,18 @@ export const EditRoom = () => {
             Room Name
           </label>
           <input
+            // keeps track of the user's input in local state
             onChange={(e) => {
               setRoomInfo((roomInfo) => ({
                 ...roomInfo,
                 name: e.target.value,
               }));
+            }}
+            // triggers the backend function on an enter as well
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                editRoom();
+              }
             }}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="room-name"
@@ -75,6 +82,11 @@ export const EditRoom = () => {
                 ...roomInfo,
                 image: e.target.value,
               }));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                editRoom();
+              }
             }}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="img-url"

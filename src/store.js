@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./Reducers/UserSlice";
 import profileReducer from "./Reducers/ProfilePopupSlice";
 import roomPopupReducer from "./Reducers/RoomPopupSlice";
@@ -23,14 +23,17 @@ const persistConfig = {
   storage,
 };
 
-// makes the userReducer persist
-const persistedUserReducer = persistReducer(persistConfig, userReducer);
-const persistedRoomReducer = persistReducer(persistConfig, roomReducer);
+// Combining the persisted reducers
+const rootReducer = combineReducers({
+  user: userReducer,
+  room: roomReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // Standard store setup
 export const store = configureStore({
   reducer: {
-    user: persistedUserReducer,
     ProfilePopup: profileReducer,
     RoomPopup: roomPopupReducer,
     AddPlayerPopup: addPlayerReducer,
@@ -40,7 +43,7 @@ export const store = configureStore({
     showAddPiecePopup: showAddPiecePopupReducer,
     showEditRoomPopup: showEditRoomPopupReducer,
     PiecesToDrop: PieceToDropReducer,
-    room: persistedRoomReducer,
+    persistedReducer: persistedReducer,
   },
   // middleware: [thunk] // Again, thunk in case we want it.
 });
