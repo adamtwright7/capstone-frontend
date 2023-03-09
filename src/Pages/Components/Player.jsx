@@ -78,7 +78,7 @@ export const Player = () => {
           </div>
           {users.map((user) => {
             return (
-              <div className="bottom">
+              <div key={user.id} className="bottom">
                 <div className="leftBottom">
                   <div></div>
                   <p>{user.email}</p>
