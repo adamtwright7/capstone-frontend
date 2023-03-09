@@ -12,6 +12,11 @@ import PieceToDropReducer from "./Reducers/PieceToDropSlice";
 import roomReducer from "./Reducers/RoomSlice";
 import backgroundImageReducer from "./Reducers/BackgroundImageSlice";
 
+import PlayersDropMenu from "./Reducers/PlayersDropMenu";
+
+import reloadScenesReducer from "./Reducers/reloadScenesSlice";
+
+
 // persist imports
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
@@ -44,8 +49,11 @@ export const store = configureStore({
     showAddPiecePopup: showAddPiecePopupReducer,
     showEditRoomPopup: showEditRoomPopupReducer,
     PiecesToDrop: PieceToDropReducer,
+    playersDropMenu: PlayersDropMenu,
     persistedReducer: persistedReducer,
     backgroundImage: backgroundImageReducer,
+    reloadScenes: reloadScenesReducer,
+
   },
   // middleware: [thunk] // Again, thunk in case we want it.
 });

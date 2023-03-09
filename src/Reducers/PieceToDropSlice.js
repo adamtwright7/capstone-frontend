@@ -10,7 +10,7 @@ export const PieceToDropSlice = createSlice({
       state.push(action.payload);
     },
     removePieceToDrop: (state, action) => {
-      return state.filter((item) => item.id !== action.payload.id);
+      return state.filter((piece) => piece.key !== action.payload.key);
     },
   },
 });

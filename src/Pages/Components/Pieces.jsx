@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowAddPiecePopup } from "../../Reducers/showAddPiecePopupSlice";
 import { setPieceToDrop } from "../../Reducers/PieceToDropSlice";
+import { IoTrashBinOutline } from "react-icons/io5";
 
 export const Pieces = () => {
   const showAddPiecePopup = useSelector((state) => state.showAddPiecePopup);
@@ -16,6 +17,7 @@ export const Pieces = () => {
   const room = useSelector((state) => state.persistedReducer.room);
 
   const [resources, setResources] = useState([]);
+  const [currentPieceCount, setCurrentPieceCount] = useState(1);
 
   const loadResources = async () => {
     const myHeaders = new Headers();
@@ -43,6 +45,29 @@ export const Pieces = () => {
     loadResources();
   }, []);
 
+  // Deletes resource from the database (and this bar)
+  const deleteResource = async (resource) => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONresourceInfo = JSON.stringify({ resourceID: resource.id });
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: JSONresourceInfo,
+      redirect: "follow",
+    };
+
+    await fetch(
+      "https://plotpointsbackend.onrender.com/resources/delete",
+      requestOptions
+    );
+
+    // refreshes the page to see the resource deleted
+    window.location.reload(false);
+  };
+
   return (
     <>
       {showAddPiecePopup && (
@@ -65,33 +90,38 @@ export const Pieces = () => {
         <motion.div className="bottomPics">
           {resources.map((resource) => {
             return (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                key={resource.id}
-                className="min-w-[3rem] rounded-full z-15"
-                onClick={() => dispatch(setPieceToDrop(resource))}
-              >
-                <img
-                  className="rounded-full overflow-scroll max-w-[3rem] hover: cursor-grab "
-                  src={resource.image}
-                />
-              </motion.button>
+              <>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  key={resource.id}
+                  className="min-w-[3rem] rounded-full z-15"
+                  // need to add a key for each piece we drop.
+                  onClick={() => {
+                    dispatch(
+                      setPieceToDrop({ ...resource, key: currentPieceCount })
+                    );
+                    setCurrentPieceCount(currentPieceCount + 1);
+                  }}
+                >
+                  <img
+                    className="rounded-full overflow-scroll max-w-[3rem] hover: cursor-grab "
+                    src={resource.image}
+                  />
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.2, rotate: 25 }}
+
+               
+                  onClick={() => deleteResource(resource)}
+
+                  className="trashBottom"
+                >
+                  <IoTrashBinOutline />
+                </motion.button>
+              </>
             );
           })}
-
-          {/* <button
-            className="w-[3rem]"
-            onClick={() =>
-              dispatch(
-                setPieceToDrop(
-                  "https://cdnb.artstation.com/p/assets/images/images/041/117/609/large/jack-wood-lewis-token.jpg?1630816201"
-                )
-              )
-            }
-          >
-            <img src="https://cdnb.artstation.com/p/assets/images/images/041/117/609/large/jack-wood-lewis-token.jpg?1630816201" />
-          </button> */}
-          {/*  end of char making */}
         </motion.div>
       </div>
     </>
