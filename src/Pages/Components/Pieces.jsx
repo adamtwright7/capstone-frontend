@@ -85,9 +85,12 @@ export const Pieces = () => {
                     src={resource.image}
                   />
                 </motion.button>
-                <button className="trashBottom">
+                <motion.button
+                  whileHover={{ scale: 1.2, rotate: 25 }}
+                  className="trashBottom"
+                >
                   <IoTrashBinOutline />
-                </button>
+                </motion.button>
               </>
             );
           })}
