@@ -37,12 +37,15 @@ export const Rooms = () => {
             dragMomentum={false}
             dragConstraints={parentRef}
             ref={ref}
-            className="w-10 absolute bottom-1/2 left-1/2 border-8 border-red-500 z-20"
+            className="w-10 absolute bottom-1/2 left-1/2 "
           >
-            <button onClick={() => dispatch(removePieceToDrop(piece))}>
+            <button
+              id="destroyPiece"
+              onClick={() => dispatch(removePieceToDrop(piece))}
+            >
               <AiFillCloseCircle />
             </button>
-            <img src={piece.image} className="rounded-full" />
+            <img src={piece.image} className="rounded-full" id="dragPic" />
           </motion.div>
         ))}
         <div className="roomPlayer">

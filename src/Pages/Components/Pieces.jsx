@@ -108,12 +108,17 @@ export const Pieces = () => {
                     src={resource.image}
                   />
                 </motion.button>
-                <button
+
+                <motion.button
+                  whileHover={{ scale: 1.2, rotate: 25 }}
+
+               
                   onClick={() => deleteResource(resource)}
+
                   className="trashBottom"
                 >
                   <IoTrashBinOutline />
-                </button>
+                </motion.button>
               </>
             );
           })}
