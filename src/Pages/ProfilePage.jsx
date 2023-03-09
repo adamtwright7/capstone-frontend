@@ -240,7 +240,7 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      <div className="z-10 shadow-2xl w-3/4 absolute">
+      <div className="z-10 w-3/4 absolute mx-64">
         {ProfilePopup && <EditProfile />}
       </div>
 
