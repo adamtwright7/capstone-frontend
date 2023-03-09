@@ -249,12 +249,15 @@ const ProfilePage = () => {
         <p className="text-white mt-4">{user.bio}</p>
       </div>
 
-      <div className="bg-gray-800 p-4 rounded-md border-2 border-gray-700">
+      <div className="bg-gray-800 rounded-md border-2 border-gray-700 min-h-screen">
         <h2 className="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
         <div className="flex flex-wrap gap-4 justify-center">
           {rooms.map((room) => {
             return (
-              <div key={room.id} className="flex flex-col">
+              <div
+                key={room.id}
+                className="flex flex-col border p-10 border-goldAccents"
+              >
                 <div className="w-40 h-40 rounded-md overflow-hidden text-center">
                   <Link onClick={() => dispatch(setRoom(room))} to="/room">
                     <p className="text-gray-200 mt-4 z-5 relative">
@@ -298,7 +301,7 @@ const ProfilePage = () => {
           )}
         </div>
         <button
-          className="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md"
+          className="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-gray-200 rounded-md mx-40"
           id="openButton"
           onClick={() => dispatch(setRoomPopup())}
         >
