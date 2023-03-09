@@ -45,6 +45,29 @@ export const Pieces = () => {
     loadResources();
   }, []);
 
+  // Deletes resource from the database (and this bar)
+  const deleteResource = async (resource) => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONresourceInfo = JSON.stringify({ resourceID: resource.id });
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: JSONresourceInfo,
+      redirect: "follow",
+    };
+
+    await fetch(
+      "https://plotpointsbackend.onrender.com/resources/delete",
+      requestOptions
+    );
+
+    // refreshes the page to see the resource deleted
+    window.location.reload(false);
+  };
+
   return (
     <>
       {showAddPiecePopup && (
@@ -85,26 +108,15 @@ export const Pieces = () => {
                     src={resource.image}
                   />
                 </motion.button>
-                <button className="trashBottom">
+                <button
+                  onClick={() => deleteResource(resource)}
+                  className="trashBottom"
+                >
                   <IoTrashBinOutline />
                 </button>
               </>
             );
           })}
-
-          {/* <button
-            className="w-[3rem]"
-            onClick={() =>
-              dispatch(
-                setPieceToDrop(
-                  "https://cdnb.artstation.com/p/assets/images/images/041/117/609/large/jack-wood-lewis-token.jpg?1630816201"
-                )
-              )
-            }
-          >
-            <img src="https://cdnb.artstation.com/p/assets/images/images/041/117/609/large/jack-wood-lewis-token.jpg?1630816201" />
-          </button> */}
-          {/*  end of char making */}
         </motion.div>
       </div>
     </>
