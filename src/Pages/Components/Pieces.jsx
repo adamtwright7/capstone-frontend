@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowAddPiecePopup } from "../../Reducers/showAddPiecePopupSlice";
 import { setPieceToDrop } from "../../Reducers/PieceToDropSlice";
+import { IoTrashBinOutline } from "react-icons/io5";
 
 export const Pieces = () => {
   const showAddPiecePopup = useSelector((state) => state.showAddPiecePopup);
@@ -66,23 +67,28 @@ export const Pieces = () => {
         <motion.div className="bottomPics">
           {resources.map((resource) => {
             return (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                key={resource.id}
-                className="min-w-[3rem] rounded-full z-15"
-                // need to add a key for each piece we drop.
-                onClick={() => {
-                  dispatch(
-                    setPieceToDrop({ ...resource, key: currentPieceCount })
-                  );
-                  setCurrentPieceCount(currentPieceCount + 1);
-                }}
-              >
-                <img
-                  className="rounded-full overflow-scroll max-w-[3rem] hover: cursor-grab "
-                  src={resource.image}
-                />
-              </motion.button>
+              <>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  key={resource.id}
+                  className="min-w-[3rem] rounded-full z-15"
+                  // need to add a key for each piece we drop.
+                  onClick={() => {
+                    dispatch(
+                      setPieceToDrop({ ...resource, key: currentPieceCount })
+                    );
+                    setCurrentPieceCount(currentPieceCount + 1);
+                  }}
+                >
+                  <img
+                    className="rounded-full overflow-scroll max-w-[3rem] hover: cursor-grab "
+                    src={resource.image}
+                  />
+                </motion.button>
+                <button className="trashBottom">
+                  <IoTrashBinOutline />
+                </button>
+              </>
             );
           })}
 
