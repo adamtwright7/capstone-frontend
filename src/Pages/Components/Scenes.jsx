@@ -8,6 +8,7 @@ import { setShowScenePopup } from "../../Reducers/showScenePopupSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowCreateScenePopup } from "../../Reducers/showCreateScenePopupSlice";
 import { motion } from "framer-motion";
+import { setBGimage } from "../../Reducers/BackgroundImageSlice";
 import { toast, ToastContainer } from "react-toastify";
 
 export const Scenes = () => {
@@ -117,7 +118,13 @@ export const Scenes = () => {
                   >
                     <MdDeleteForever />
                   </button>
-                  <img className="sceneImages" src={scene.image} />
+                  <img
+                    onClick={() => {
+                      dispatch(setBGimage(scene.image));
+                    }}
+                    className="sceneImages"
+                    src={scene.image}
+                  />
                 </div>
               );
             })}

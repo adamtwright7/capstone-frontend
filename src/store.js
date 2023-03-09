@@ -10,6 +10,7 @@ import showAddPiecePopupReducer from "./Reducers/showAddPiecePopupSlice";
 import showEditRoomPopupReducer from "./Reducers/showEditRoomPopupSlice";
 import PieceToDropReducer from "./Reducers/PieceToDropSlice";
 import roomReducer from "./Reducers/RoomSlice";
+import backgroundImageReducer from "./Reducers/BackgroundImageSlice";
 
 import PlayersDropMenu from "./Reducers/PlayersDropMenu";
 
@@ -50,7 +51,9 @@ export const store = configureStore({
     PiecesToDrop: PieceToDropReducer,
     playersDropMenu: PlayersDropMenu,
     persistedReducer: persistedReducer,
+    backgroundImage: backgroundImageReducer,
     reloadScenes: reloadScenesReducer,
+
   },
   // middleware: [thunk] // Again, thunk in case we want it.
 });
