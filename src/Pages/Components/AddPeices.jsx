@@ -1,12 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AddPeices.css";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setShowAddPiecePopup } from "../../Reducers/showAddPiecePopupSlice";
 import { motion } from "framer-motion";
 
 export const AddPeices = () => {
   const dispatch = useDispatch();
+
+  // For backend routes.
+  const room = useSelector((state) => state.persistedReducer.room);
+
+  // local state to prepare to send info to the database.
+  const [resouceToAdd, setResourceToAdd] = useState({
+    name: "",
+    image: "",
+  });
+
+  const addResource = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const addResourceInfo = {
+      roomID: room.id,
+      name: resouceToAdd.name,
+      image: resouceToAdd.image,
+    };
+
+    const JSONaddResourceInfo = JSON.stringify(addResourceInfo);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSONaddResourceInfo,
+      redirect: "follow",
+    };
+
+    await fetch(
+      "https://plotpointsbackend.onrender.com/resources/create",
+      requestOptions
+    );
+
+    window.location.reload(false);
+  };
+
   return (
     <motion.div
       className="mainAddPeices"
@@ -21,8 +58,25 @@ export const AddPeices = () => {
           </button>
         </div>
       </div>
-      <input type="text" placeholder="Input url" />
-      <button className="addButton"> Add </button>
+      <input
+        onChange={(e) => {
+          setResourceToAdd((resouceToAdd) => ({
+            ...resouceToAdd,
+            image: e.target.value,
+          }));
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            addResource();
+            dispatch(setShowAddPiecePopup());
+          }
+        }}
+        type="text"
+        placeholder="Input url"
+      />
+      <button onClick={addResource} className="addButton">
+        Add
+      </button>
     </motion.div>
   );
 };
