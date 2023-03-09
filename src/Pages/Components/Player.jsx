@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./player.css";
 import { Link } from "react-router-dom";
-import { AiFillPlusSquare } from "react-icons/ai";
-import { BsFillPersonFill } from "react-icons/bs";
+import {
+  AiFillPlusSquare,
+  AiFillCaretDown,
+  AiOutlineCloseCircle,
+} from "react-icons/ai";
+
 import { AddPlayer } from "./AddPlayer";
 import { useDispatch, useSelector } from "react-redux";
 import { setAddPlayerPopup } from "../../Reducers/AddPlayerPopupSlice";
+import { setPlayerDropMenu } from "../../Reducers/PlayersDropMenu";
 
 export const Player = () => {
   const AddPlayerPopup = useSelector((state) => state.AddPlayerPopup);
@@ -13,6 +18,7 @@ export const Player = () => {
 
   // When the page loads, we need to view all the users in this room.
   const room = useSelector((state) => state.persistedReducer.room);
+  const playersDropMenu = useSelector((state) => state.playersDropMenu);
 
   const [users, setUsers] = useState([]);
 
@@ -70,27 +76,26 @@ export const Player = () => {
                 <button onClick={() => dispatch(setAddPlayerPopup())}>
                   <AiFillPlusSquare />
                 </button>
-                <button>
-                  <BsFillPersonFill />
+                <button onClick={() => dispatch(setPlayerDropMenu())}>
+                  <AiFillCaretDown />
                 </button>
               </div>
             </div>
           </div>
-          {users.map((user) => {
-            return (
-              <div key={user.id} className="bottom">
-                <div className="leftBottom">
-                  <div></div>
-                  <p>{user.email}</p>
+          {playersDropMenu &&
+            users.map((user) => {
+              return (
+                <div key={user.id} className="bottom">
+                  <div className="leftBottom">
+                    <div></div>
+                    <p>{user.email}</p>
+                  </div>
+                  <ul>
+                    <AiOutlineCloseCircle />
+                  </ul>
                 </div>
-                <ul className="dots">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </ul>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
       <div className="popUpPlayer">{AddPlayerPopup && <AddPlayer />}</div>

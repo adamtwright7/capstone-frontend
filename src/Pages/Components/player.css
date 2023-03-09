@@ -35,7 +35,7 @@
   display: flex;
   border-bottom: 1px solid #d6ad60;
   width: 15rem;
-  justify-content: space-around;
+  justify-content: space-between;
 
   gap: 50px;
   align-items: center;
@@ -50,7 +50,7 @@
 }
 .imgIcons {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   font-size: 25px;
 }
 
