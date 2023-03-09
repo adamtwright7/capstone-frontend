@@ -48,6 +48,27 @@ export const Scenes = () => {
     loadScenes();
   }, []);
 
+  const deleteScene = async (scene) => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONsceneID = JSON.stringify({ sceneID: scene.id });
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: JSONsceneID,
+      redirect: "follow",
+    };
+
+    const deletedScene = await fetch(
+      "https://plotpointsbackend.onrender.com/scenes/delete",
+      requestOptions
+    );
+
+    window, location.reload(false);
+  };
+
   // const scenes = [
   //   {
   //     id: 8,
@@ -107,7 +128,11 @@ export const Scenes = () => {
               return (
                 <div key={scene.id} className="bin">
                   <h2 className="roomNumber">{scene.name}</h2>
-                  <button>
+                  <button
+                    onClick={() => {
+                      deleteScene(scene);
+                    }}
+                  >
                     <MdDeleteForever />
                   </button>
                   <img className="sceneImages" src={scene.image} />
