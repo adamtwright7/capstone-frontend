@@ -39,7 +39,7 @@ export const Rooms = () => {
             dragMomentum={false}
             dragConstraints={parentRef}
             src={piece.image}
-            className="w-8 z-20 absolute bottom-1/2 left-1/2 rounded-full"
+            className="w-8  absolute bottom-1/2 left-1/2 rounded-full"
           />
         ))}
         <motion.div className="trashCan" ref={ref}>

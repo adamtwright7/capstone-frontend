@@ -72,7 +72,12 @@ export const Pieces = () => {
         </div>
       )}
       <div className="mainPieces">
-        <div className="topChar">
+        <motion.div
+          className="topChar"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <button className="envButtons">
             <FaHorseHead />
           </button>
@@ -82,20 +87,29 @@ export const Pieces = () => {
           >
             <HiOutlinePlusCircle />
           </button>
-        </div>
-        <div className="bottomPics">
+        </motion.div>
+        <motion.div
+          className="bottomPics"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           {resources.map((resource) => {
             return (
-              <button
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2.0 }}
+                whileHover={{ scale: 1.1 }}
                 key={resource.id}
-                className="w-[3rem] rounded-full z-15"
+                className="min-w-[3rem] rounded-full z-15"
                 onClick={() => dispatch(setPieceToDrop(resource))}
               >
                 <img
-                  className="rounded-full overflow-scroll max-w-[3rem] z-15"
+                  className="rounded-full overflow-scroll max-w-[3rem] hover: cursor-grab "
                   src={resource.image}
                 />
-              </button>
+              </motion.button>
             );
           })}
 
@@ -112,7 +126,7 @@ export const Pieces = () => {
             <img src="https://cdnb.artstation.com/p/assets/images/images/041/117/609/large/jack-wood-lewis-token.jpg?1630816201" />
           </button> */}
           {/*  end of char making */}
-        </div>
+        </motion.div>
       </div>
     </>
   );
