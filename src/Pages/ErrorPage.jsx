@@ -3,7 +3,7 @@ import React from "react";
 const ErrorPage = () => {
   return (
     <div>
-      <body className="bg-blueSecondary">
+      <body className="bg-blueSecondary max-h-screen">
         <div className="container mx-auto py-16 px-4">
           <div className="flex flex-col items-center justify-center">
             <img
