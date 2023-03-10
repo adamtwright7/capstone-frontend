@@ -121,6 +121,7 @@ export const Scenes = () => {
                   <img
                     onClick={() => {
                       dispatch(setBGimage(scene.image));
+                      dispatch(setShowScenePopup());
                     }}
                     className="sceneImages"
                     src={scene.image}

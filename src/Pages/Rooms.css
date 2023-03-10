@@ -1,5 +1,5 @@
 .mainRoom {
-  background-color: grey;
+  background-color: #1c1c1d;
   width: 99vw;
   height: 100vh;
   z-index: -10;
@@ -28,7 +28,7 @@
 .middlePiece {
   position: relative;
   width: 25px;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 .mainMap {
   position: absolute;
