@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setRoomPopup } from "../Reducers/RoomPopupSlice";
+import { toast, ToastContainer } from "react-toastify";
+import { setReloadRooms } from "../Reducers/ReloadRoomsSlice";
 
 const CreateRoom = () => {
   // Redux state to manage this pop-up showing
   const dispatch = useDispatch();
   const user = useSelector((state) => state.persistedReducer.user);
+
+  // To populate the user's rooms from the database, load in those rooms when the page loads.
 
   // local state to prepare to send info to the database.
   const [roomInfo, setRoomInfo] = useState({
@@ -36,8 +40,20 @@ const CreateRoom = () => {
       requestOptions
     );
 
-    // refreshes the page to see the new room created
-    window.location.reload(false);
+    // This should reload the scenes
+    dispatch(setReloadRooms());
+
+    // gives the user feedback
+    toast("Room created!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   return (

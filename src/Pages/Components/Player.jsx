@@ -53,21 +53,19 @@ export const Player = () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const JSONuserID = JSON.stringify({ userID: user.id });
-    const JSONroomID = JSON.stringify({ roomID: room.id });
-
-    console.log("Here is the roomID:", JSONroomID);
-    console.log("Here is the userID:", JSONuserID);
+    const JSONremovePlayer = JSON.stringify({
+      userID: user.id,
+      roomID: room.id,
+    });
 
     const requestOptions = {
       method: "DELETE",
       headers: myHeaders,
-      body: JSONuserID,
-      JSONroomID,
+      body: JSONremovePlayer,
       redirect: "follow",
     };
 
-    const removingPlayer = await fetch(
+    await fetch(
       "https://plotpointsbackend.onrender.com/rooms/removeplayer",
       requestOptions
     );
