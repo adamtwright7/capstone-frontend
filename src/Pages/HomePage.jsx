@@ -62,20 +62,7 @@ const HomePage = ({ toastMessage }) => {
           our namesake).
         </p>
       </div>
-      {/* ---------------------------- */}
-      <section>
-        <h2 className="imgh2">Expansive maps!</h2>
-        <div className="gamePic1">
-          <img
-            src="https://slyflourish.com/images/owlbear_rodeo_1.jpg"
-            alt=""
-          />
-          <img
-            src="https://slyflourish.com/images/owlbear_rodeo_1.jpg"
-            alt=""
-          />
-        </div>
-      </section>
+
       {/* ------------------------- */}
       <section>
         <div className="importYours">
