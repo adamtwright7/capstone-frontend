@@ -48,6 +48,10 @@ export const Player = () => {
     loadUsers();
   }, []);
 
+  const removePlayer = (user) => {
+    setUsers(users.filter((player) => player.id !== user.id));
+  };
+
   return (
     <>
       <div className="playerMain">
@@ -90,9 +94,9 @@ export const Player = () => {
                     <div></div>
                     <p>{user.email}</p>
                   </div>
-                  <ul>
+                  <button onClick={() => removePlayer(user)}>
                     <AiOutlineCloseCircle />
-                  </ul>
+                  </button>
                 </div>
               );
             })}
