@@ -64,6 +64,9 @@ const HomePage = ({ toastMessage }) => {
         <img src="https://slyflourish.com/images/owlbear_rodeo_1.jpg" alt="" />
         <img src="https://slyflourish.com/images/owlbear_rodeo_1.jpg" alt="" />
       </div>
+      <div className="importYours">
+        <h2 className="imgh2">Import your own maps/pieces!</h2>
+      </div>
       <div className="bottomSection">
         <Link to="" className="playFree">
           <button>Logout</button>
