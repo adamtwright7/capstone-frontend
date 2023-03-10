@@ -34,9 +34,16 @@
   position: absolute;
   top: 24.5%;
   height: 59%;
-  width: 99.7%;
+  width: fit-content;
   border: 2px solid #d6ad60;
 }
+
+.imgContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .trashCan {
   position: absolute;
   bottom: 10px;
