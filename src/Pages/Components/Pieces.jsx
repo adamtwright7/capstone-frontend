@@ -111,10 +111,7 @@ export const Pieces = () => {
 
                 <motion.button
                   whileHover={{ scale: 1.2, rotate: 25 }}
-
-               
                   onClick={() => deleteResource(resource)}
-
                   className="trashBottom"
                 >
                   <IoTrashBinOutline />

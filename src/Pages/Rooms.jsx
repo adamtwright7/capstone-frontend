@@ -14,9 +14,11 @@ export const Rooms = () => {
   const ref = useRef(null);
   const PiecesToDrop = useSelector((state) => state.PiecesToDrop);
   const dispatch = useDispatch();
+  const backgroundImage = useSelector((state) => state.backgroundImage);
 
   return (
     <div className="mainRoom">
+
       <div className="imgContainer">
         <img
           ref={parentRef}
@@ -25,6 +27,9 @@ export const Rooms = () => {
           alt=""
         />
       </div>
+
+      <img ref={parentRef} className="mainMap" src={backgroundImage} alt="" />
+
       <div className="roomFunction">
         <FunctionButtons />
       </div>

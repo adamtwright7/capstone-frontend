@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Scenes.css";
 import { MdDeleteForever } from "react-icons/md";
-import { BsFillPencilFill } from "react-icons/bs";
 import { CreateScene } from "./CreateScene";
 import { AiFillCloseCircle } from "react-icons/ai";
 // pop-up stuff
@@ -9,6 +8,8 @@ import { setShowScenePopup } from "../../Reducers/showScenePopupSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowCreateScenePopup } from "../../Reducers/showCreateScenePopupSlice";
 import { motion } from "framer-motion";
+import { setBGimage } from "../../Reducers/BackgroundImageSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 export const Scenes = () => {
   const showCreateScenePopup = useSelector(
@@ -18,6 +19,7 @@ export const Scenes = () => {
 
   // Getting the room info from state
   const room = useSelector((state) => state.persistedReducer.room);
+  const reloadScenes = useSelector((state) => state.reloadScenes);
 
   // To populate the user's rooms from the database, load in those rooms when the page loads.
   const [scenes, setScenes] = useState([]);
@@ -46,7 +48,7 @@ export const Scenes = () => {
 
   useEffect(() => {
     loadScenes();
-  }, []);
+  }, [reloadScenes]);
 
   const deleteScene = async (scene) => {
     const myHeaders = new Headers();
@@ -61,16 +63,30 @@ export const Scenes = () => {
       redirect: "follow",
     };
 
-    const deletedScene = await fetch(
+    await fetch(
       "https://plotpointsbackend.onrender.com/scenes/delete",
       requestOptions
     );
 
-    window, location.reload(false);
+    // gives the user feedback
+    toast("Scene deleted!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+    // reloads the scenes list.
+    loadScenes();
   };
 
   return (
     <>
+      <ToastContainer />
       <div className="popUpCreate">
         {showCreateScenePopup && <CreateScene />}
       </div>
@@ -102,7 +118,14 @@ export const Scenes = () => {
                   >
                     <MdDeleteForever />
                   </button>
-                  <img className="sceneImages" src={scene.image} />
+                  <img
+                    onClick={() => {
+                      dispatch(setBGimage(scene.image));
+                      dispatch(setShowScenePopup());
+                    }}
+                    className="sceneImages"
+                    src={scene.image}
+                  />
                 </div>
               );
             })}
