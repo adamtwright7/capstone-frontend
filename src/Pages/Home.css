@@ -88,13 +88,36 @@ img {
   width: 90%;
   border: 1px solid #d6ad60;
 }
+.gamePic2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.gamePic2 > img {
+  width: 300px;
+}
 
 .imgh2 {
   border-bottom: 1px solid #d6ad60;
   margin-top: 1rem;
   font-size: 2rem;
   color: white;
+  padding-left: 10px;
 }
+.splashScene > img {
+  border-radius: 20px;
+  border: 1px solid #d6ad60;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #222639;
+}
+.dontShow {
+  display: none;
+}
+
 .bottomSection {
   display: flex;
   flex-direction: column;
@@ -106,6 +129,9 @@ img {
   width: 12rem;
   margin-top: 1rem;
   border: 2px solid #d6ad60;
+}
+.importYours {
+  margin-bottom: 30px;
 }
 @media screen and (min-width: 739px) {
   .homeMain {
@@ -134,5 +160,25 @@ img {
   }
   .bottomSection {
     max-width: 900px;
+  }
+  .splashScene {
+    max-width: 600px;
+  }
+  .gamePic2 {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+    border: 1px solid #d6ad60;
+    background-color: #222639;
+  }
+  .gamePic2 > img {
+    max-width: 200px;
+  }
+  .imgh2 {
+    text-align: center;
+    padding-left: 0;
+  }
+  .dontShow {
+    display: block;
   }
 }
