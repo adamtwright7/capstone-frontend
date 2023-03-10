@@ -116,7 +116,7 @@ const ProfilePage = () => {
         <div className="flex bg-blueSecondary lg:hidden">
           <div className="mx-auto px-0 py-2 max-w-7xl flex justify-between items-center ml-0">
             <Link
-              to="#"
+              to="/"
               className="text-white hover:text-goldAccents px-1 py-2 rounded-md text-base font-medium flex items-center"
             >
               <svg
