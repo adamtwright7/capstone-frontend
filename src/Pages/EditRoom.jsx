@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
+import { setReloadRooms } from "../Reducers/ReloadRoomsSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 export const EditRoom = () => {
   const dispatch = useDispatch();
@@ -35,8 +37,20 @@ export const EditRoom = () => {
       requestOptions
     );
 
-    // refreshes the page to see the new room editted. Commented out until the reducer refresh issue is solved.
-    window.location.reload(false);
+    // This should reload the scenes
+    dispatch(setReloadRooms());
+
+    // gives the user feedback
+    toast("Room updated!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   return (
@@ -44,7 +58,11 @@ export const EditRoom = () => {
       id="modal"
       className="modal fixed w-full h-full top-0 left-0 flex items-center justify-center  "
     >
+
       <div className="modal-content bg-backgroundColor rounded p-8 border-2 border-goldAccents">
+
+      <ToastContainer />
+   
         <h3 className="text-lg font-semibold mb-4">Edit Room</h3>
 
         <div className="mb-4">
@@ -98,7 +116,10 @@ export const EditRoom = () => {
         <div className="flex justify-end">
           <button
             className="bg-goldAccents hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mr-2"
-            onClick={editRoom}
+            onClick={() => {
+              editRoom();
+              dispatch(setShowEditRoomPopup());
+            }}
           >
             Save
           </button>
