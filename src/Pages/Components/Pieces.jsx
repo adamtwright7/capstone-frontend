@@ -15,6 +15,7 @@ export const Pieces = () => {
 
   // When the page loads, we need to view all the resources in this room.
   const room = useSelector((state) => state.persistedReducer.room);
+  const reloadPieces = useSelector((state) => state.reloadPieces);
 
   const [resources, setResources] = useState([]);
   const [currentPieceCount, setCurrentPieceCount] = useState(1);
@@ -43,7 +44,7 @@ export const Pieces = () => {
 
   useEffect(() => {
     loadResources();
-  }, []);
+  }, [reloadPieces]);
 
   // Deletes resource from the database (and this bar)
   const deleteResource = async (resource) => {
@@ -64,8 +65,7 @@ export const Pieces = () => {
       requestOptions
     );
 
-    // refreshes the page to see the resource deleted
-    window.location.reload(false);
+    loadResources();
   };
 
   return (
@@ -111,10 +111,7 @@ export const Pieces = () => {
 
                 <motion.button
                   whileHover={{ scale: 1.2, rotate: 25 }}
-
-               
                   onClick={() => deleteResource(resource)}
-
                   className="trashBottom"
                 >
                   <IoTrashBinOutline />

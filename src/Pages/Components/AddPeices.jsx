@@ -4,6 +4,8 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowAddPiecePopup } from "../../Reducers/showAddPiecePopupSlice";
 import { motion } from "framer-motion";
+import { setReloadPieces } from "../../Reducers/reloadPiecesSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 export const AddPeices = () => {
   const dispatch = useDispatch();
@@ -41,7 +43,18 @@ export const AddPeices = () => {
       requestOptions
     );
 
-    window.location.reload(false);
+    dispatch(setReloadPieces());
+
+    toast("Piece Added!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   return (
@@ -51,6 +64,7 @@ export const AddPeices = () => {
       animate={{ x: 0, opacity: 1 }}
     >
       <div className="addHeader">
+        <ToastContainer />
         <h2>Add a Piece</h2>
         <div className="closeTag">
           <button onClick={() => dispatch(setShowAddPiecePopup())}>
