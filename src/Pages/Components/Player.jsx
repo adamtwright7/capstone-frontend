@@ -11,6 +11,7 @@ import { AddPlayer } from "./AddPlayer";
 import { useDispatch, useSelector } from "react-redux";
 import { setAddPlayerPopup } from "../../Reducers/AddPlayerPopupSlice";
 import { setPlayerDropMenu } from "../../Reducers/PlayersDropMenu";
+import { toast, ToastContainer } from "react-toastify";
 
 export const Player = () => {
   const AddPlayerPopup = useSelector((state) => state.AddPlayerPopup);
@@ -48,8 +49,43 @@ export const Player = () => {
     loadUsers();
   }, []);
 
-  const removePlayer = (user) => {
-    setUsers(users.filter((player) => player.id !== user.id));
+  const removePlayer = async (user) => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const JSONuserID = JSON.stringify({ userID: user.id });
+    const JSONroomID = JSON.stringify({ roomID: room.id });
+
+    console.log("Here is the roomID:", JSONroomID);
+    console.log("Here is the userID:", JSONuserID);
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: JSONuserID,
+      JSONroomID,
+      redirect: "follow",
+    };
+
+    const removingPlayer = await fetch(
+      "https://plotpointsbackend.onrender.com/rooms/removeplayer",
+      requestOptions
+    );
+
+    // gives the user feedback
+    toast("Player deleted!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+    // reloads the users list.
+    loadUsers();
   };
 
   return (
