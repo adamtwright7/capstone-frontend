@@ -55,6 +55,8 @@ export const AddPeices = () => {
       progress: undefined,
       theme: "dark",
     });
+
+    dispatch(setShowAddPiecePopup());
   };
 
   return (
@@ -82,7 +84,6 @@ export const AddPeices = () => {
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             addResource();
-            dispatch(setShowAddPiecePopup());
           }
         }}
         type="text"
