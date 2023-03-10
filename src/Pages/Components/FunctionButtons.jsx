@@ -28,9 +28,6 @@ export const FunctionButtons = () => {
           <button onClick={() => dispatch(setShowScenePopup())}>
             <MdLandscape />
           </button>
-          <button>
-            <RiHandCoinFill />
-          </button>
         </div>
       </div>
     </>
