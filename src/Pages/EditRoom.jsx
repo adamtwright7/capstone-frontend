@@ -51,6 +51,8 @@ export const EditRoom = () => {
       progress: undefined,
       theme: "dark",
     });
+
+    dispatch(setShowEditRoomPopup());
   };
 
   return (
@@ -58,11 +60,9 @@ export const EditRoom = () => {
       id="modal"
       className="modal fixed w-full h-full top-0 left-0 flex items-center justify-center  "
     >
-
       <div className="modal-content bg-backgroundColor rounded p-8 border-2 border-goldAccents">
+        <ToastContainer />
 
-      <ToastContainer />
-   
         <h3 className="text-lg font-semibold mb-4">Edit Room</h3>
 
         <div className="mb-4">
@@ -118,7 +118,6 @@ export const EditRoom = () => {
             className="bg-goldAccents hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mr-2"
             onClick={() => {
               editRoom();
-              dispatch(setShowEditRoomPopup());
             }}
           >
             Save
