@@ -82,6 +82,7 @@ export const Pieces = () => {
 
   // Web socket testing...
 
+  // send a message by clicking the horse icon
   const sendMessageTest = () => {
     ws.sendMessage(room.id, {
       username: "username",
