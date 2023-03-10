@@ -9,6 +9,8 @@ import { setUser } from "../Reducers/UserSlice";
 import { EditRoom } from "./EditRoom";
 import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
 import { setRoom } from "../Reducers/RoomSlice";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const ProfilePage = () => {
   // Getting the user info from state
   const user = useSelector((state) => state.persistedReducer.user);
   const room = useSelector((state) => state.persistedReducer.room);
+  const reloadRooms = useSelector((state) => state.reloadRooms);
 
   // Redux state for pop-ups
   const ProfilePopup = useSelector((state) => state.ProfilePopup);
@@ -50,7 +53,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     loadRooms();
-  }, []);
+  }, [reloadRooms]);
 
   // Logs you out.
   const logOut = () => {
@@ -79,12 +82,23 @@ const ProfilePage = () => {
       requestOptions
     );
 
-    // refreshes the page to see the new room editted
-    window.location.reload(false);
+    loadRooms();
+
+    toast("Room deleted!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   return (
     <div className=" max-h-screen">
+      <ToastContainer />
       <nav className="bg-blueSecondary">
         <div className="mx-auto px-4 py-2 max-w-7xl flex justify-between items-center">
           <div className="flex items-center justify-between">
