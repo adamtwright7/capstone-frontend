@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  image:
-    "https://www.czepeku.com/_next/image?url=https%3A%2F%2Fdan-sst-imageresize-mystack-bucketd7feb781-1513bmdx4x8mh.s3.amazonaws.com%2Fmap%2Fpreview%2Fa2c782a49e24c2dd2c89c87124e3ea86.webp&w=2048&q=75",
-};
+const initialState =
+  "https://s3.amazonaws.com/files.d20.io/images/193492022/WX7kGvxKu3ELBxJCVmai0Q/original.jpg?16109071885";
 
 export const BackgroundImageSlice = createSlice({
   name: "backgroundImage",
