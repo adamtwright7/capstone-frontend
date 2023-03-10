@@ -64,11 +64,11 @@ const ProfilePage = () => {
   };
 
   // Deletes a room
-  const deleteRoom = async () => {
+  const deleteRoom = async (roomToDelete) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const JSONroomInfo = JSON.stringify({ roomID: room.id });
+    const JSONroomInfo = JSON.stringify({ roomID: roomToDelete.id });
 
     const requestOptions = {
       method: "DELETE",
@@ -82,8 +82,6 @@ const ProfilePage = () => {
       requestOptions
     );
 
-    loadRooms();
-
     toast("Room deleted!", {
       position: "top-center",
       autoClose: 5000,
@@ -94,6 +92,8 @@ const ProfilePage = () => {
       progress: undefined,
       theme: "dark",
     });
+
+    loadRooms();
   };
 
   return (
@@ -297,7 +297,7 @@ const ProfilePage = () => {
                     className="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2"
                     onClick={() => {
                       dispatch(setRoom(room));
-                      deleteRoom();
+                      deleteRoom(room);
                     }}
                   >
                     Delete
