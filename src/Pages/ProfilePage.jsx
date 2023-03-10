@@ -172,7 +172,7 @@ const ProfilePage = () => {
             </Link>
 
             <Link
-              to="#"
+              onClick={logOut}
               className="text-white hover:text-goldAccents flex items-center px-2 py-2 rounded-md text-base font-medium"
             >
               <svg
