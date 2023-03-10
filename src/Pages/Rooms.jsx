@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import "./Rooms.css";
 import { FunctionButtons } from "./Components/FunctionButtons";
 import { Pieces } from "./Components/Pieces";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { removePieceToDrop } from "../Reducers/PieceToDropSlice";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { WebSocketContext } from "../WebSocket";
 
 export const Rooms = () => {
   // for dropping onto the map and moving around pieces
@@ -15,6 +16,9 @@ export const Rooms = () => {
   const PiecesToDrop = useSelector((state) => state.PiecesToDrop);
   const dispatch = useDispatch();
   const backgroundImage = useSelector((state) => state.backgroundImage);
+
+  // Web socket setup
+  const ws = useContext(WebSocketContext);
 
   return (
     <div className="mainRoom">
