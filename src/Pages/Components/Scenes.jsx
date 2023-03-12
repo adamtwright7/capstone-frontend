@@ -84,6 +84,9 @@ export const Scenes = () => {
     loadScenes();
   };
 
+  // Web socket setup
+  const ws = useContext(WebSocketContext);
+
   return (
     <>
       <ToastContainer />

@@ -17,9 +17,6 @@ export const Rooms = () => {
   const dispatch = useDispatch();
   const backgroundImage = useSelector((state) => state.backgroundImage);
 
-  // Web socket setup
-  const ws = useContext(WebSocketContext);
-
   return (
     <div className="mainRoom">
       <div className="imgContainer">

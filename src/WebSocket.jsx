@@ -34,6 +34,31 @@ export default ({ children }) => {
       // JSON.stringify(payload)
       { message: "Hello!" }
     );
+  };
+
+  const addPieceToBoard = (roomId, message) => {
+    const payload = {
+      roomId: roomId,
+      data: message,
+    };
+    socket.emit(
+      "send-message",
+      // JSON.stringify(payload)
+      { message: "Hello!" }
+    );
+    // dispatch(setPieceToDrop({ ...resource, key: currentPieceCount }));
+  };
+
+  const setSceneForOthers = (roomId, message) => {
+    const payload = {
+      roomId: roomId,
+      data: message,
+    };
+    socket.emit(
+      "send-message",
+      // JSON.stringify(payload)
+      { message: "Hello!" }
+    );
     // dispatch(setPieceToDrop({ ...resource, key: currentPieceCount }));
   };
 
@@ -53,6 +78,7 @@ export default ({ children }) => {
     ws = {
       socket: socket,
       sendMessage,
+      setSceneForOthers,
     };
   }
 
