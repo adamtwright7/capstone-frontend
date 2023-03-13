@@ -135,6 +135,7 @@ export const Scenes = () => {
                     className="sceneImages"
                     src={scene.image}
                   />
+                  {scenes.length === 0 && <p>No scenes yet!</p>}
                 </div>
               );
             })}
