@@ -1,29 +1,17 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import "./Rooms.css";
 import { FunctionButtons } from "./Components/FunctionButtons";
 import { Pieces } from "./Components/Pieces";
 import { Player } from "./Components/Player";
-import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
-import { removePieceToDrop } from "../Reducers/PieceToDropSlice";
-import { AiFillCloseCircle } from "react-icons/ai";
-import { WebSocketContext } from "../WebSocket";
+import { useSelector } from "react-redux";
+import Token from "./Components/Token";
 
 export const Rooms = () => {
   // for dropping onto the map and moving around pieces
   const parentRef = useRef();
   const ref = useRef(null);
-  const dispatch = useDispatch();
   const PiecesToDrop = useSelector((state) => state.PiecesToDrop);
   const backgroundImage = useSelector((state) => state.backgroundImage);
-  const room = useSelector((state) => state.persistedReducer.room);
-
-  // Web socket setup
-  const ws = useContext(WebSocketContext);
-
-  const removeSocketPiece = (tokenKey, roomID) => {
-    ws.removeSocketPiece(tokenKey, roomID);
-  };
 
   return (
     <div className="mainRoom">
@@ -37,27 +25,7 @@ export const Rooms = () => {
       <div className="mapArea">
         {/* Display all the images on the board */}
         {PiecesToDrop.map((piece) => (
-          <motion.div
-            key={piece.key}
-            drag
-            whileDrag={{ scale: 1.1, rotate: 60 }}
-            whileHover={{ scale: 1.1 }}
-            dragMomentum={false}
-            dragConstraints={parentRef}
-            ref={ref}
-            className="w-10 absolute bottom-1/2 left-1/2 "
-          >
-            <button
-              id="destroyPiece"
-              onClick={() => {
-                dispatch(removePieceToDrop(piece));
-                removeSocketPiece({ key: piece.key }, `room#${room.id}`);
-              }}
-            >
-              <AiFillCloseCircle />
-            </button>
-            <img src={piece.image} className="rounded-full" id="dragPic" />
-          </motion.div>
+          <Token piece={piece} parentRef={parentRef} ref={ref} />
         ))}
         <div className="roomPlayer">
           <Player />
