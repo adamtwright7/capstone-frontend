@@ -1,14 +1,14 @@
 .mainRoom {
   background-color: #1c1c1d;
   width: 99vw;
-  height: 95vh;
+  height: 100vh;
   z-index: -10;
 }
 .mapArea {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   justify-content: flex-end;
 }
 .roomPlayer {
@@ -23,7 +23,7 @@
 .roomPieces {
   align-items: center;
   text-align: -webkit-center;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
 }
 .middlePiece {
   position: relative;
@@ -68,5 +68,8 @@
 @media screen and (min-width: 739px) {
   .middlePiece {
     width: 50px;
+  }
+  .roomPieces {
+    margin-bottom: 15px;
   }
 }
