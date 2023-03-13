@@ -20,6 +20,7 @@ export const Player = () => {
   // When the page loads, we need to view all the users in this room.
   const room = useSelector((state) => state.persistedReducer.room);
   const playersDropMenu = useSelector((state) => state.playersDropMenu);
+  const reloadPlayers = useSelector((state) => state.reloadPlayers);
 
   const [users, setUsers] = useState([]);
 
@@ -47,7 +48,7 @@ export const Player = () => {
 
   useEffect(() => {
     loadUsers();
-  }, []);
+  }, [reloadPlayers]);
 
   const removePlayer = async (user) => {
     const myHeaders = new Headers();
