@@ -92,14 +92,14 @@ export const Player = () => {
       <div className="playerMain">
         <ToastContainer />
         <div className="twoIcon">
-          <Link to="/profile">
+          <Link to="/">
             <img
               className="twoimg"
               src="https://t4.ftcdn.net/jpg/03/28/56/91/360_F_328569104_sSbOz4NwgpRSqCYD7pzXk0PVUttE4Oum.jpg"
               alt=""
             />
           </Link>
-          <Link to="/">
+          <Link to="/profile">
             <img
               className="twoimg"
               src="https://cdn4.vectorstock.com/i/1000x1000/85/23/soccer-player-flat-icon-vector-7558523.jpg"
