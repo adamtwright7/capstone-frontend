@@ -13,9 +13,17 @@ export const Rooms = () => {
   // for dropping onto the map and moving around pieces
   const parentRef = useRef();
   const ref = useRef(null);
-  const PiecesToDrop = useSelector((state) => state.PiecesToDrop);
   const dispatch = useDispatch();
+  const PiecesToDrop = useSelector((state) => state.PiecesToDrop);
   const backgroundImage = useSelector((state) => state.backgroundImage);
+  const room = useSelector((state) => state.persistedReducer.room);
+
+  // Web socket setup
+  const ws = useContext(WebSocketContext);
+
+  const removeSocketPiece = (tokenKey, roomID) => {
+    ws.removeSocketPiece(tokenKey, roomID);
+  };
 
   return (
     <div className="mainRoom">
@@ -41,7 +49,10 @@ export const Rooms = () => {
           >
             <button
               id="destroyPiece"
-              onClick={() => dispatch(removePieceToDrop(piece))}
+              onClick={() => {
+                dispatch(removePieceToDrop(piece));
+                removeSocketPiece({ key: piece.key }, `room#${room.id}`);
+              }}
             >
               <AiFillCloseCircle />
             </button>
