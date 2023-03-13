@@ -4,36 +4,35 @@ import io from "socket.io-client";
 // import { WS_BASE } from "./config"; // Don't know how to get this. For now, use the localhost backend
 const WS_BASE = "http://localhost:3050/";
 import { useDispatch } from "react-redux";
+import { setBGimage } from "./Reducers/BackgroundImageSlice";
 
 const WebSocketContext = createContext(null);
 
 export { WebSocketContext };
 
 export default ({ children }) => {
-  let socket;
-  let ws;
+  // establishes the socket.
+  // WS_BASE is wherever the frontend is running, like http://localhost:5173/
+  console.log("socket connected");
+  let socket = io.connect(WS_BASE);
 
   const dispatch = useDispatch();
 
-  // stuff the socket can do when already connected.
-  // receive that message back
   useEffect(() => {
-    socket.on("receive-message", (data) => {
-      alert(data.message);
+    socket.on("receive-background", (backgroundImage) => {
+      console.log(`background image being set to ${backgroundImage}`);
+      dispatch(setBGimage(backgroundImage));
     });
-  }, [socket]); // socket changes every time a message is sent to the frontend
-  // So this useEffect runs every time an event is emitted from the backend.
+  }, [socket]);
 
-  const sendMessage = (roomId, message) => {
-    const payload = {
-      roomId: roomId,
-      data: message,
-    };
-    socket.emit(
-      "send-message",
-      // JSON.stringify(payload)
-      { message: "Hello!" }
-    );
+  // Joins a room in socket.io
+  const joinSocketRoom = (roomID) => {
+    socket.emit("join-room", roomID);
+  };
+
+  const setSocketScene = (backgroundImage, roomID) => {
+    const payload = { backgroundImage, roomID };
+    socket.emit("send-background", payload);
   };
 
   const addPieceToBoard = (roomId, message) => {
@@ -46,41 +45,14 @@ export default ({ children }) => {
       // JSON.stringify(payload)
       { message: "Hello!" }
     );
-    // dispatch(setPieceToDrop({ ...resource, key: currentPieceCount }));
   };
 
-  const setSceneForOthers = (roomId, message) => {
-    const payload = {
-      roomId: roomId,
-      data: message,
-    };
-    socket.emit(
-      "send-message",
-      // JSON.stringify(payload)
-      { message: "Hello!" }
-    );
-    // dispatch(setPieceToDrop({ ...resource, key: currentPieceCount }));
+  // for exporting purposes
+  let ws = {
+    socket: socket,
+    joinSocketRoom,
+    setSocketScene,
   };
-
-  // when the user first connects
-  if (!socket) {
-    // establishes the socket.
-    // WS_BASE is wherever the frontend is running, like http://localhost:5173/
-    console.log("socket connected");
-    socket = io.connect(WS_BASE);
-
-    // socket.on("event://get-message", (msg) => {
-    //   const payload = JSON.parse(msg);
-    //   dispatch(updateChatLog(payload));
-    // });
-
-    // for exporting purposes
-    ws = {
-      socket: socket,
-      sendMessage,
-      setSceneForOthers,
-    };
-  }
 
   return (
     <WebSocketContext.Provider value={ws}>{children}</WebSocketContext.Provider>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
@@ -11,6 +11,7 @@ import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
 import { setRoom } from "../Reducers/RoomSlice";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
+import { WebSocketContext } from "../WebSocket";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -94,6 +95,14 @@ const ProfilePage = () => {
     });
 
     loadRooms();
+  };
+
+  // Web socket setup
+  const ws = useContext(WebSocketContext);
+
+  // Web socket trickery
+  const joinSocketRoom = (roomID) => {
+    ws.joinSocketRoom(roomID);
   };
 
   return (
@@ -273,7 +282,14 @@ const ProfilePage = () => {
                 className="flex flex-col border p-10 border-goldAccents"
               >
                 <div className="w-40 h-40 rounded-md overflow-hidden text-center">
-                  <Link onClick={() => dispatch(setRoom(room))} to="/room">
+                  <Link
+                    onClick={() => {
+                      dispatch(setRoom(room));
+                      // The room name has to be a string.
+                      joinSocketRoom(`room#${room.id}`);
+                    }}
+                    to="/room"
+                  >
                     <p className="text-gray-200 mt-4 z-5 relative">
                       {room.name}
                     </p>
