@@ -130,11 +130,11 @@ const HomePage = ({ toastMessage }) => {
             Jess:
           </p>
           <div className="webIcons">
-            <button className="ghButton">
-              <a href="https://github.com/jessbecoding" target="_blank">
+            <a href="https://github.com/jessbecoding" target="_blank">
+              <button className="ghButton">
                 <GrGithub />
-              </a>
-            </button>
+              </button>
+            </a>
             <a href="https://www.jessbecoding.com" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
@@ -146,10 +146,11 @@ const HomePage = ({ toastMessage }) => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Mauro:</p>
           <div className="webIcons">
-            <a href="https://github.com/stoicgit" target="_blank"></a>
-            <button className="ghButton">
-              <GrGithub />
-            </button>
+            <a href="https://github.com/stoicgit" target="_blank">
+              <button className="ghButton">
+                <GrGithub />
+              </button>
+            </a>
             <a href="" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
