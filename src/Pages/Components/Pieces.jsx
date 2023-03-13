@@ -72,13 +72,13 @@ export const Pieces = () => {
   // Web socket setup
   const ws = useContext(WebSocketContext);
 
-  // // Web socket trickery
-  // const addPieceToEveryBoard = () => {
-  //   ws.addPieceToBoard(room.id, {
-  //     username: username,
-  //     message: msgInput,
-  //   });
-  // };
+  // Web socket trickery
+  const addPieceToEveryBoard = () => {
+    ws.addPieceToBoard(room.id, {
+      username: username,
+      message: msgInput,
+    });
+  };
 
   // Web socket testing...
 
