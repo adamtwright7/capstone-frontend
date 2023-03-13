@@ -4,6 +4,8 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { setAddPlayerPopup } from "../../Reducers/AddPlayerPopupSlice";
 import { motion } from "framer-motion";
+import { toast, ToastContainer } from "react-toastify";
+import { setReloadPlayers } from "../../Reducers/ReloadPlayersSlice";
 
 export const AddPlayer = () => {
   const dispatch = useDispatch();
@@ -37,7 +39,20 @@ export const AddPlayer = () => {
       requestOptions
     );
 
-    window.location.reload(false);
+    // reloads the users list.
+    dispatch(setReloadPlayers());
+
+    // gives the user feedback
+    toast("Player added!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   return (
@@ -47,6 +62,7 @@ export const AddPlayer = () => {
       className="mainAddPlayer"
     >
       <div className="addHeader2">
+        <ToastContainer />
         <h2>Add a Player</h2>
         <div className="closeTag">
           <button onClick={() => dispatch(setAddPlayerPopup())}>
