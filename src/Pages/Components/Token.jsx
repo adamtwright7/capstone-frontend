@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion, useMotionValue, useMotionValueEvent } from "framer-motion";
 import { removePieceToDrop } from "../../Reducers/PieceToDropSlice";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -9,23 +9,42 @@ const Token = ({ piece, parentRef, ref }) => {
   const room = useSelector((state) => state.persistedReducer.room);
   let x = useMotionValue(0);
   let y = useMotionValue(0);
+  const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
 
   // Web socket setup
   const ws = useContext(WebSocketContext);
 
-  const sendTokenCoords = (tokenKey, roomID) => {
-    ws.sendTokenCoords(tokenKey, roomID);
+  const removeSocketPiece = (tokenKey, roomID) => {
+    ws.removeSocketPiece(tokenKey, roomID);
   };
 
-  useMotionValueEvent(x, "animationComplete", () => {
-    console.log("animation completed on x:");
-    console.log(x.current);
-    sendTokenCoords([x.current]);
-  });
-  useMotionValueEvent(y, "animationComplete", () => {
-    console.log("animation completed on y:");
-    console.log(y.current);
-  });
+  // In this new web socket, we send the position of the token to the backend, which will then be sent to the frontend.
+  const sendTokenCoords = (tokenKey, roomID, coordinates) => {
+    // ws.sendTokenCoords(tokenKey, roomID, coordinates);
+  };
+
+  // The following two useEffects will update the token's coordinates (the local state `coordinates`) each time it is dragged and dropped.
+  useEffect(() => {
+    const unsubX = x.on("animationComplete", () => {
+      setCoordinates((coordinates) => ({ ...coordinates, x: x.current }));
+    });
+    return () => {
+      unsubX();
+    };
+  }, [x]);
+  useEffect(() => {
+    const unsubY = y.on("animationComplete", () => {
+      setCoordinates((coordinates) => ({ ...coordinates, y: y.current }));
+    });
+    return () => {
+      unsubY();
+    };
+  }, [y]);
+
+  // once `coordinates` is updated, we send that to the web socket.
+  useEffect(() => {
+    sendTokenCoords(piece.key, room.id, coordinates);
+  }, [coordinates]);
 
   const dispatch = useDispatch();
 
