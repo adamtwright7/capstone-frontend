@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Scenes.css";
 import { MdDeleteForever } from "react-icons/md";
 import { CreateScene } from "./CreateScene";
@@ -10,6 +10,7 @@ import { setShowCreateScenePopup } from "../../Reducers/showCreateScenePopupSlic
 import { motion } from "framer-motion";
 import { setBGimage } from "../../Reducers/BackgroundImageSlice";
 import { toast, ToastContainer } from "react-toastify";
+import { WebSocketContext } from "../../WebSocket";
 
 export const Scenes = () => {
   const showCreateScenePopup = useSelector(
@@ -84,6 +85,13 @@ export const Scenes = () => {
     loadScenes();
   };
 
+  // Web socket setup
+  const ws = useContext(WebSocketContext);
+
+  const setSocketScene = (backgroundImage, roomID) => {
+    ws.setSocketScene(backgroundImage, roomID);
+  };
+
   return (
     <>
       <ToastContainer />
@@ -120,7 +128,9 @@ export const Scenes = () => {
                   </button>
                   <img
                     onClick={() => {
-                      dispatch(setBGimage(scene.image));
+                      dispatch(setBGimage(scene.image)); // sets it for this user
+                      setSocketScene(scene.image, `room#${room.id}`); // sets it for all other users
+                      dispatch(setShowScenePopup());
                     }}
                     className="sceneImages"
                     src={scene.image}

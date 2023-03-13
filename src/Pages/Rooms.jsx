@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import "./Rooms.css";
 import { FunctionButtons } from "./Components/FunctionButtons";
 import { Pieces } from "./Components/Pieces";
@@ -7,18 +7,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { removePieceToDrop } from "../Reducers/PieceToDropSlice";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { WebSocketContext } from "../WebSocket";
 
 export const Rooms = () => {
   // for dropping onto the map and moving around pieces
   const parentRef = useRef();
   const ref = useRef(null);
-  const PiecesToDrop = useSelector((state) => state.PiecesToDrop);
   const dispatch = useDispatch();
+  const PiecesToDrop = useSelector((state) => state.PiecesToDrop);
   const backgroundImage = useSelector((state) => state.backgroundImage);
+  const room = useSelector((state) => state.persistedReducer.room);
+
+  // Web socket setup
+  const ws = useContext(WebSocketContext);
+
+  const removeSocketPiece = (tokenKey, roomID) => {
+    ws.removeSocketPiece(tokenKey, roomID);
+  };
 
   return (
     <div className="mainRoom">
-      <img ref={parentRef} className="mainMap" src={backgroundImage} alt="" />
+      <div className="imgContainer">
+        <img ref={parentRef} className="mainMap" src={backgroundImage} alt="" />
+      </div>
+
       <div className="roomFunction">
         <FunctionButtons />
       </div>
@@ -37,7 +49,10 @@ export const Rooms = () => {
           >
             <button
               id="destroyPiece"
-              onClick={() => dispatch(removePieceToDrop(piece))}
+              onClick={() => {
+                dispatch(removePieceToDrop(piece));
+                removeSocketPiece({ key: piece.key }, `room#${room.id}`);
+              }}
             >
               <AiFillCloseCircle />
             </button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { EditProfile } from "./Components/EditProfile";
@@ -11,6 +11,7 @@ import { setShowEditRoomPopup } from "../Reducers/showEditRoomPopupSlice";
 import { setRoom } from "../Reducers/RoomSlice";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
+import { WebSocketContext } from "../WebSocket";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -64,11 +65,11 @@ const ProfilePage = () => {
   };
 
   // Deletes a room
-  const deleteRoom = async () => {
+  const deleteRoom = async (roomToDelete) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const JSONroomInfo = JSON.stringify({ roomID: room.id });
+    const JSONroomInfo = JSON.stringify({ roomID: roomToDelete.id });
 
     const requestOptions = {
       method: "DELETE",
@@ -82,8 +83,6 @@ const ProfilePage = () => {
       requestOptions
     );
 
-    loadRooms();
-
     toast("Room deleted!", {
       position: "top-center",
       autoClose: 5000,
@@ -94,6 +93,16 @@ const ProfilePage = () => {
       progress: undefined,
       theme: "dark",
     });
+
+    loadRooms();
+  };
+
+  // Web socket setup
+  const ws = useContext(WebSocketContext);
+
+  // Web socket trickery
+  const joinSocketRoom = (roomID) => {
+    ws.joinSocketRoom(roomID);
   };
 
   return (
@@ -130,7 +139,7 @@ const ProfilePage = () => {
         <div className="flex bg-blueSecondary lg:hidden">
           <div className="mx-auto px-0 py-2 max-w-7xl flex justify-between items-center ml-0">
             <Link
-              to="#"
+              to="/"
               className="text-white hover:text-goldAccents px-1 py-2 rounded-md text-base font-medium flex items-center"
             >
               <svg
@@ -172,7 +181,7 @@ const ProfilePage = () => {
             </Link>
 
             <Link
-              to="#"
+              onClick={logOut}
               className="text-white hover:text-goldAccents flex items-center px-2 py-2 rounded-md text-base font-medium"
             >
               <svg
@@ -273,7 +282,14 @@ const ProfilePage = () => {
                 className="flex flex-col border p-10 border-goldAccents"
               >
                 <div className="w-40 h-40 rounded-md overflow-hidden text-center">
-                  <Link onClick={() => dispatch(setRoom(room))} to="/room">
+                  <Link
+                    onClick={() => {
+                      dispatch(setRoom(room));
+                      // The room name has to be a string.
+                      joinSocketRoom(`room#${room.id}`);
+                    }}
+                    to="/room"
+                  >
                     <p className="text-gray-200 mt-4 z-5 relative">
                       {room.name}
                     </p>
@@ -296,8 +312,7 @@ const ProfilePage = () => {
                   <button
                     className="bg-blueSecondary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-1/2"
                     onClick={() => {
-                      dispatch(setRoom(room));
-                      deleteRoom();
+                      deleteRoom(room);
                     }}
                   >
                     Delete

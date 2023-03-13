@@ -157,6 +157,11 @@ const SignUpPage = () => {
             Already have an account?<span> click here!</span>
           </label>
         </Link>
+        <Link to="/" className="already">
+          <label htmlFor="">
+            Go back home? <span>Click here!</span>
+          </label>
+        </Link>
       </div>
       <div className="personalNav">
         <h2 className="devTeam">Dev Team</h2>

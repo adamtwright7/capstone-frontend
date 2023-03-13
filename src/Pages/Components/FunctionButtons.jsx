@@ -19,17 +19,9 @@ export const FunctionButtons = () => {
         </div>
       )}
       <div className="functionMain">
-        <div className="arrowImage">
-          <p>
-            <BsFillArrowDownCircleFill />
-          </p>
-        </div>
         <div className="bottomSection">
           <button onClick={() => dispatch(setShowScenePopup())}>
             <MdLandscape />
-          </button>
-          <button>
-            <RiHandCoinFill />
           </button>
         </div>
       </div>

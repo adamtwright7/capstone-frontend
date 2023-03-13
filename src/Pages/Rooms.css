@@ -1,5 +1,5 @@
 .mainRoom {
-  background-color: grey;
+  background-color: #1c1c1d;
   width: 99vw;
   height: 100vh;
   z-index: -10;
@@ -28,15 +28,22 @@
 .middlePiece {
   position: relative;
   width: 25px;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 .mainMap {
   position: absolute;
   top: 24.5%;
   height: 59%;
-  width: 99.7%;
+  width: fit-content;
   border: 2px solid #d6ad60;
 }
+
+.imgContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .trashCan {
   position: absolute;
   bottom: 10px;

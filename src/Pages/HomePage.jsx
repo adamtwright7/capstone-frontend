@@ -2,6 +2,9 @@ import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import mobile2 from "../../public/mobile2.png";
+import mobile1 from "../../public/mobile1.png";
+import scene from "../../public/scene.png";
 // Toastify stuff
 import { ToastContainer, toast } from "react-toastify";
 import { FaSquarespace } from "react-icons/fa";
@@ -59,11 +62,22 @@ const HomePage = ({ toastMessage }) => {
           our namesake).
         </p>
       </div>
-      <h2 className="imgh2">Expansive maps!</h2>
-      <div className="gamePic1">
-        <img src="https://slyflourish.com/images/owlbear_rodeo_1.jpg" alt="" />
-        <img src="https://slyflourish.com/images/owlbear_rodeo_1.jpg" alt="" />
-      </div>
+
+      {/* ------------------------- */}
+      <section>
+        <div className="importYours">
+          <div className="splashScene">
+            <h2 className="imgh2">Import your own scenes/pieces!</h2>
+            <img src={scene} alt="" />
+          </div>
+          <h2 className="imgh2">Mobile Responsive</h2>
+          <div className="gamePic2">
+            <img src={mobile2} alt="" />
+            <img className="dontShow" src={mobile1} alt="" />
+          </div>
+        </div>
+      </section>
+      {/* ---------------------------- */}
       <div className="bottomSection">
         <Link to="" className="playFree">
           <button>Logout</button>

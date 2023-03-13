@@ -18,7 +18,6 @@ export const CreateScene = () => {
   });
 
   const createScene = async () => {
-    console.log(room);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -28,8 +27,6 @@ export const CreateScene = () => {
     };
 
     const JSONsceneInfo = JSON.stringify(createSceneInfo);
-
-    console.log(JSONsceneInfo);
 
     const requestOptions = {
       method: "POST",

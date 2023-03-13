@@ -110,6 +110,11 @@ const LoginPage = () => {
             Don't have an account? <span> Create One</span>
           </label>
         </Link>
+        <Link to="/" className="already">
+          <label htmlFor="">
+            Go back home? <span>Click here!</span>
+          </label>
+        </Link>
       </div>
       <div className="personalNav">
         <h2 className="devTeam">Dev Team</h2>

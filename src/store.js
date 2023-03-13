@@ -11,9 +11,7 @@ import showEditRoomPopupReducer from "./Reducers/showEditRoomPopupSlice";
 import PieceToDropReducer from "./Reducers/PieceToDropSlice";
 import roomReducer from "./Reducers/RoomSlice";
 import backgroundImageReducer from "./Reducers/BackgroundImageSlice";
-
 import PlayersDropMenu from "./Reducers/PlayersDropMenu";
-
 import reloadScenesReducer from "./Reducers/reloadScenesSlice";
 import ReloadRoomsReducer from "./Reducers/ReloadRoomsSlice";
 import ReloadPiecesReducer from "./Reducers/reloadPiecesSlice";

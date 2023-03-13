@@ -51,19 +51,22 @@ export const EditRoom = () => {
       progress: undefined,
       theme: "dark",
     });
+
+    dispatch(setShowEditRoomPopup());
   };
 
   return (
     <div
       id="modal"
-      className="modal fixed w-full h-full top-0 left-0 flex items-center justify-center"
+      className="modal fixed w-full h-full top-0 left-0 flex items-center justify-center  "
     >
-      <ToastContainer />
-      <div className="modal-content bg-backgroundColor rounded p-8">
+      <div className="modal-content bg-backgroundColor rounded p-8 border-2 border-goldAccents">
+        <ToastContainer />
+
         <h3 className="text-lg font-semibold mb-4">Edit Room</h3>
 
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" for="room-name">
+          <label className="block text-white font-bold mb-2" for="room-name">
             Room Name
           </label>
           <input
@@ -80,15 +83,15 @@ export const EditRoom = () => {
                 editRoom();
               }
             }}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
             id="room-name"
             type="text"
-            placeholder="Enter a name for the room"
+            placeholder="Enter a room name"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" for="img-url">
+          <label className="block text-white font-bold mb-2" for="img-url">
             Image URL
           </label>
           <input
@@ -103,10 +106,10 @@ export const EditRoom = () => {
                 editRoom();
               }
             }}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
             id="img-url"
             type="text"
-            placeholder="Enter the URL of an image for the room"
+            placeholder="Enter the URL"
           />
         </div>
 
@@ -115,7 +118,6 @@ export const EditRoom = () => {
             className="bg-goldAccents hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mr-2"
             onClick={() => {
               editRoom();
-              dispatch(setShowEditRoomPopup());
             }}
           >
             Save

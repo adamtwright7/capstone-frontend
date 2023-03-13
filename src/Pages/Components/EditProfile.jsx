@@ -54,12 +54,12 @@ export const EditProfile = () => {
   };
 
   return (
-    <div class="mainEdit rounded-xl p-6 relative mx-auto max-w-lg bg-backgroundColor">
+    <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-backgroundColor rounded-xl p-6 max-w-md">
       <div class="editHeader flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-white">Edit Profile</h2>
+        <h2 class="text-2xl font-bold text-white mx-10">Edit Profile</h2>
         <button class="" onClick={() => dispatch(setProfilePopup())}>
           <svg
-            fill="#000000"
+            fill="white"
             height="20px"
             width="20px"
             version="1.1"
@@ -98,7 +98,7 @@ export const EditProfile = () => {
                 editProfile();
               }
             }}
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="text"
             placeholder="Enter your email address"
@@ -120,7 +120,7 @@ export const EditProfile = () => {
                 editProfile();
               }
             }}
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
             placeholder="Enter your password"
@@ -137,7 +137,7 @@ export const EditProfile = () => {
                 bio: e.target.value,
               }));
             }}
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline bg-blueSecondary border-goldAccents"
             id="bio"
             placeholder="Enter a short bio about yourself"
           ></textarea>
