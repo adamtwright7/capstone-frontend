@@ -9,6 +9,7 @@ import { setShowAddPiecePopup } from "../../Reducers/showAddPiecePopupSlice";
 import { setPieceToDrop } from "../../Reducers/PieceToDropSlice";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { WebSocketContext } from "../../WebSocket";
+import { incrementTokenKey } from "../../Reducers/TokenKeySlice";
 
 export const Pieces = () => {
   const showAddPiecePopup = useSelector((state) => state.showAddPiecePopup);
@@ -19,7 +20,7 @@ export const Pieces = () => {
   const reloadPieces = useSelector((state) => state.reloadPieces);
 
   const [resources, setResources] = useState([]);
-  const [currentPieceCount, setCurrentPieceCount] = useState(1);
+  const TokenKey = useSelector((state) => state.TokenKey);
 
   const loadResources = async () => {
     const myHeaders = new Headers();
@@ -73,21 +74,8 @@ export const Pieces = () => {
   const ws = useContext(WebSocketContext);
 
   // Web socket trickery
-  const addPieceToEveryBoard = () => {
-    ws.addPieceToBoard(room.id, {
-      username: username,
-      message: msgInput,
-    });
-  };
-
-  // Web socket testing...
-
-  // send a message by clicking the horse icon
-  const sendMessageTest = () => {
-    ws.sendMessage(room.id, {
-      username: "username",
-      message: "msgInput",
-    });
+  const addSocketPiece = (pieceToDropObj, roomID) => {
+    ws.addSocketPiece(pieceToDropObj, roomID);
   };
 
   return (
@@ -99,7 +87,7 @@ export const Pieces = () => {
       )}
       <div className="mainPieces">
         <div className="topChar">
-          <button onClick={sendMessageTest} className="envButtons">
+          <button className="envButtons">
             <FaHorseHead />
           </button>
           <button
@@ -119,10 +107,14 @@ export const Pieces = () => {
                   className="min-w-[3rem] rounded-full z-15"
                   // need to add a key for each piece we drop.
                   onClick={() => {
-                    dispatch(
-                      setPieceToDrop({ ...resource, key: currentPieceCount })
-                    );
-                    setCurrentPieceCount(currentPieceCount + 1);
+                    dispatch(setPieceToDrop({ ...resource, key: TokenKey })); // Drops the piece clicked on for this user
+                    dispatch(incrementTokenKey()); // increments the key for each token (because multiple tokens can be made from a single resource).
+                    // This needs to be in Redux state because other people can drop tokens (and should be increasing the key as they do.)
+                    addSocketPiece(
+                      { ...resource, key: TokenKey },
+                      `room#${room.id}`
+                    ); // drops the piece for other users
+                    console.log(TokenKey);
                   }}
                 >
                   <img

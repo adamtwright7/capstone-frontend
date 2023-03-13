@@ -11,12 +11,11 @@ import showEditRoomPopupReducer from "./Reducers/showEditRoomPopupSlice";
 import PieceToDropReducer from "./Reducers/PieceToDropSlice";
 import roomReducer from "./Reducers/RoomSlice";
 import backgroundImageReducer from "./Reducers/BackgroundImageSlice";
-
 import PlayersDropMenu from "./Reducers/PlayersDropMenu";
-
 import reloadScenesReducer from "./Reducers/reloadScenesSlice";
 import ReloadRoomsReducer from "./Reducers/ReloadRoomsSlice";
 import ReloadPiecesReducer from "./Reducers/reloadPiecesSlice";
+import TokenKeyReducer from "./Reducers/TokenKeySlice";
 
 // persist imports
 import { persistStore, persistReducer } from "redux-persist";
@@ -56,6 +55,7 @@ export const store = configureStore({
     reloadScenes: reloadScenesReducer,
     reloadRooms: ReloadRoomsReducer,
     reloadPieces: ReloadPiecesReducer,
+    TokenKey: TokenKeyReducer,
   },
   // middleware: [thunk] // Again, thunk in case we want it.
 });

@@ -5,6 +5,8 @@ import io from "socket.io-client";
 const WS_BASE = "http://localhost:3050/";
 import { useDispatch } from "react-redux";
 import { setBGimage } from "./Reducers/BackgroundImageSlice";
+import { removePieceToDrop, setPieceToDrop } from "./Reducers/PieceToDropSlice";
+import { incrementTokenKey } from "./Reducers/TokenKeySlice";
 
 const WebSocketContext = createContext(null);
 
@@ -19,9 +21,19 @@ export default ({ children }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // for setting backgrounds via other users
     socket.on("receive-background", (backgroundImage) => {
       console.log(`background image being set to ${backgroundImage}`);
       dispatch(setBGimage(backgroundImage));
+    });
+    // for dropping tokens via other users
+    socket.on("receive-token", (pieceToDropObj) => {
+      dispatch(setPieceToDrop(pieceToDropObj));
+      dispatch(incrementTokenKey());
+    });
+    // for removing tokens via other users
+    socket.on("receive-remove-token", (tokenKey) => {
+      dispatch(removePieceToDrop(tokenKey));
     });
   }, [socket]);
 
@@ -35,16 +47,16 @@ export default ({ children }) => {
     socket.emit("send-background", payload);
   };
 
-  const addPieceToBoard = (roomId, message) => {
-    const payload = {
-      roomId: roomId,
-      data: message,
-    };
-    socket.emit(
-      "send-message",
-      // JSON.stringify(payload)
-      { message: "Hello!" }
-    );
+  const addSocketPiece = (pieceToDropObj, roomID) => {
+    // You could just put this object in directly as an argument, but that would make me nervous.
+    // `pieceToDropObj` is the object in `dispatch(setPieceToDrop({ ...resource, key: currentPieceCount }))`
+    const payload = { pieceToDropObj, roomID };
+    socket.emit("send-token", payload);
+  };
+
+  const removeSocketPiece = (tokenKey, roomID) => {
+    const payload = { tokenKey, roomID };
+    socket.emit("send-remove-token", payload);
   };
 
   // for exporting purposes
@@ -52,6 +64,8 @@ export default ({ children }) => {
     socket: socket,
     joinSocketRoom,
     setSocketScene,
+    addSocketPiece,
+    removeSocketPiece,
   };
 
   return (
