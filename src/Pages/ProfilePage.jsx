@@ -272,7 +272,7 @@ const ProfilePage = () => {
         <p className="text-white mt-4">{user.bio}</p>
       </div>
 
-      <div className="bg-gray-800 rounded-md border-2 border-gray-700 min-h-screen">
+      <div className=" bg-blueSecondary rounded-md border-2 border-gray-700 min-h-screen">
         <h2 className="text-xl font-semibold text-gray-200 mb-4">Rooms</h2>
         <div className="flex flex-wrap gap-4 justify-center">
           {rooms.map((room) => {
