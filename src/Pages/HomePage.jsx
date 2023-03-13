@@ -96,10 +96,12 @@ const HomePage = ({ toastMessage }) => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Vinny:</p>
           <div className="webIcons">
-            <button className="ghButton">
-              <GrGithub />
-            </button>
-            <a href="vincents-portfolio.com">
+            <a href="https://github.com/VinnyVecchio" target="_blank">
+              <button className="ghButton">
+                <GrGithub />
+              </button>
+            </a>
+            <a href="https://vincents-portfolio.com/" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
@@ -110,12 +112,12 @@ const HomePage = ({ toastMessage }) => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Adam:</p>
           <div className="webIcons">
-            <a href="https://github.com/adamtwright7" target={blank}>
+            <a href="https://github.com/adamtwright7" target="_blank">
               <button className="ghButton">
                 <GrGithub />
               </button>
             </a>
-            <a href="https://adamtwright7.github.io/" target={blank}>
+            <a href="https://adamtwright7.github.io/" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
@@ -129,11 +131,11 @@ const HomePage = ({ toastMessage }) => {
           </p>
           <div className="webIcons">
             <button className="ghButton">
-              <a href="https://github.com/jessbecoding" target={blank}>
+              <a href="https://github.com/jessbecoding" target="_blank">
                 <GrGithub />
               </a>
             </button>
-            <a href="https://www.jessbecoding.com" target={blank}>
+            <a href="https://www.jessbecoding.com" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
@@ -144,11 +146,11 @@ const HomePage = ({ toastMessage }) => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Mauro:</p>
           <div className="webIcons">
-            <a href="https://github.com/stoicgit" target={blank}></a>
+            <a href="https://github.com/stoicgit" target="_blank"></a>
             <button className="ghButton">
               <GrGithub />
             </button>
-            <a href="vincents-portfolio.com">
+            <a href="" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
