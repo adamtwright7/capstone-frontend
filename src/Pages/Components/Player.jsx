@@ -90,6 +90,7 @@ export const Player = () => {
   return (
     <>
       <div className="playerMain">
+        <ToastContainer />
         <div className="twoIcon">
           <Link to="/profile">
             <img

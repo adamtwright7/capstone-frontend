@@ -62,7 +62,6 @@ export const AddPlayer = () => {
       className="mainAddPlayer"
     >
       <div className="addHeader2">
-        <ToastContainer />
         <h2>Add a Player</h2>
         <div className="closeTag">
           <button onClick={() => dispatch(setAddPlayerPopup())}>
