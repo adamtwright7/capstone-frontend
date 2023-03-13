@@ -118,7 +118,8 @@ export const Pieces = () => {
                   }}
                 >
                   <img
-                    className="rounded-full overflow-scroll max-w-[3rem] hover: cursor-grab "
+                    className="imagesBottom "
+                    // rounded-full overflow-scroll max-w-[2rem] hover: cursor-grab
                     src={resource.image}
                   />
                 </motion.button>

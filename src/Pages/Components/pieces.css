@@ -8,7 +8,7 @@ body::-webkit-scrollbar {
 }
 .topChar {
   display: flex;
-  font-size: 30px;
+  font-size: 20px;
   gap: 10px;
   border: 2px solid #d6ad60;
   width: fit-content;
@@ -22,15 +22,15 @@ body::-webkit-scrollbar {
   width: 100%;
   display: flex;
   border: 2px solid #d6ad60;
-  padding: 1rem;
+  padding: 0.5rem;
   overflow-x: auto;
   overflow-y: visible;
-  gap: 10px;
+
   background-color: #222639;
   border-radius: 40px 40px 40px 40px;
 }
-.bottomPics > img {
-  width: 3rem;
+.imagesBottom {
+  width: 2rem;
 }
 .envButtons {
   color: gold;
@@ -47,7 +47,18 @@ body::-webkit-scrollbar {
 }
 .trashBottom {
   position: relative;
-  right: 8px;
+  right: 20px;
   bottom: 8px;
   height: fit-content;
+}
+@media screen and (min-width: 739px) {
+  .topChar {
+    font-size: 30px;
+  }
+  .bottomPics {
+    padding: 1rem;
+  }
+  .imagesBottom {
+    width: 3rem;
+  }
 }
