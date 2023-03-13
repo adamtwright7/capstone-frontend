@@ -115,6 +115,7 @@ export const Scenes = () => {
         </div>
         <div className="bottomCreate">
           <div className="bottomCreateImg">
+            {scenes.length === 0 && <p className=" text-xl">No scenes yet!</p>}
             {scenes.map((scene) => {
               return (
                 <div key={scene.id} className="bin">
@@ -135,7 +136,6 @@ export const Scenes = () => {
                     className="sceneImages"
                     src={scene.image}
                   />
-                  {scenes.length === 0 && <p>No scenes yet!</p>}
                 </div>
               );
             })}
