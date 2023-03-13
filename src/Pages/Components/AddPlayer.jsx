@@ -34,10 +34,24 @@ export const AddPlayer = () => {
       redirect: "follow",
     };
 
-    await fetch(
+    const playersDataValuesRaw = await fetch(
       "https://plotpointsbackend.onrender.com/rooms/addUser",
       requestOptions
     );
+    const playersDataValues = await playersDataValuesRaw.json();
+
+    if (playersDataValues.error) {
+      return toast("Invalid Email!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
 
     // reloads the users list.
     dispatch(setReloadPlayers());
