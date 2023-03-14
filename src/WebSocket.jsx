@@ -1,8 +1,8 @@
 // Initialized the socket connection. Needs to be .JSX because it returns JSX
 import React, { createContext, useEffect } from "react";
 import io from "socket.io-client";
-// import { WS_BASE } from "./config"; // Don't know how to get this. For now, use the localhost backend
-const WS_BASE = "http://localhost:3050/";
+// backend URL
+const WS_BASE = "https://plotpointsbackend.onrender.com/";
 import { useDispatch } from "react-redux";
 import { setBGimage } from "./Reducers/BackgroundImageSlice";
 import { removePieceToDrop, setPieceToDrop } from "./Reducers/PieceToDropSlice";
@@ -14,9 +14,6 @@ const WebSocketContext = createContext(null);
 export { WebSocketContext };
 
 export default ({ children }) => {
-  // establishes the socket.
-  // WS_BASE is wherever the frontend is running, like http://localhost:5173/
-  console.log("socket connected");
   let socket = io.connect(WS_BASE);
 
   const dispatch = useDispatch();
