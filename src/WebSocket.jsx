@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setBGimage } from "./Reducers/BackgroundImageSlice";
 import { removePieceToDrop, setPieceToDrop } from "./Reducers/PieceToDropSlice";
 import { incrementTokenKey } from "./Reducers/TokenKeySlice";
+import { setTokenCoordinates } from "./Reducers/TokenCoordinatesSlice";
 
 const WebSocketContext = createContext(null);
 
@@ -34,6 +35,10 @@ export default ({ children }) => {
     // for removing tokens via other users
     socket.on("receive-remove-token", (tokenKey) => {
       dispatch(removePieceToDrop(tokenKey));
+      // still need to removeTokenCoordinates here.
+    });
+    socket.on("receive-token-coords", (keyCoordsObj) => {
+      dispatch(setTokenCoordinates(keyCoordsObj));
     });
   }, [socket]);
 
@@ -59,6 +64,11 @@ export default ({ children }) => {
     socket.emit("send-remove-token", payload);
   };
 
+  const sendTokenCoords = (tokenKey, roomID, coordinates) => {
+    const payload = { tokenKey, roomID, coordinates };
+    socket.emit("send-token-coords", payload);
+  };
+
   // for exporting purposes
   let ws = {
     socket: socket,
@@ -66,6 +76,7 @@ export default ({ children }) => {
     setSocketScene,
     addSocketPiece,
     removeSocketPiece,
+    sendTokenCoords,
   };
 
   return (

@@ -10,7 +10,7 @@ export const TokenCoordinatesSlice = createSlice({
   initialState,
   reducers: {
     setTokenCoordinates: (state, action) => {
-      state.push(action.payload);
+      return { ...state, ...action.payload };
     },
     removeTokenCoordinates: (state, action) => {
       return state.filter(

@@ -4,6 +4,7 @@ import { removePieceToDrop } from "../../Reducers/PieceToDropSlice";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { WebSocketContext } from "../../WebSocket";
+import { setTokenCoordinates } from "../../Reducers/TokenCoordinatesSlice";
 
 const Token = ({ piece, parentRef, ref }) => {
   const room = useSelector((state) => state.persistedReducer.room);
@@ -22,10 +23,13 @@ const Token = ({ piece, parentRef, ref }) => {
 
   // In this new web socket, we send the position of the token to the backend, which will then be sent to the frontend.
   const sendTokenCoords = (tokenKey, roomID, coordinates) => {
-    // ws.sendTokenCoords(tokenKey, roomID, coordinates);
+    ws.sendTokenCoords(tokenKey, roomID, coordinates);
   };
 
-  //   if (TokenCoordinates[piece.key]){} // load in token coordinates from redux state, where they land after getting back from the backend web socket.
+  if (TokenCoordinates[piece.key]) {
+    x.current = TokenCoordinates[piece.key].x;
+    y.current = TokenCoordinates[piece.key].y;
+  } // load in token coordinates from redux state, where they land after getting back from the backend web socket.
 
   // The following two useEffects will update the token's coordinates (the local state `coordinates`) each time it is dragged and dropped.
   useEffect(() => {
@@ -47,7 +51,8 @@ const Token = ({ piece, parentRef, ref }) => {
 
   // once `coordinates` is updated, we send that to the web socket.
   useEffect(() => {
-    sendTokenCoords(piece.key, room.id, coordinates);
+    sendTokenCoords(piece.key, `room#${room.id}`, coordinates); // socket action
+    dispatch(setTokenCoordinates({ [piece.key]: coordinates })); // local action
   }, [coordinates]);
 
   const dispatch = useDispatch();
