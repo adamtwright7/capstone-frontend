@@ -7,6 +7,8 @@ import { WebSocketContext } from "../../WebSocket";
 
 const Token = ({ piece, parentRef, ref }) => {
   const room = useSelector((state) => state.persistedReducer.room);
+  const TokenCoordinates = useSelector((state) => state.TokenCoordinates);
+
   let x = useMotionValue(0);
   let y = useMotionValue(0);
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
@@ -22,6 +24,8 @@ const Token = ({ piece, parentRef, ref }) => {
   const sendTokenCoords = (tokenKey, roomID, coordinates) => {
     // ws.sendTokenCoords(tokenKey, roomID, coordinates);
   };
+
+  //   if (TokenCoordinates[piece.key]){} // load in token coordinates from redux state, where they land after getting back from the backend web socket.
 
   // The following two useEffects will update the token's coordinates (the local state `coordinates`) each time it is dragged and dropped.
   useEffect(() => {

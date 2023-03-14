@@ -14,7 +14,7 @@ export const TokenCoordinatesSlice = createSlice({
     },
     removeTokenCoordinates: (state, action) => {
       return state.filter(
-        (piece) => piece.tokenKey !== action.payload.tokenKey
+        (token) => token.tokenKey !== action.payload.tokenKey
       );
     },
   },
