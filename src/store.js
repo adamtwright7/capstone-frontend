@@ -17,6 +17,7 @@ import ReloadRoomsReducer from "./Reducers/ReloadRoomsSlice";
 import ReloadPiecesReducer from "./Reducers/reloadPiecesSlice";
 import ReloadPlayersReducer from "./Reducers/ReloadPlayersSlice";
 import TokenKeyReducer from "./Reducers/TokenKeySlice";
+import TokenCoordinatesReducer from "./Reducers/TokenCoordinatesSlice";
 
 // persist imports
 import { persistStore, persistReducer } from "redux-persist";
@@ -58,6 +59,7 @@ export const store = configureStore({
     reloadPieces: ReloadPiecesReducer,
     reloadPlayers: ReloadPlayersReducer,
     TokenKey: TokenKeyReducer,
+    TokenCoordinates: TokenCoordinatesReducer,
   },
   // middleware: [thunk] // Again, thunk in case we want it.
 });
