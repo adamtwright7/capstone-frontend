@@ -114,7 +114,6 @@ export const Pieces = () => {
                       { ...resource, key: TokenKey },
                       `room#${room.id}`
                     ); // drops the piece for other users
-                    console.log(TokenKey);
                   }}
                 >
                   <img
