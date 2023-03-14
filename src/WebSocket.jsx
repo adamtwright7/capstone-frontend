@@ -21,7 +21,6 @@ export default ({ children }) => {
   useEffect(() => {
     // for setting backgrounds via other users
     socket.on("receive-background", (backgroundImage) => {
-      console.log(`background image being set to ${backgroundImage}`);
       dispatch(setBGimage(backgroundImage));
     });
     // for dropping tokens via other users
