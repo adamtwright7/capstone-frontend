@@ -17,3 +17,4 @@ Check out our portfolios:
 - [Jess](https://www.jessbecoding.com/)
 - [Vinny](https://vincents-portfolio.com/)
 - [Adam](https://adamtwright7.github.io/)
+- [Mauro](https://www.stoiccodeing.com/)

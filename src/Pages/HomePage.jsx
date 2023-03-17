@@ -47,7 +47,7 @@ const HomePage = ({ toastMessage }) => {
         />
       </div>
       <Link to="/signup" className="playFree">
-        <button>Play free now! click here!</button>
+        <button>Play free now! Click here!</button>
       </Link>
       <div className="whatis">
         <h3> About Us </h3>
@@ -151,7 +151,7 @@ const HomePage = ({ toastMessage }) => {
                 <GrGithub />
               </button>
             </a>
-            <a href="" target="_blank">
+            <a href="https://www.stoiccodeing.com/" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>

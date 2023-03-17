@@ -168,10 +168,12 @@ const SignUpPage = () => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Vinny:</p>
           <div className="webIcons">
-            <button type="button" className="ghButton">
-              <GrGithub />
-            </button>
-            <a href="vincents-portfolio.com">
+            <a href="https://github.com/VinnyVecchio" target="_blank">
+              <button className="ghButton">
+                <GrGithub />
+              </button>
+            </a>
+            <a href="https://vincents-portfolio.com/" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
@@ -182,12 +184,12 @@ const SignUpPage = () => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Adam:</p>
           <div className="webIcons">
-            <a href="https://github.com/adamtwright7">
+            <a href="https://github.com/adamtwright7" target="_blank">
               <button className="ghButton">
                 <GrGithub />
               </button>
             </a>
-            <a href="https://adamtwright7.github.io/">
+            <a href="https://adamtwright7.github.io/" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
@@ -200,10 +202,12 @@ const SignUpPage = () => {
             Jess:
           </p>
           <div className="webIcons">
-            <button className="ghButton">
-              <GrGithub />
-            </button>
-            <a href="vincents-portfolio.com">
+            <a href="https://github.com/jessbecoding" target="_blank">
+              <button className="ghButton">
+                <GrGithub />
+              </button>
+            </a>
+            <a href="https://www.jessbecoding.com" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
@@ -214,10 +218,12 @@ const SignUpPage = () => {
         <div className="ghTeam">
           <p className="ghTeamPeople">Mauro:</p>
           <div className="webIcons">
-            <button className="ghButton">
-              <GrGithub />
-            </button>
-            <a href="vincents-portfolio.com">
+            <a href="https://github.com/stoicgit" target="_blank">
+              <button className="ghButton">
+                <GrGithub />
+              </button>
+            </a>
+            <a href="https://www.stoiccodeing.com/" target="_blank">
               <button className="ghButton">
                 <FaSquarespace />
               </button>
